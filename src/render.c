@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:44:49 by pcheron           #+#    #+#             */
-/*   Updated: 2023/12/11 16:51:46 by pcheron          ###   ########.fr       */
+/*   Updated: 2023/12/11 18:42:14 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ void	next_cube(t_data *data, t_v2f ray, int x)
 
 	t_v2f	delta_dist;
 
-	delta_dist[0] = (!ray[0]) ? 1e30 : abs_value(1 / ray[0]);
-	delta_dist[1] = (!ray[1]) ? 1e30 : abs_value(1 / ray[1]);
+	// delta_dist[0] = (!ray[0]) ? 1e30 : abs_value(1 / ray[0]);
+	// delta_dist[1] = (!ray[1]) ? 1e30 : abs_value(1 / ray[1]);
+	delta_dist[0] = sqrt(1 + (ray[1] * ray[1]) / (ray[0] * ray[0]));
+	delta_dist[1] = sqrt(1 + (ray[0] * ray[0]) / (ray[1] * ray[1]));
 
 
 	t_v2f	step;

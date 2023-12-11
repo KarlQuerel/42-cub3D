@@ -15,7 +15,6 @@
 # define EXIT		17
 # define KEY_ESC	65307
 
-
 # define UP		65362
 # define DOWN	65364
 # define RIGHT	65363
