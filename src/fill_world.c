@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 12:02:01 by pcheron           #+#    #+#             */
-/*   Updated: 2023/12/11 12:04:02 by pcheron          ###   ########.fr       */
+/*   Updated: 2023/12/16 17:30:37 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ bool	fill_north(t_data *data, char *line)
 		i++;
 	line[ft_strlen(line) - 1] = 0;
 	// printf("ligne <%s>\n", line + i);
-	data->north.img = mlx_xpm_file_to_image(data->mlx, line + i, &data->img_width, &data->img_height);
+	// data->north.img = mlx_xpm_file_to_image(data->mlx, line + i, &data->img_width, &data->img_height);
+	data->north.img = mlx_xpm_file_to_image(data->mlx, "img/XPM/walls/W_WH_NO.xpm", &data->img_width, &data->img_height);
 	if (!data->north.img)
 		return (write(2, "xpm to img error\n", 17), false);
 	data->north.addr = mlx_get_data_addr(data->north.img, &data->north.bpp, &data->north.ll, &data->north.endian);

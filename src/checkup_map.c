@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 11:18:43 by pcheron           #+#    #+#             */
-/*   Updated: 2023/12/11 14:42:48 by pcheron          ###   ########.fr       */
+/*   Updated: 2023/12/12 11:16:07 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,63 @@ int	nb_player(char **map)
 	+ count_char_in_map('W', map) + count_char_in_map('E', map));
 }
 
+bool	is_many_map(char **map)
+{
+	while (*map && count_char_in_str('1', *map))
+		map++;
+	while (*map && !count_char_in_str('1', *map))
+		map++;
+	if (*map && count_char_in_str('1', *map))
+		return (false);
+	return (true);
+}
+
+bool	is_char_in_map_are_normal(char **map)
+{
+	int	i;
+
+	while (map && *map)
+	{
+		i = 0;
+		while ((*map)[i])
+		{
+			if ((*map)[i] && (*map)[i] != '1' && (*map)[i] != '0' && (*map)[i] != 'N' && (*map)[i] != 'S' && (*map)[i] != 'W' && (*map)[i] != 'E' && !is_a_white_space((*map)[i]))
+				return (false);
+			i++;
+		}	
+		map++;
+	}
+	return (true);
+}
+
+bool	is_char_valid_in_map(char c)
+{
+	return (c == '1' || c == '0' || c == 'N' || c == 'S' || c == 'W' || c == 'E');
+}
+
+bool	is_a_zero_next_to_wrong(char **map)
+{
+	int	i;
+	int	j;
+
+	j = 0;
+	while (map && map[j])
+	{
+		i = 0;
+		while (map[j][i])
+		{
+			if (map[j][i] == '0')
+			{
+				if (!is_char_valid_in_map((map[j][i + 1])) || !is_char_valid_in_map((map[j][i - 1])) || !is_char_valid_in_map((map[j - 1][i])) || !is_char_valid_in_map((map[j + 1][i])))
+					return (false);
+			}
+			i++;
+		}	
+		j++;
+	}
+	return (true);
+}
+
 bool	checkup_map(char **map)
 {
 	if (nb_player(map) != 1)
@@ -79,7 +136,12 @@ bool	checkup_map(char **map)
 		return (false);
 	if (!check_right_wall(map))
 		return (false);
-
+	if (!is_many_map(map))
+		return (false);
+	if (!is_char_in_map_are_normal(map))
+		return (false);
+	if (!is_a_zero_next_to_wrong(map))
+		return (false);
 	return (true);
 }
 

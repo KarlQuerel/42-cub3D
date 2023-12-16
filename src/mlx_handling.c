@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:59:01 by pcheron           #+#    #+#             */
-/*   Updated: 2023/12/11 16:57:51 by pcheron          ###   ########.fr       */
+/*   Updated: 2023/12/16 17:25:32 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,12 @@ void	ft_handle_key_arrow(int key, t_data *data)
 			data->player_pos[1] -= data->camera_dir[1] * (float)MOVE_SPEED;
 	}
 	t_v2f	old_dir = data->camera_dir;
-	t_v2f	old_plane = data->plane;
+	t_v2f	old_plane;
 	if (key == RIGHT || key == RIGHT_D)
 	{
 		data->camera_dir[0] = data->camera_dir[0] * cos(-ROT_SPEED) - data->camera_dir[1] * sin(-ROT_SPEED);
 		data->camera_dir[1] = old_dir[0] * sin(-ROT_SPEED) + data->camera_dir[1] * cos(-ROT_SPEED);
+		old_plane[0] = data->plane[0];
 		data->plane[0] = data->plane[0] * cos(-ROT_SPEED) - data->plane[1] * sin(-ROT_SPEED);
 		data->plane[1] = old_plane[0] * sin(-ROT_SPEED) + data->plane[1] * cos(-ROT_SPEED);
 
@@ -44,6 +45,7 @@ void	ft_handle_key_arrow(int key, t_data *data)
 	{
 		data->camera_dir[0] = data->camera_dir[0] * cos(ROT_SPEED) - data->camera_dir[1] * sin(ROT_SPEED);
 		data->camera_dir[1] = old_dir[0] * sin(ROT_SPEED) + data->camera_dir[1] * cos(ROT_SPEED);
+		old_plane[0] = data->plane[0];
 		data->plane[0] = data->plane[0] * cos(ROT_SPEED) - data->plane[1] * sin(ROT_SPEED);
 		data->plane[1] = old_plane[0] * sin(ROT_SPEED) + data->plane[1] * cos(ROT_SPEED);
 	}
@@ -80,7 +82,7 @@ void	put_col(t_data *data, int col, int start, int end, int color)
 		ft_my_put_pixel(data, i, col, 0x00223240);
 		i++;
 	}
-	while (start < end)
+	while (start <= end)
 	{
 		ft_my_put_pixel(data, start, col, color);
 		start++;

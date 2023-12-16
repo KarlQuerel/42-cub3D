@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 13:10:52 by pcheron           #+#    #+#             */
-/*   Updated: 2023/12/11 16:00:11 by pcheron          ###   ########.fr       */
+/*   Updated: 2023/12/16 20:10:23 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,13 @@ int	data_clear(t_data *data)
 {
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_image(data->mlx, data->img.img);
+	mlx_destroy_image(data->mlx, data->north.img);
+	mlx_destroy_image(data->mlx, data->south.img);
+	mlx_destroy_image(data->mlx, data->east.img);
+	mlx_destroy_image(data->mlx, data->west.img);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
+	free_strs(&data->map);
 	exit(0);
 	return (0);
 }

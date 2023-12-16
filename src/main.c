@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 11:06:48 by pcheron           #+#    #+#             */
-/*   Updated: 2023/12/11 15:54:12 by pcheron          ###   ########.fr       */
+/*   Updated: 2023/12/16 15:18:31 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(int argc, char **argv)
 		return (1);
 	if (!setup_mlx(&data))
 		return (1);
+	data.map = NULL;
 	if (!setup_world(&data, argv[1]))
 		return (1);
 	if (!checkup_map(data.map))
@@ -33,7 +34,8 @@ int	main(int argc, char **argv)
 	data.camera_dir[1] = 0.0;
 	render(&data);
 	mlx_hook(data.win, EXIT, 0, data_clear, &data);
-	mlx_key_hook(data.win, key_event, &data);
+	mlx_hook(data.win, 02, KeyPressMask, key_event, &data);
+	// mlx_key_hook(data.win, key_event, &data);
 	mlx_loop(data.mlx);
 	return (0);
 }

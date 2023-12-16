@@ -12,6 +12,8 @@
 // handle window
 # define IMG_WIDTH	640
 # define IMG_HEIGHT	640
+# define TEX_WIDTH	128
+# define TEX_HEIGHT	128
 # define EXIT		17
 # define KEY_ESC	65307
 
