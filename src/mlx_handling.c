@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_handling.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:59:01 by pcheron           #+#    #+#             */
-/*   Updated: 2023/12/16 17:25:32 by pcheron          ###   ########.fr       */
+/*   Updated: 2023/12/18 19:42:23 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_handle_key_arrow(int key, t_data *data)
 {
-	printf("key : %d\n", key);
+	// printf("key : %d\n", key);
 	if (key == UP || key == UP_W)
 	{
 		// data->player_pos[0] -= 1.0;
@@ -49,9 +49,9 @@ void	ft_handle_key_arrow(int key, t_data *data)
 		data->plane[0] = data->plane[0] * cos(ROT_SPEED) - data->plane[1] * sin(ROT_SPEED);
 		data->plane[1] = old_plane[0] * sin(ROT_SPEED) + data->plane[1] * cos(ROT_SPEED);
 	}
-	printf("player / camera\n");
-	put_v2f(data->player_pos);
-	put_v2f(data->camera_dir);
+	// printf("player / camera\n");
+	// put_v2f(data->player_pos);
+	// put_v2f(data->camera_dir);
 	render(data);
 }
 
