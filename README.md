@@ -1,2 +1,2 @@
-![Nom_Alternatif]([lien_vers_gif](https://images-ext-2.discordapp.net/external/Y9_Zhtq0Yj7AtUvOk59Bh25DdSF9FIh6eoEkzCZgvKo/https/media.tenor.com/QDFX8HXWSeUAAAPo/kuzco-yzma.mp4)https://images-ext-2.discordapp.net/external/Y9_Zhtq0Yj7AtUvOk59Bh25DdSF9FIh6eoEkzCZgvKo/https/media.tenor.com/QDFX8HXWSeUAAAPo/kuzco-yzma.mp4)
+![Yzma](https://github.com/pcheron-root/42_cub3d/assets/126467996/6cff0ba1-154e-4a16-962e-51f482f90d74)
 # 42_cub3d
