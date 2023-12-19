@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:59:01 by pcheron           #+#    #+#             */
-/*   Updated: 2023/12/18 19:42:23 by kquerel          ###   ########.fr       */
+/*   Updated: 2023/12/19 19:08:43 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,25 @@
 void	ft_handle_key_arrow(int key, t_data *data)
 {
 	// printf("key : %d\n", key);
+	// printf("MOVE_SPEED : %f\n", MOVE_SPEED);
 	if (key == UP || key == UP_W)
 	{
 		// data->player_pos[0] -= 1.0;
-		if (data->map[(int)(data->player_pos[0] + data->camera_dir[0] * (float)MOVE_SPEED)][(int)data->player_pos[1]] != '1')
-			data->player_pos[0] += data->camera_dir[0] * (float)MOVE_SPEED;
-		if (data->map[(int)data->player_pos[0]][(int)(data->player_pos[1] + data->camera_dir[1] * (float)MOVE_SPEED)] != '1')
-			data->player_pos[1] += data->camera_dir[1] * (float)MOVE_SPEED;
+
+		if (key == SPRINT)
+		{
+			if (data->map[(int)(data->player_pos[0] + data->camera_dir[0] * (float)MOVE_SPEED + 0.85)][(int)data->player_pos[1]] != '1')
+			data->player_pos[0] += data->camera_dir[0] * (float)MOVE_SPEED + 0.85;
+			if (data->map[(int)data->player_pos[0]][(int)(data->player_pos[1] + data->camera_dir[1] * (float)MOVE_SPEED + 0.85)] != '1')
+			data->player_pos[1] += data->camera_dir[1] * (float)MOVE_SPEED + 0.85;
+		}
+		else
+		{	
+			if (data->map[(int)(data->player_pos[0] + data->camera_dir[0] * (float)MOVE_SPEED)][(int)data->player_pos[1]] != '1')
+				data->player_pos[0] += data->camera_dir[0] * (float)MOVE_SPEED;
+			if (data->map[(int)data->player_pos[0]][(int)(data->player_pos[1] + data->camera_dir[1] * (float)MOVE_SPEED)] != '1')
+				data->player_pos[1] += data->camera_dir[1] * (float)MOVE_SPEED;
+		}
 	}
 	else if (key == DOWN || key == DOWN_S)
 	{
@@ -48,6 +60,12 @@ void	ft_handle_key_arrow(int key, t_data *data)
 		old_plane[0] = data->plane[0];
 		data->plane[0] = data->plane[0] * cos(ROT_SPEED) - data->plane[1] * sin(ROT_SPEED);
 		data->plane[1] = old_plane[0] * sin(ROT_SPEED) + data->plane[1] * cos(ROT_SPEED);
+	}
+
+	//TEST KARL
+	else if (key == 111)
+	{
+		
 	}
 	// printf("player / camera\n");
 	// put_v2f(data->player_pos);

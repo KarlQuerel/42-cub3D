@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:44:49 by pcheron           #+#    #+#             */
-/*   Updated: 2023/12/18 19:44:07 by kquerel          ###   ########.fr       */
+/*   Updated: 2023/12/19 17:14:41 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,13 +70,19 @@ void	next_cube(t_data *data, t_v2f ray, int x)
 		{
 			side_dist[0] += delta_dist[0];
 			map_x += step[0];
-			side = 0;
+			if (map_x > data->player_pos[0])
+				side = NORTH;
+			else
+				side = SOUTH;
 		}
 		else
 		{
 			side_dist[1] += delta_dist[1];
 			map_y += step[1];
-			side = 1;
+			if (map_y > data->player_pos[1])
+				side = WEST;
+			else
+				side = EAST;
 		}
 
 		if (data->map[map_x][map_y] == '1')
@@ -84,7 +90,7 @@ void	next_cube(t_data *data, t_v2f ray, int x)
 	}
 
 	float	perp_wall_dist;
-	perp_wall_dist = side_dist[side] - delta_dist[side];
+	perp_wall_dist = side_dist[side / 3] - delta_dist[side / 3];
 	
 	int	line_height = (int)(IMG_HEIGHT / perp_wall_dist);
 	int	draw_start = -line_height / 2 + IMG_HEIGHT / 2;
@@ -97,16 +103,16 @@ void	next_cube(t_data *data, t_v2f ray, int x)
 		draw_end = IMG_HEIGHT - 1;
 
 	float	wall_x;
-	if (!side)
+	if (!(side / 3))
 		wall_x = data->player_pos[1] + perp_wall_dist * ray[1];
 	else
 		wall_x = data->player_pos[0] + perp_wall_dist * ray[0];
 	wall_x -= (int)wall_x;
 
 	int	tex_x = (int)(wall_x * (float)TEX_WIDTH);
-	if (!side && ray[0] > 0)
+	if (!(side / 3) && ray[0] > 0)
 		tex_x = TEX_WIDTH - tex_x - 1;
-	if (side == 1 && ray[1] < 0)
+	if (side / 3 && ray[1] < 0)
 		tex_x = TEX_WIDTH - tex_x - 1;
 
 	float	step_all = 1.0 * TEX_HEIGHT / line_height;
@@ -128,13 +134,18 @@ void	next_cube(t_data *data, t_v2f ray, int x)
 	{
 		int	tex_y = (int)tex_pos & (TEX_HEIGHT - 1);
 		tex_pos += step_all;
-		int	color = ((int *)data->north.addr)[tex_y * TEX_HEIGHT + tex_x];
-		// int	color = ((int *)data->south.addr)[tex_y * TEX_HEIGHT + tex_x];
-		// int	color = ((int *)data->west.addr)[tex_y * TEX_HEIGHT + tex_x];
-		// int	color = ((int *)data->east.addr)[tex_y * TEX_HEIGHT + tex_x];
+		int color;
+		if (side == NORTH)
+			color = ((int *)data->north.addr)[tex_y * TEX_HEIGHT + tex_x];
+		else if (side == SOUTH)
+			color = ((int *)data->south.addr)[tex_y * TEX_HEIGHT + tex_x];
+		else if (side == WEST)
+			color = ((int *)data->west.addr)[tex_y * TEX_HEIGHT + tex_x];
+		else
+			color = ((int *)data->east.addr)[tex_y * TEX_HEIGHT + tex_x];
 		
 		// pour assombrir certains murs
-		if (side == 1)
+		if (side - 2)
 			color = (color >> 1) & 8355711;
 		ft_my_put_pixel(data, it, x, color);
 		it++;

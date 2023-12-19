@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 12:02:01 by pcheron           #+#    #+#             */
-/*   Updated: 2023/12/18 19:28:47 by kquerel          ###   ########.fr       */
+/*   Updated: 2023/12/19 15:22:45 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ bool	fill_north(t_data *data, char *line)
 	while (is_a_white_space(line[i]))
 		i++;
 	line[ft_strlen(line) - 1] = 0;
-	// printf("ligne <%s>\n", line + i);
 	data->north.img = mlx_xpm_file_to_image(data->mlx, line + i, &data->img_width, &data->img_height);
 	if (!data->north.img)
 		return (write(2, "xpm to img error\n", 17), false);

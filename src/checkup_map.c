@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkup_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 11:18:43 by pcheron           #+#    #+#             */
-/*   Updated: 2023/12/12 11:16:07 by pcheron          ###   ########.fr       */
+/*   Updated: 2023/12/19 11:40:33 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,8 @@ bool	check_right_wall(char **map)
 
 	start = 0;
 	end = ft_strlen(*map) - 1;
-	// printf("RIGHT :\n");
 	while (*map)
 	{
-		// printf("nouvelle ligne :\n");
 		i = ft_strlen(*map) - 1;
 		while (is_a_white_space((*map)[i]))
 			i--;
@@ -145,36 +143,3 @@ bool	checkup_map(char **map)
 	return (true);
 }
 
-// void	sauver_le_player(map, int* x, int *y)
-// {
-// 	*x = 0;
-// 	while (map[*x])
-// 	{
-// 		*y = 0;
-// 		while (map[*x][*y])
-// 		{
-// 			if (map[*x][*y] == 'N')
-// 				return ;
-// 			*y++;
-// 		}
-// 		*x++;
-// 	}
-// }
-
-// bool	innondation(char **map, int x, int y)
-// {
-// 	if (!x || !y || !map[x] || !map[x][y])
-// 		return (true);
-// 	if (x < 0)
-// 		sauver_le_player(map, &x, &y);
-// 	if (map[x][y] == '0')
-// 	{
-// 		map[x][y] = '2';
-// 		innondation(map, x, y - 1);
-// 		innondation(map, x + 1, y);
-// 		innondation(map, x, y + 1);
-// 		innondation(map, x - 1, y);
-// 	}
-// 	// checker la map
-// 	return (true);
-// }

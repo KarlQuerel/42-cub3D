@@ -1,7 +1,7 @@
-NO  ./img/XPM/walls/W_WH_NO.xpm
-SO  ./img/XPM/walls/W_WH_SO.xpm
-WE  ./img/XPM/walls/W_WH_WE.xpm
-EA  ./img/XPM/walls/W_WH_EA.xpm
+NO  ./img/XPM/abaisse-les-images-Kronk/2.xpm
+SO  ./img/XPM/abaisse-les-images-Kronk/KRONK_HIDING.xpm
+WE  ./img/XPM/abaisse-les-images-Kronk/1.xpm
+EA  ./img/XPM/abaisse-les-images-Kronk/KRONK_PIXEL.xpm
 
 11111111
 10000001

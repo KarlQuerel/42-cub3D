@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:11:12 by pcheron           #+#    #+#             */
-/*   Updated: 2023/12/11 12:42:28 by pcheron          ###   ########.fr       */
+/*   Updated: 2023/12/19 17:17:57 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ bool	find_player(t_data *data)
 				data->camera_dir[1] = 1; // de N S W E
 				data->plane[0] = 0.0f;
 				data->plane[1] = 0.66f;
-				data->time = 0;
-				data->old_time = 0;
+				// data->time = 0;
+				// data->old_time = 0;
 				return (true);
 			}
 			y++;
