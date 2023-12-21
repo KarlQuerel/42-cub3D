@@ -28,6 +28,7 @@ SRC =	main.c \
 		parsing_utils.c \
 		fill_world.c \
 		checkup_map.c \
+		checkup_map_utils.c \
 		render.c \
 
 # Object files

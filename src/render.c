@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:44:49 by pcheron           #+#    #+#             */
-/*   Updated: 2023/12/19 17:14:41 by kquerel          ###   ########.fr       */
+/*   Updated: 2023/12/21 18:22:29 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,24 @@ t_v2f	get_ray(t_data *data, int x)
 
 void	next_cube(t_data *data, t_v2f ray, int x)
 {
-	int map_x = (int)data->player_pos[0];
-	int map_y = (int)data->player_pos[1];
-
-
+	int		map_x;
+	int		map_y;
 	t_v2f	delta_dist;
 
-	delta_dist[0] = (!ray[0]) ? 1e30 : abs_value(1 / ray[0]);
-	delta_dist[1] = (!ray[1]) ? 1e30 : abs_value(1 / ray[1]);
+	map_x = (int)data->player_pos[0];
+	map_y = (int)data->player_pos[1];
+	// delta_dist[0] = (!ray[0]) ? 1e30 : abs_value(1 / ray[0]);
+	// delta_dist[1] = (!ray[1]) ? 1e30 : abs_value(1 / ray[1]);
+	//Norminette a dit :
+	//Ternaries are forbidden -> du coup code du pauvre sans panache
+	if (!ray[0])
+		delta_dist[0] = 1e30;
+	else
+		delta_dist[0] = abs_value(1 / ray[0]);
+	if (!ray[1])
+		delta_dist[1] = 1e30;
+	else
+		delta_dist[1] = abs_value(1 / ray[1]);
 	// delta_dist[0] = sqrt(1 + (ray[1] * ray[1]) / (ray[0] * ray[0]));
 	// delta_dist[1] = sqrt(1 + (ray[0] * ray[0]) / (ray[1] * ray[1]));
 
@@ -117,10 +127,6 @@ void	next_cube(t_data *data, t_v2f ray, int x)
 
 	float	step_all = 1.0 * TEX_HEIGHT / line_height;
 	float	tex_pos = (draw_start - IMG_HEIGHT / 2 + line_height / 2) * step_all;
-	// int	color = 0x00FF0000;
-	// if (side)
-	// 	color /=2;
-	// put_col(data, x, draw_start, draw_end, color);
 
 	int	it = 0;
 	//FLOOR --> KARL REGARDER TUTO PAGE 2
@@ -129,7 +135,7 @@ void	next_cube(t_data *data, t_v2f ray, int x)
 		ft_my_put_pixel(data, it, x, 0x00223240);
 		it++;
 	}
-	//TEXTURES
+	//WALLS
 	while (it <= draw_end && it < IMG_HEIGHT)
 	{
 		int	tex_y = (int)tex_pos & (TEX_HEIGHT - 1);

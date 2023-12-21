@@ -85,10 +85,13 @@ bool	check_left_wall(char **map);
 bool	check_right_wall(char **map);
 int		nb_player(char **map);
 bool	is_many_map(char **map);
+bool	checkup_map(char **map);
+
+/* Check_up_map_utils */
+int		count_char_in_map(char c, char **map);
 bool	is_char_in_map_are_normal(char **map);
 bool	is_char_valid_in_map(char c);
 bool	is_a_zero_next_to_wrong(char **map);
-bool	checkup_map(char **map);
 
 /* Fill_world */
 bool	fill_north(t_data *data, char *line);
@@ -110,7 +113,6 @@ bool	is_a_white_space(char c);
 int		identify_line(char *str);
 void	put_v2f(t_v2f vecteur);
 int		count_char_in_str(char c, char *str);
-int		count_char_in_map(char c, char **map);
 float	abs_value(float x);
 
 /* Render */

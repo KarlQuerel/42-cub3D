@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 09:45:32 by pcheron           #+#    #+#             */
-/*   Updated: 2023/12/16 15:57:17 by pcheron          ###   ########.fr       */
+/*   Updated: 2023/12/21 18:07:14 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	free_strs(char ***strs)
 		*strs = NULL;
 	}
 }
-
+//A SUPPRIMER AVANT DE PUSH
 void	put_strs(char **strs)
 {
 	while (*strs)
@@ -64,7 +64,7 @@ int	identify_line(char *str)
 	write(1, "error\n", 6);
 	return (0);
 }
-
+//A SUPPRIMER AVANT DE PUSH
 void	put_v2f(t_v2f vecteur)
 {
 	printf("vecteur <%f|%f>\n", vecteur[0], vecteur[1]);
@@ -82,22 +82,6 @@ int	count_char_in_str(char c, char *str)
 			if (c == *str)
 				count++;
 			str++;
-		}
-	}
-	return (count);
-}
-
-int	count_char_in_map(char c, char **map)
-{
-	int	count;
-
-	count = 0;
-	if (map)
-	{
-		while (*map)
-		{
-			count += count_char_in_str(c, *map);
-			map++;
 		}
 	}
 	return (count);

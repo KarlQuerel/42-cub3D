@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:59:01 by pcheron           #+#    #+#             */
-/*   Updated: 2023/12/19 19:08:43 by kquerel          ###   ########.fr       */
+/*   Updated: 2023/12/21 18:05:38 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,15 @@
 
 void	ft_handle_key_arrow(int key, t_data *data)
 {
-	// printf("key : %d\n", key);
+	printf("key : %d\n", key);
 	// printf("MOVE_SPEED : %f\n", MOVE_SPEED);
 	if (key == UP || key == UP_W)
 	{
-		// data->player_pos[0] -= 1.0;
-
-		if (key == SPRINT)
-		{
-			if (data->map[(int)(data->player_pos[0] + data->camera_dir[0] * (float)MOVE_SPEED + 0.85)][(int)data->player_pos[1]] != '1')
-			data->player_pos[0] += data->camera_dir[0] * (float)MOVE_SPEED + 0.85;
-			if (data->map[(int)data->player_pos[0]][(int)(data->player_pos[1] + data->camera_dir[1] * (float)MOVE_SPEED + 0.85)] != '1')
-			data->player_pos[1] += data->camera_dir[1] * (float)MOVE_SPEED + 0.85;
-		}
-		else
-		{	
+		// data->player_pos[0] -= 1.0;	
 			if (data->map[(int)(data->player_pos[0] + data->camera_dir[0] * (float)MOVE_SPEED)][(int)data->player_pos[1]] != '1')
 				data->player_pos[0] += data->camera_dir[0] * (float)MOVE_SPEED;
 			if (data->map[(int)data->player_pos[0]][(int)(data->player_pos[1] + data->camera_dir[1] * (float)MOVE_SPEED)] != '1')
 				data->player_pos[1] += data->camera_dir[1] * (float)MOVE_SPEED;
-		}
 	}
 	else if (key == DOWN || key == DOWN_S)
 	{
@@ -61,11 +50,12 @@ void	ft_handle_key_arrow(int key, t_data *data)
 		data->plane[0] = data->plane[0] * cos(ROT_SPEED) - data->plane[1] * sin(ROT_SPEED);
 		data->plane[1] = old_plane[0] * sin(ROT_SPEED) + data->plane[1] * cos(ROT_SPEED);
 	}
-
-	//TEST KARL
-	else if (key == 111)
+	else if (key == 111) // 'o'
 	{
-		
+		char str[] = "JE SUIS LA";
+		printf("%s\n", str);
+		mlx_set_font(data->mlx, data->win, "10x20");
+		mlx_string_put(data->mlx, data->win, 100, 100, 0x00BFFF, str);
 	}
 	// printf("player / camera\n");
 	// put_v2f(data->player_pos);
@@ -91,7 +81,6 @@ void	ft_my_put_pixel(t_data *data, int x, int y, int color)
 
 void	put_col(t_data *data, int col, int start, int end, int color)
 {
-	// printf("go afficher ma meilleure colonne %i en partant de %d jusqu a %d\n", col, start, end);
 	int	i;
 
 	i = 0;

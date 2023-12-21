@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:11:12 by pcheron           #+#    #+#             */
-/*   Updated: 2023/12/19 17:17:57 by kquerel          ###   ########.fr       */
+/*   Updated: 2023/12/21 17:38:06 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,10 @@ bool	find_player(t_data *data)
 			{
 				data->player_pos[0] = x + 0.5f;
 				data->player_pos[1] = y + 0.5f;
-				data->camera_dir[0] = 0; // a changer en fonction
-				data->camera_dir[1] = 1; // de N S W E
+				data->camera_dir[0] = 0;
+				data->camera_dir[1] = 1;
 				data->plane[0] = 0.0f;
 				data->plane[1] = 0.66f;
-				// data->time = 0;
-				// data->old_time = 0;
 				return (true);
 			}
 			y++;

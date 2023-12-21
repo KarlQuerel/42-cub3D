@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 11:18:43 by pcheron           #+#    #+#             */
-/*   Updated: 2023/12/19 11:40:33 by kquerel          ###   ########.fr       */
+/*   Updated: 2023/12/21 17:47:59 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,7 @@ bool	check_right_wall(char **map)
 			return (false);
 		end = i;
 		while (i >= 0 && (*map)[i] == '1')
-		{
-			// printf("j'en suis la : %s\n", (*map) + i);
 			i--;
-		}
 		start = i + 1;
 		map++;
 	}
@@ -80,52 +77,6 @@ bool	is_many_map(char **map)
 	return (true);
 }
 
-bool	is_char_in_map_are_normal(char **map)
-{
-	int	i;
-
-	while (map && *map)
-	{
-		i = 0;
-		while ((*map)[i])
-		{
-			if ((*map)[i] && (*map)[i] != '1' && (*map)[i] != '0' && (*map)[i] != 'N' && (*map)[i] != 'S' && (*map)[i] != 'W' && (*map)[i] != 'E' && !is_a_white_space((*map)[i]))
-				return (false);
-			i++;
-		}	
-		map++;
-	}
-	return (true);
-}
-
-bool	is_char_valid_in_map(char c)
-{
-	return (c == '1' || c == '0' || c == 'N' || c == 'S' || c == 'W' || c == 'E');
-}
-
-bool	is_a_zero_next_to_wrong(char **map)
-{
-	int	i;
-	int	j;
-
-	j = 0;
-	while (map && map[j])
-	{
-		i = 0;
-		while (map[j][i])
-		{
-			if (map[j][i] == '0')
-			{
-				if (!is_char_valid_in_map((map[j][i + 1])) || !is_char_valid_in_map((map[j][i - 1])) || !is_char_valid_in_map((map[j - 1][i])) || !is_char_valid_in_map((map[j + 1][i])))
-					return (false);
-			}
-			i++;
-		}	
-		j++;
-	}
-	return (true);
-}
-
 bool	checkup_map(char **map)
 {
 	if (nb_player(map) != 1)
@@ -142,4 +93,3 @@ bool	checkup_map(char **map)
 		return (false);
 	return (true);
 }
-

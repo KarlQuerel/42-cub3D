@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 12:02:01 by pcheron           #+#    #+#             */
-/*   Updated: 2023/12/19 15:22:45 by kquerel          ###   ########.fr       */
+/*   Updated: 2023/12/21 17:52:20 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,12 @@ bool	fill_north(t_data *data, char *line)
 	while (is_a_white_space(line[i]))
 		i++;
 	line[ft_strlen(line) - 1] = 0;
-	data->north.img = mlx_xpm_file_to_image(data->mlx, line + i, &data->img_width, &data->img_height);
+	data->north.img = mlx_xpm_file_to_image(data->mlx, line + i, \
+	&data->img_width, &data->img_height);
 	if (!data->north.img)
 		return (write(2, "xpm to img error\n", 17), false);
-	data->north.addr = mlx_get_data_addr(data->north.img, &data->north.bpp, &data->north.ll, &data->north.endian);
+	data->north.addr = mlx_get_data_addr(data->north.img, \
+	&data->north.bpp, &data->north.ll, &data->north.endian);
 	if (!data->north.addr)
 		return (write(2, "get addr error\n", 10), false);
 	return (true);
@@ -45,10 +47,12 @@ bool	fill_south(t_data *data, char *line)
 	while (is_a_white_space(line[i]))
 		i++;
 	line[ft_strlen(line) - 1] = 0;
-	data->south.img = mlx_xpm_file_to_image(data->mlx, line + i, &data->img_width, &data->img_height);
+	data->south.img = mlx_xpm_file_to_image(data->mlx, line + i, \
+	&data->img_width, &data->img_height);
 	if (!data->south.img)
 		return (false);
-	data->south.addr = mlx_get_data_addr(data->south.img, &data->south.bpp, &data->south.ll, &data->south.endian);
+	data->south.addr = mlx_get_data_addr(data->south.img, \
+	&data->south.bpp, &data->south.ll, &data->south.endian);
 	if (!data->south.addr)
 		return (false);
 	return (true);
@@ -66,10 +70,12 @@ bool	fill_west(t_data *data, char *line)
 	while (is_a_white_space(line[i]))
 		i++;
 	line[ft_strlen(line) - 1] = 0;
-	data->west.img = mlx_xpm_file_to_image(data->mlx, line + i, &data->img_width, &data->img_height);
+	data->west.img = mlx_xpm_file_to_image(data->mlx, line + i, \
+	&data->img_width, &data->img_height);
 	if (!data->west.img)
 		return (false);
-	data->west.addr = mlx_get_data_addr(data->west.img, &data->west.bpp, &data->west.ll, &data->west.endian);
+	data->west.addr = mlx_get_data_addr(data->west.img, \
+	&data->west.bpp, &data->west.ll, &data->west.endian);
 	if (!data->west.addr)
 		return (false);
 	return (true);
@@ -87,10 +93,12 @@ bool	fill_east(t_data *data, char *line)
 	while (is_a_white_space(line[i]))
 		i++;
 	line[ft_strlen(line) - 1] = 0;
-	data->east.img = mlx_xpm_file_to_image(data->mlx, line + i, &data->img_width, &data->img_height);
+	data->east.img = mlx_xpm_file_to_image(data->mlx, line + i, \
+	&data->img_width, &data->img_height);
 	if (!data->east.img)
 		return (false);
-	data->east.addr = mlx_get_data_addr(data->east.img, &data->east.bpp, &data->east.ll, &data->east.endian);
+	data->east.addr = mlx_get_data_addr(data->east.img, \
+	&data->east.bpp, &data->east.ll, &data->east.endian);
 	if (!data->east.addr)
 		return (false);
 	return (true);
@@ -115,12 +123,9 @@ bool	fill_map(t_data *data, char **line, int fd)
 		data->map = ft_split(map, '\n');
 		if (!data->map)
 			return (free(map), false);
-		// printf("new map :\n");
-		// put_strs(data->map);
 		*line = ft_get_next_line(fd);
 		data->width++;
 	}
-	// data->map = ft_split(map, '\n');
 	free(map);
 	return (true);
 }
