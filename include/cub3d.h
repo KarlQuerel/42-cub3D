@@ -65,6 +65,8 @@ typedef struct s_data
 	t_img_info	south;
 	t_img_info	west;
 	t_img_info	east;
+	t_img_info	floor;
+	t_img_info	ceiling;
 
 	int			img_width;
 	int			img_height;
@@ -104,7 +106,7 @@ bool	fill_map(t_data *data, char **line, int fd);
 void	ft_handle_key_arrow(int key, t_data *data);
 int		key_event(int keycode, t_data *data);
 void	ft_my_put_pixel(t_data *data, int x, int y, int color);
-void	put_col(t_data *data, int col, int start, int end, int color);
+//void	put_col(t_data *data, int col, int start, int end, int color);
 
 /* Parsing_utils */
 void	free_strs(char ***strs);
@@ -130,5 +132,10 @@ bool	find_player(t_data *data);
 /* Setup_world */
 bool	fill_new_line(t_data *data, char **line, int fd);
 bool	setup_world(t_data *data, char *map);
+
+/* Minimap */
+void	draw_minimap(t_data *data);
+void	draw_ray(t_data *data);
+
 
 #endif

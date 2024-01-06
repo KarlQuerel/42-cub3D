@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:44:49 by pcheron           #+#    #+#             */
-/*   Updated: 2023/12/21 18:22:29 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/06 13:49:14 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,12 +129,71 @@ void	next_cube(t_data *data, t_v2f ray, int x)
 	float	tex_pos = (draw_start - IMG_HEIGHT / 2 + line_height / 2) * step_all;
 
 	int	it = 0;
-	//FLOOR --> KARL REGARDER TUTO PAGE 2
+	//FLOOR + PLAFOND
 	while (it <= draw_start && it < IMG_HEIGHT)
 	{
 		ft_my_put_pixel(data, it, x, 0x00223240);
 		it++;
 	}
+	// //while test pour le sol
+	// data->floor.img = mlx_xpm_file_to_image(data->mlx, "img/XPM/Floor_and_ceiling/FLOOR.xpm", &data->img_width, &data->img_height);
+	// if (!data->floor.img)
+	// {
+	// 	write(2, "xpm to img: floor error\n", 24);
+	// 	exit(1);
+	// }
+	//LE CODE CI DESSUS FREEZE L'ORDINATEUR
+	
+	// while (it <= draw_start && it < IMG_HEIGHT)
+	// {
+	// 	float rayDirX0 = data->camera_dir[0] - data->plane[0];
+	// 	float rayDirY0 = data->camera_dir[1] - data->plane[1];
+	// 	float rayDirX1 = data->camera_dir[0] + data->plane[0];
+	// 	float rayDirY1 = data->camera_dir[1] + data->plane[1];
+
+	// 	int	p = it - IMG_HEIGHT / 2;
+	// 	float posZ = 0.5 * IMG_HEIGHT;
+
+	// 	float rowDistance = posZ / p;
+
+	// 	float floorStepx = rowDistance * (rayDirX1 - rayDirX0) / IMG_HEIGHT;
+	// 	float floorStepY = rowDistance * (rayDirY1 - rayDirY0) / IMG_HEIGHT;
+
+	// 	float floorX = data->player_pos[0] + rowDistance * rayDirX0;
+	// 	float floorY = data->player_pos[1] + rowDistance * rayDirY0;
+
+	// 	int	x = 0;
+	// 	while (x < IMG_HEIGHT)
+	// 	{
+	// 		int	cellX = (int)(floorX);
+	// 		int	cellY = (int)(floorY);
+
+	// 		int	tx = (int)(TEX_WIDTH * (floorX - cellX)) & (TEX_WIDTH - 1);
+	// 		int	ty = (int)(TEX_HEIGHT * (floorY - cellY)) & (TEX_HEIGHT - 1);
+
+	// 		floorX += floorStepx;
+	// 		floorY += floorStepY;
+			
+	// 		//DRAW TEXTURES - Maitre Pablo
+	// 		/*
+	// 		// choose texture and draw the pixel
+	// 		int floorTexture = 3;
+	// 		int ceilingTexture = 6;
+	// 		Uint32 color;
+
+	// 		// floor
+	// 		color = texture[floorTexture][texWidth * ty + tx];
+	// 		color = (color >> 1) & 8355711; // make a bit darker
+	// 		buffer[y][x] = color;
+
+	// 		//ceiling (symmetrical, at screenHeight - y - 1 instead of y)
+	// 		color = texture[ceilingTexture][texWidth * ty + tx];
+	// 		color = (color >> 1) & 8355711; // make a bit darker
+	// 		buffer[screenHeight - y - 1][x] = color; */
+	// 		x++;
+	// 	}
+	// }
+
 	//WALLS
 	while (it <= draw_end && it < IMG_HEIGHT)
 	{
@@ -156,13 +215,13 @@ void	next_cube(t_data *data, t_v2f ray, int x)
 		ft_my_put_pixel(data, it, x, color);
 		it++;
 	}
-	//CEILING --> KARL REGARDER TUTO PAGE 2
+	//CEILING -> ne sera plus necessaire une fois les textures implementees
 	while (it < IMG_HEIGHT)
 	{
 		ft_my_put_pixel(data, it, x, 0x00353535);
 		it++;
 	}
-		
+	
 }
 
 void	render(t_data *data)
@@ -180,4 +239,5 @@ void	render(t_data *data)
 		i++;
 	}
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
+	draw_minimap(data);
 }

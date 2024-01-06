@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:59:01 by pcheron           #+#    #+#             */
-/*   Updated: 2023/12/21 18:05:38 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/05 18:38:52 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,6 @@ void	ft_handle_key_arrow(int key, t_data *data)
 		data->plane[0] = data->plane[0] * cos(ROT_SPEED) - data->plane[1] * sin(ROT_SPEED);
 		data->plane[1] = old_plane[0] * sin(ROT_SPEED) + data->plane[1] * cos(ROT_SPEED);
 	}
-	else if (key == 111) // 'o'
-	{
-		char str[] = "JE SUIS LA";
-		printf("%s\n", str);
-		mlx_set_font(data->mlx, data->win, "10x20");
-		mlx_string_put(data->mlx, data->win, 100, 100, 0x00BFFF, str);
-	}
 	// printf("player / camera\n");
 	// put_v2f(data->player_pos);
 	// put_v2f(data->camera_dir);
@@ -79,24 +72,25 @@ void	ft_my_put_pixel(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	put_col(t_data *data, int col, int start, int end, int color)
-{
-	int	i;
+//Fonction plus utilisee
+// void	put_col(t_data *data, int col, int start, int end, int color)
+// {
+// 	int	i;
 
-	i = 0;
-	while (i < start && i < IMG_WIDTH)
-	{
-		ft_my_put_pixel(data, i, col, 0x00223240);
-		i++;
-	}
-	while (start <= end)
-	{
-		ft_my_put_pixel(data, start, col, color);
-		start++;
-	}
-	while (start < IMG_HEIGHT)
-	{
-		ft_my_put_pixel(data, start, col, 0x00353535);
-		start++;
-	}
-}
+// 	i = 0;
+// 	while (i < start && i < IMG_WIDTH)
+// 	{
+// 		ft_my_put_pixel(data, i, col, 0x00223240);
+// 		i++;
+// 	}
+// 	while (start <= end)
+// 	{
+// 		ft_my_put_pixel(data, start, col, color);
+// 		start++;
+// 	}
+// 	while (start < IMG_HEIGHT)
+// 	{
+// 		ft_my_put_pixel(data, start, col, 0x00353535);
+// 		start++;
+// 	}
+// }

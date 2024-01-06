@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 11:06:48 by pcheron           #+#    #+#             */
-/*   Updated: 2023/12/21 17:52:39 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/05 17:49:10 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ int	main(int argc, char **argv)
 	render(&data);
 	mlx_hook(data.win, EXIT, 0, data_clear, &data);
 	mlx_hook(data.win, 02, KeyPressMask, key_event, &data);
+	//pour gerer plusieurs touches en meme temps
+	//mlx_hook();
+	//mlx_loop_hook();
 	mlx_loop(data.mlx);
 	return (0);
 }
