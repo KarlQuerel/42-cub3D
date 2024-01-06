@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 16:29:45 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/05 18:39:10 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/06 17:51:55 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	draw_minimap(t_data *data)
 	// int	minimap_height = ;
 
 	mlx_set_font(data->mlx, data->win, "10x20");
-	mlx_string_put(data->mlx, data->win, 100, 100, 0x00BFFF, "TEST");
-	mlx_pixel_put(data->mlx, data->win, 50, 50, 0xbad129);
+	mlx_string_put(data->mlx, data->win, 10, 20, 0x00BFFF, "LA JUNGLE");
+	//mlx_pixel_put(data->mlx, data->win, 50, 50, 0xbad129);
 	
 }
 

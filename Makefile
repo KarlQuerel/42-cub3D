@@ -31,6 +31,7 @@ SRC =	main.c \
 		checkup_map_utils.c \
 		render.c \
 		minimap.c \
+		draw.c \
 
 # Object files
 OBJ		= $(addprefix $(BIN_PATH), $(SRC:.c=.o))

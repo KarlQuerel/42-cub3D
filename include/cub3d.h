@@ -6,8 +6,8 @@
 # include "../minilibx-linux/mlx.h"
 # include "../libft/include/libft.h"
 
-# define MOVE_SPEED	0.15
-# define ROT_SPEED	0.15
+# define MOVE_SPEED	0.007
+# define ROT_SPEED	0.003
 
 // handle window
 # define IMG_WIDTH	640
@@ -30,7 +30,8 @@
 
 # define SPRINT		65505
 
-typedef float	t_v2f __attribute__((vector_size (8)));
+typedef float	t_color	__attribute__((vector_size (16)));
+typedef float	t_v2f	__attribute__((vector_size (8)));
 // typedef enum e_xyz {x, y}	t_xy;
 
 enum e_parse
@@ -39,6 +40,8 @@ enum e_parse
 	SOUTH,
 	WEST,
 	EAST,
+	FLOOR,
+	CEILING,
 	OUT,
 	PLAYER,
 	MAP,
@@ -54,6 +57,14 @@ typedef struct s_img_info
 	int		endian;
 }	t_img_info;
 
+typedef	struct	s_control
+{
+	bool		w;
+	bool		s;
+	bool		a;
+	bool		d;
+}	t_control;
+
 /* General structure */
 typedef struct s_data
 {
@@ -68,6 +79,11 @@ typedef struct s_data
 	t_img_info	floor;
 	t_img_info	ceiling;
 
+	t_color		floor_color;
+	t_color		ceiling_color;
+
+	int			nb_side_parsed;
+
 	int			img_width;
 	int			img_height;
 
@@ -75,11 +91,19 @@ typedef struct s_data
 	char 		**map;
 	int			width;
 	int			height;
+	t_control	controls;
 
 	// Raycasting
 	t_v2f		plane;
 	t_v2f		player_pos;
 	t_v2f		camera_dir;
+
+	//	Draw
+	float		tex_pos;
+	float		step_all;
+	int			tex_x;
+	int			side;
+
 }	t_data;
 
 /* Checkup_map */
@@ -101,6 +125,8 @@ bool	fill_south(t_data *data, char *line);
 bool	fill_west(t_data *data, char *line);
 bool	fill_east(t_data *data, char *line);
 bool	fill_map(t_data *data, char **line, int fd);
+bool	fill_ceiling(t_data *data, char *line);
+bool	fill_floor(t_data *data, char *line);
 
 /* Mlx_handling */
 void	ft_handle_key_arrow(int key, t_data *data);
@@ -136,6 +162,11 @@ bool	setup_world(t_data *data, char *map);
 /* Minimap */
 void	draw_minimap(t_data *data);
 void	draw_ray(t_data *data);
+
+void	draw_slice(t_data *data, int x, int start, int end);
+bool	atocolor(char *str, t_color *color);
+void	move(t_data *data);
+int		key_release(int key, t_data *data);
 
 
 #endif

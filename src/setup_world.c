@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_world.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 20:58:53 by pcheron           #+#    #+#             */
-/*   Updated: 2023/12/21 17:56:02 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/06 17:44:08 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,23 @@
 
 bool	fill_new_line(t_data *data, char **line, int fd)
 {
-	bool	(*fill_functions[])() = {NULL, fill_north, fill_east, fill_west, fill_south};
-	int	type;
+	bool	(*fill_functions[])() = {NULL, fill_north, fill_east, fill_west, fill_south, fill_floor, fill_ceiling};
+	int		type;
 
 	type = identify_line(*line);
 	if (!type)
 		return (write(2, "spurious line in file\n", 22), false);
-	if (NORTH <= type && type <= EAST)
+	if (NORTH <= type && type <= CEILING)
+	{
+		printf("je vais par ici\n");
 		return (fill_functions[type](data, *line));
+	}
 	if (type == MAP)
+	{
+		printf("je vais par ici\n");
 		return (fill_map(data, line, fd));
+
+	}
 	return (true);
 }
 
@@ -51,5 +58,8 @@ bool	setup_world(t_data *data, char *map)
 		free(line);
 	}
 	close(fd);
+	printf("eeee ;%d\n", data->nb_side_parsed);
+	if (data->nb_side_parsed != 7)
+		return (write(2, "pas suffisament de trucs\n", 25), false);
 	return (true);
 }
