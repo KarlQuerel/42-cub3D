@@ -25,13 +25,16 @@ SRC =	main.c \
 		setup_world.c \
 		setup_player.c \
 		mlx_handling.c \
+		movement.c \
 		parsing_utils.c \
 		fill_world.c \
+		fill_sides.c \
 		checkup_map.c \
 		checkup_map_utils.c \
 		render.c \
 		minimap.c \
 		draw.c \
+		to_delete_before_push.c
 
 # Object files
 OBJ		= $(addprefix $(BIN_PATH), $(SRC:.c=.o))

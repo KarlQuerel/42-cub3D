@@ -1,7 +1,10 @@
-NO  ./img/XPM/Walls/KRONK_DEMON.xpm
-SO  ./img/XPM/Walls/KRONK_HIDING.xpm
-WE  ./img/XPM/Walls/KRONK_YZMA_LAUGHING.xpm
-EA  ./img/XPM/Walls/KRONK_PIXEL.xpm
+NO  ./img/XPM/Walls/FOREST_W.xpm
+SO  ./img/XPM/Walls/FOREST_2_W.xpm
+WE  ./img/XPM/Walls/GLADE_W.xpm
+EA  ./img/XPM/Walls/BURNED_W.xpm
+
+F  0,55,34
+C  0,55,34
 
 11111111
 10000001

@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:53:37 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/06 17:54:34 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/11 18:12:49 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+void	ft_my_put_pixel(t_data *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->img.addr + (x * IMG_HEIGHT * 4 + y * 4);
+	*(unsigned int *)dst = color;
+}
 
 void	draw_floor(t_data *data, int x, int start, int *i)
 {
@@ -27,14 +35,13 @@ void	draw_floor(t_data *data, int x, int start, int *i)
 			color += data->floor_color[2];
 			ft_my_put_pixel(data, *i, x, color);
 			(*i)++;
-
 		}
 	}
 }
 
 void	draw_wall(t_data *data, int x, int end, int *i)
 {
-	int color;
+	int	color;
 	int	tex_y;
 
 	while (*i <= end && *i < IMG_HEIGHT)
@@ -49,8 +56,6 @@ void	draw_wall(t_data *data, int x, int end, int *i)
 			color = ((int *)data->west.addr)[tex_y * TEX_HEIGHT + data->tex_x];
 		else
 			color = ((int *)data->east.addr)[tex_y * TEX_HEIGHT + data->tex_x];
-		
-		// pour assombrir certains murs
 		if (data->side - 2)
 			color = (color >> 1) & 8355711;
 		ft_my_put_pixel(data, *i, x, color);
@@ -73,10 +78,6 @@ void	draw_ceiling(t_data *data, int x, int *i)
 			color += data->ceiling_color[2];
 			ft_my_put_pixel(data, *i, x, color);
 			(*i)++;
-		}
-		else
-		{
-			
 		}
 	}
 }

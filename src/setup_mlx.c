@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   setup_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 13:10:52 by pcheron           #+#    #+#             */
-/*   Updated: 2023/12/16 20:10:23 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/11 17:45:26 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+void	init_values(t_data *data)
+{
+	data->camera_dir[0] = -1.0;
+	data->camera_dir[1] = 0.0;
+	data->controls.w = false;
+	data->controls.s = false;
+	data->controls.a = false;
+	data->controls.d = false;
+}
 
 int	data_clear(t_data *data)
 {

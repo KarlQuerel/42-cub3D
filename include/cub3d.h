@@ -106,6 +106,12 @@ typedef struct s_data
 
 }	t_data;
 
+
+//TO DELETE BEFORE PUSH -> les fonctions de gueux
+void	put_strs(char **strs);
+void	put_v2f(t_v2f vecteur);
+
+
 /* Checkup_map */
 bool	check_left_wall(char **map);
 bool	check_right_wall(char **map);
@@ -120,19 +126,24 @@ bool	is_char_valid_in_map(char c);
 bool	is_a_zero_next_to_wrong(char **map);
 
 /* Fill_world */
-bool	fill_north(t_data *data, char *line);
-bool	fill_south(t_data *data, char *line);
-bool	fill_west(t_data *data, char *line);
-bool	fill_east(t_data *data, char *line);
 bool	fill_map(t_data *data, char **line, int fd);
 bool	fill_ceiling(t_data *data, char *line);
 bool	fill_floor(t_data *data, char *line);
 
+/* Fill_sides */
+bool	fill_north(t_data *data, char *line);
+bool	fill_south(t_data *data, char *line);
+bool	fill_west(t_data *data, char *line);
+bool	fill_east(t_data *data, char *line);
+
 /* Mlx_handling */
 void	ft_handle_key_arrow(int key, t_data *data);
+void	move(t_data *data);
+int		key_release(int key, t_data *data);
 int		key_event(int keycode, t_data *data);
 void	ft_my_put_pixel(t_data *data, int x, int y, int color);
-//void	put_col(t_data *data, int col, int start, int end, int color);
+void	move_sideways(t_data *data);
+void	move_longitudinal(t_data * data);
 
 /* Parsing_utils */
 void	free_strs(char ***strs);
@@ -149,6 +160,7 @@ void	next_cube(t_data *data, t_v2f ray, int x);
 void	render(t_data *data);
 
 /* Setup_mlx */
+void	init_values(t_data *data);
 int		data_clear(t_data *data);
 bool	setup_mlx(t_data *data);
 
@@ -163,10 +175,12 @@ bool	setup_world(t_data *data, char *map);
 void	draw_minimap(t_data *data);
 void	draw_ray(t_data *data);
 
+/* Draw */
+void	draw_floor(t_data *data, int x, int start, int *i);
+void	draw_wall(t_data *data, int x, int end, int *i);
+void	draw_ceiling(t_data *data, int x, int *i);
 void	draw_slice(t_data *data, int x, int start, int end);
 bool	atocolor(char *str, t_color *color);
-void	move(t_data *data);
-int		key_release(int key, t_data *data);
 
 
 #endif

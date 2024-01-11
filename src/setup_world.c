@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_world.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 20:58:53 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/06 17:44:08 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/11 19:43:33 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ bool	setup_world(t_data *data, char *map)
 		free(line);
 	}
 	close(fd);
-	printf("eeee ;%d\n", data->nb_side_parsed);
 	if (data->nb_side_parsed != 7)
 		return (write(2, "pas suffisament de trucs\n", 25), false);
 	return (true);
