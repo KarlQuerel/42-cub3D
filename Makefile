@@ -24,14 +24,16 @@ SRC =	main.c \
 		setup_mlx.c \
 		setup_world.c \
 		setup_player.c \
-		mlx_handling.c \
-		movement.c \
-		parsing_utils.c \
+		mlx_handling_1.c \
+		mlx_handling_2.c \
+		parsing_utils_1.c \
+		parsing_utils_2.c \
 		fill_world.c \
 		fill_sides.c \
 		checkup_map.c \
 		checkup_map_utils.c \
-		render.c \
+		render_1.c \
+		render_2.c \
 		minimap.c \
 		draw.c \
 		to_delete_before_push.c

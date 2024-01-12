@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:53:37 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/11 18:12:49 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/12 11:19:58 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,12 @@ void	draw_ceiling(t_data *data, int x, int *i)
 	}
 }
 
-void	draw_slice(t_data *data, int x, int start, int end)
+void	draw_slice(t_data *data, int x)
 {
 	int	i;
 
 	i = 0;
-	draw_floor(data, x, start, &i);
-	draw_wall(data, x, end, &i);
+	draw_floor(data, x, data->draw_start, &i);
+	draw_wall(data, x, data->draw_end, &i);
 	draw_ceiling(data, x, &i);
 }

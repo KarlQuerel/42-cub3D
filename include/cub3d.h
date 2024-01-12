@@ -6,7 +6,7 @@
 # include "../minilibx-linux/mlx.h"
 # include "../libft/include/libft.h"
 
-# define MOVE_SPEED	0.007
+# define MOVE_SPEED	0.0045
 # define ROT_SPEED	0.003
 
 // handle window
@@ -104,6 +104,14 @@ typedef struct s_data
 	int			tex_x;
 	int			side;
 
+	// render
+	int			map_x;
+	int			map_y;
+	t_v2f		step;
+	t_v2f		side_dist;
+	int			draw_start;
+	int			draw_end;
+
 }	t_data;
 
 
@@ -156,7 +164,6 @@ float	abs_value(float x);
 
 /* Render */
 t_v2f	get_ray(t_data *data, int x);
-void	next_cube(t_data *data, t_v2f ray, int x);
 void	render(t_data *data);
 
 /* Setup_mlx */
@@ -179,8 +186,18 @@ void	draw_ray(t_data *data);
 void	draw_floor(t_data *data, int x, int start, int *i);
 void	draw_wall(t_data *data, int x, int end, int *i);
 void	draw_ceiling(t_data *data, int x, int *i);
-void	draw_slice(t_data *data, int x, int start, int end);
+void	draw_slice(t_data *data, int x);
 bool	atocolor(char *str, t_color *color);
+
+// render 2
+bool	next_cube_le_hit_de_l_annee(t_data *data, t_v2f delta_dist);
+void	next_cube(t_data *data, t_v2f ray, int x, t_v2f delta_dist);
+void	next_cube_l_eclosion(t_data *data, t_v2f ray, t_v2f delta_dist);
+
+// render 1
+t_v2f	get_ray(t_data *data, int x);
+void	next_cube_la_revanche(t_data *data, t_v2f ray, float perp_wall_dist);
+t_v2f	next_cube_la_menace_fantome(t_data *data, t_v2f *ray);
 
 
 #endif

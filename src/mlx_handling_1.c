@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_handling.c                                     :+:      :+:    :+:   */
+/*   mlx_handling_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:59:01 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/11 19:35:20 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/12 10:06:30 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,40 +52,7 @@ int	key_event(int keycode, t_data *data)
 	return (0);
 }
 
-void	move_sideways(t_data *data)
-{
-	t_v2f	old_plane;
-	t_v2f	old_dir;
-
-	old_dir = data->camera_dir;
-	if (data->controls.d)
-	{
-		data->camera_dir[0] = data->camera_dir[0] * cos(-ROT_SPEED) \
-		- data->camera_dir[1] * sin(-ROT_SPEED);
-		data->camera_dir[1] = old_dir[0] * sin(-ROT_SPEED) \
-		+ data->camera_dir[1] * cos(-ROT_SPEED);
-		old_plane[0] = data->plane[0];
-		data->plane[0] = data->plane[0] * cos(-ROT_SPEED) \
-		- data->plane[1] * sin(-ROT_SPEED);
-		data->plane[1] = old_plane[0] * sin(-ROT_SPEED) \
-		+ data->plane[1] * cos(-ROT_SPEED);
-	}
-	else if (data->controls.a)
-	{
-		data->camera_dir[0] = data->camera_dir[0] \
-		* cos(ROT_SPEED) - data->camera_dir[1] * sin(ROT_SPEED);
-		data->camera_dir[1] = old_dir[0] * sin(ROT_SPEED) \
-		+ data->camera_dir[1] * cos(ROT_SPEED);
-		old_plane[0] = data->plane[0];
-		data->plane[0] = data->plane[0] * cos(ROT_SPEED) \
-		- data->plane[1] * sin(ROT_SPEED);
-		data->plane[1] = old_plane[0] * sin(ROT_SPEED) \
-		+ data->plane[1] * cos(ROT_SPEED);
-	}
-}
-
-
-void	move_longitudinal(t_data * data)
+void	move_longitudinal(t_data *data)
 {
 	if (data->controls.w)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_world.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 20:58:53 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/11 19:43:33 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/12 12:17:35 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 bool	fill_new_line(t_data *data, char **line, int fd)
 {
-	bool	(*fill_functions[])() = {NULL, fill_north, fill_east, fill_west, fill_south, fill_floor, fill_ceiling};
-	int		type;
+	int				type;
+	static bool		(*fill_functions[])() = {NULL, fill_north, fill_east,
+		fill_west, fill_south, fill_ceiling, fill_floor};
 
 	type = identify_line(*line);
 	if (!type)
@@ -29,7 +30,6 @@ bool	fill_new_line(t_data *data, char **line, int fd)
 	{
 		printf("je vais par ici\n");
 		return (fill_map(data, line, fd));
-
 	}
 	return (true);
 }
