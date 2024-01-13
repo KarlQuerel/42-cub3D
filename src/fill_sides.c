@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_sides.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 17:28:25 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/11 17:29:38 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/12 17:23:10 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ bool	fill_north(t_data *data, char *line)
 
 	nb_north++;
 	if (nb_north > 1)
-		return (write(2, "too many north\n", 10), false);
+		return (false);
 	i = 2;
 	while (is_a_white_space(line[i]))
 		i++;
@@ -27,11 +27,11 @@ bool	fill_north(t_data *data, char *line)
 	data->north.img = mlx_xpm_file_to_image(data->mlx, line + i, \
 	&data->img_width, &data->img_height);
 	if (!data->north.img)
-		return (write(2, "xpm to img error\n", 17), false);
+		return (false);
 	data->north.addr = mlx_get_data_addr(data->north.img, \
 	&data->north.bpp, &data->north.ll, &data->north.endian);
 	if (!data->north.addr)
-		return (write(2, "get addr error\n", 10), false);
+		return (false);
 	data->nb_side_parsed++;
 	return (true);
 }

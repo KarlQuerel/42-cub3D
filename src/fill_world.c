@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_world.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 12:02:01 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/11 17:29:47 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/12 18:14:41 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ bool	fill_ceiling(t_data *data, char *line)
 	int			i;
 
 	if (nb_ceiling)
-		return (write(2, "too many ceiling\n", 10), false);
+		return (false);
 	i = 1;
 	while (is_a_white_space(line[i]))
 		i++;
@@ -28,14 +28,14 @@ bool	fill_ceiling(t_data *data, char *line)
 	if (!data->ceiling.img)
 	{
 		if (!atocolor(line + i, &data->ceiling_color))
-			return (write(2, "invalid ceiling\n", 14), false);
+			return (false);
 		data->nb_side_parsed++;
 		return (true);
 	}
 	data->ceiling.addr = mlx_get_data_addr(data->ceiling.img, \
 	&data->ceiling.bpp, &data->ceiling.ll, &data->ceiling.endian);
 	if (!data->ceiling.addr)
-		return (write(2, "get addr error\n", 10), false);
+		return (false);
 	nb_ceiling++;
 	data->nb_side_parsed++;
 	return (true);
@@ -47,7 +47,7 @@ bool	fill_floor(t_data *data, char *line)
 	int			i;
 
 	if (nb_floor)
-		return (write(2, "too many floor\n", 10), false);
+		return (false);
 	i = 1;
 	while (is_a_white_space(line[i]))
 		i++;
@@ -57,14 +57,14 @@ bool	fill_floor(t_data *data, char *line)
 	if (!data->floor.img)
 	{
 		if (!atocolor(line + i, &data->floor_color))
-			return (write(2, "invalid floor\n", 14), false);
+			return (false);
 		data->nb_side_parsed++;
 		return (true);
 	}
 	data->floor.addr = mlx_get_data_addr(data->floor.img, \
 	&data->floor.bpp, &data->floor.ll, &data->floor.endian);
 	if (!data->floor.addr)
-		return (write(2, "get addr error\n", 10), false);
+		return (false);
 	nb_floor++;
 	data->nb_side_parsed++;
 	return (true);
@@ -79,16 +79,16 @@ bool	fill_map(t_data *data, char **line, int fd)
 	data->height = ft_strlen(*line) - 1;
 	map = malloc(1);
 	if (!map)
-		return (false);
+		return (unleekGnl(fd), false);
 	map[0] = 0;
 	while (*line)
 	{
 		free_strs(&data->map);
 		if (!ft_strjoin(&map, map, *line, 3))
-			return (false);
+			return (unleekGnl(fd), false);
 		data->map = ft_split(map, '\n');
 		if (!data->map)
-			return (free(map), false);
+			return (free(map), unleekGnl(fd), false);
 		*line = ft_get_next_line(fd);
 		data->width++;
 	}

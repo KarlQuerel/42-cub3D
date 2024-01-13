@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 09:45:32 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/12 10:42:14 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/12 14:27:14 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ bool	is_a_white_space(char c)
 int	identify_line(char *str)
 {
 	if (!ft_strncmp(str, "NO", 2) && is_a_white_space(str[2]))
-		return (write(1, "north\n", 6), NORTH);
+		return (NORTH);
 	if (!ft_strncmp(str, "SO", 2) && is_a_white_space(str[2]))
-		return (write(1, "south\n", 6), SOUTH);
+		return (SOUTH);
 	if (!ft_strncmp(str, "WE", 2) && is_a_white_space(str[2]))
-		return (write(1, "west\n", 5), WEST);
+		return (WEST);
 	if (!ft_strncmp(str, "EA", 2) && is_a_white_space(str[2]))
-		return (write(1, "east\n", 5), EAST);
+		return (EAST);
 	if (!ft_strncmp(str, "F", 1) && is_a_white_space(str[1]))
 		return (FLOOR);
 	if (!ft_strncmp(str, "C", 1) && is_a_white_space(str[1]))

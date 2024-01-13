@@ -198,6 +198,9 @@ void	next_cube_l_eclosion(t_data *data, t_v2f ray, t_v2f delta_dist);
 t_v2f	get_ray(t_data *data, int x);
 void	next_cube_la_revanche(t_data *data, t_v2f ray, float perp_wall_dist);
 t_v2f	next_cube_la_menace_fantome(t_data *data, t_v2f *ray);
+void	mini_mlx_clear(t_data *data);
 
+
+void	unleekGnl(int fd);
 
 #endif
