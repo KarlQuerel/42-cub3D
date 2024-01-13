@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:44:49 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/12 12:19:56 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/13 17:09:43 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_v2f	get_ray(t_data *data, int x)
 	return (ray);
 }
 
-void	next_cube_la_revanche(t_data *data, t_v2f ray, float perp_wall_dist)
+void	wall_calc(t_data *data, t_v2f ray, float perp_wall_dist)
 {
 	int		line_height;
 	float	wall_x;
@@ -52,7 +52,7 @@ void	next_cube_la_revanche(t_data *data, t_v2f ray, float perp_wall_dist)
 	* data->step_all;
 }
 
-t_v2f	next_cube_la_menace_fantome(t_data *data, t_v2f *ray)
+t_v2f	delta_dist_calc(t_data *data, t_v2f *ray)
 {
 	t_v2f	delta_dist;
 
@@ -73,14 +73,18 @@ void	render(t_data *data)
 {
 	t_v2f	ray;
 	int		i;
+	int		x;
+	int		y;
 
 	i = 0;
 	while (i < IMG_HEIGHT)
 	{
 		ray = get_ray(data, i);
-		next_cube(data, ray, i, next_cube_la_menace_fantome(data, &ray));
+		next_cube(data, ray, i, delta_dist_calc(data, &ray));
 		i++;
 	}
-	draw_minimap(data);
+	x = (int)data->player_pos[0] / MINIMAP_HEIGHT * MINIMAP_HEIGHT;
+	y = (int)data->player_pos[1] / MINIMAP_WIDTH * MINIMAP_WIDTH;
+	draw_minimap(data, x, y);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 }

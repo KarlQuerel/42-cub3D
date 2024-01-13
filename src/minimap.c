@@ -3,29 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 16:29:45 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/12 12:24:46 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/13 16:51:15 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	draw_minimap(t_data *data)
+void	draw_map_components(t_data *data, int x, int y, int color)
 {
-	// int	minimap_x = ;
-	// int	minimap_y = ;
-	// int	minimap_ width = ;
-	// int	minimap_height = ;
+	int	i;
+	int	j;
 
-	mlx_set_font(data->mlx, data->win, "10x20");
-	mlx_string_put(data->mlx, data->win, 10, 20, 0x00BFFF, "LA JUNGLE");
-	//mlx_pixel_put(data->mlx, data->win, 50, 50, 0xbad129);
-	
+	i = 0;
+	while (i <= TILE_SIZE)
+	{
+		j = 0;
+		while (j <= TILE_SIZE)
+		{
+			ft_my_put_pixel(data, x * TILE_SIZE + i, y * TILE_SIZE + j, color);
+			j++;
+		}
+		i++;
+	}
 }
 
-void	draw_ray(t_data *data)
+void	draw_minimap(t_data *data, int x, int y)
 {
-	data->camera_dir[0] = 10;
+	int	it_x;
+	int	it_y;
+
+	it_x = 0;
+	while (it_x < MINIMAP_HEIGHT && x + it_x < data->width - 1)
+	{
+		it_y = 0;
+		while (it_y < MINIMAP_WIDTH && y + it_y < data->height)
+		{
+			if (x + it_x == (int)data->player_pos[0] && \
+				y + it_y == (int)data->player_pos[1])
+				draw_map_components(data, it_x, it_y, 0x8b0000);
+			else if (data->map[x + it_x][y + it_y] == '0')
+				draw_map_components(data, it_x, it_y, 0x003722);
+			else if (data->map[x + it_x][y + it_y] == 'N' || data->map[x + it_x][y + it_y] == 'S' \
+				|| data->map[x + it_x][y + it_y] == 'W' || data->map[x + it_x][y + it_y] == 'E')
+					draw_map_components(data, it_x, it_y, 0x003722);
+			else
+				draw_map_components(data, it_x, it_y, 0x000000);
+			it_y++;
+		}
+		it_x++;
+	}
 }
