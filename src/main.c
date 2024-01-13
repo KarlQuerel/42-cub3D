@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 11:06:48 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/13 13:39:55 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/13 17:22:11 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	main(int argc, char **argv)
 		return (1);
 	if (!find_player(&data))
 		return (1);
-	// put_strs(data.map);
 	init_values(&data);
 	render(&data);
 	mlx_hook(data.win, EXIT, 0, data_clear, &data);

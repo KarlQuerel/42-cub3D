@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 16:29:45 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/13 16:51:15 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/13 17:23:34 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,11 @@ void	draw_minimap(t_data *data, int x, int y)
 				draw_map_components(data, it_x, it_y, 0x8b0000);
 			else if (data->map[x + it_x][y + it_y] == '0')
 				draw_map_components(data, it_x, it_y, 0x003722);
-			else if (data->map[x + it_x][y + it_y] == 'N' || data->map[x + it_x][y + it_y] == 'S' \
-				|| data->map[x + it_x][y + it_y] == 'W' || data->map[x + it_x][y + it_y] == 'E')
-					draw_map_components(data, it_x, it_y, 0x003722);
+			else if (data->map[x + it_x][y + it_y] == 'N' || \
+				data->map[x + it_x][y + it_y] == 'S' \
+				|| data->map[x + it_x][y + it_y] == 'W' || \
+				data->map[x + it_x][y + it_y] == 'E')
+				draw_map_components(data, it_x, it_y, 0x003722);
 			else
 				draw_map_components(data, it_x, it_y, 0x000000);
 			it_y++;
