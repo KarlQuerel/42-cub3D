@@ -36,7 +36,6 @@ SRC =	main.c \
 		render_2.c \
 		minimap.c \
 		draw.c \
-		to_delete_before_push.c
 
 # Object files
 OBJ		= $(addprefix $(BIN_PATH), $(SRC:.c=.o))

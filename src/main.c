@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 11:06:48 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/12 18:13:40 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/14 12:33:30 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ int	main(int argc, char **argv)
 		return (data_clear(&data), 1);
 	if (!find_player(&data))
 		return (data_clear(&data), 1);
-	// put_strs(data.map);
 	init_values(&data);
 	render(&data);
 	mlx_hook(data.win, EXIT, 0, data_clear, &data);

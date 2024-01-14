@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 09:45:32 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/12 14:27:14 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/13 20:26:35 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	identify_line(char *str)
 	while (is_a_white_space(*str))
 		str++;
 	if (*str == '1' || *str == '0')
-		return (write(1, "map\n", 4), MAP);
+		return (MAP);
 	write(1, "error\n", 6);
 	return (0);
 }

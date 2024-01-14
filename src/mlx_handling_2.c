@@ -6,13 +6,13 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:59:01 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/12 12:05:25 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/13 20:20:11 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-static void	move_right(t_data *data, t_v2f old_dir)
+static void	move_right_arrow(t_data *data, t_v2f old_dir)
 {
 	t_v2f	old_plane;
 
@@ -27,7 +27,7 @@ static void	move_right(t_data *data, t_v2f old_dir)
 	+ data->plane[1] * cos(-ROT_SPEED);
 }
 
-static void	move_left(t_data *data, t_v2f old_dir)
+static void	move_left_arrow(t_data *data, t_v2f old_dir)
 {
 	t_v2f	old_plane;
 
@@ -42,15 +42,57 @@ static void	move_left(t_data *data, t_v2f old_dir)
 	+ data->plane[1] * cos(ROT_SPEED);
 }
 
-void	move_sideways(t_data *data)
+void	rotate_camera(t_data *data)
 {
 	t_v2f	old_dir;
 
 	old_dir = data->camera_dir;
-	if (data->controls.d)
-		move_right(data, old_dir);
-	else if (data->controls.a)
+	if (data->controls.right_arrow)
+		move_right_arrow(data, old_dir);
+	else if (data->controls.left_arrow)
 	{
-		move_left(data, old_dir);
+		move_left_arrow(data, old_dir);
+	}
+}
+
+void	move_longitudinal(t_data *data)
+{
+	if (data->controls.w)
+	{
+		if (data->map[(int)(data->player_pos[0] + data->camera_dir[0] \
+		* (float)MOVE_SPEED)][(int)data->player_pos[1]] != '1')
+			data->player_pos[0] += data->camera_dir[0] * (float)MOVE_SPEED;
+		if (data->map[(int)data->player_pos[0]][(int)(data->player_pos[1] \
+		+ data->camera_dir[1] * (float)MOVE_SPEED)] != '1')
+			data->player_pos[1] += data->camera_dir[1] * (float)MOVE_SPEED;
+	}
+	if (data->controls.s)
+	{
+		if (data->map[(int)(data->player_pos[0] - data->camera_dir[0] \
+		* (float)MOVE_SPEED)][(int)data->player_pos[1]] != '1')
+			data->player_pos[0] -= data->camera_dir[0] * (float)MOVE_SPEED;
+		if (data->map[(int)data->player_pos[0]][(int)(data->player_pos[1] \
+		- data->camera_dir[1] * (float)MOVE_SPEED)] != '1')
+			data->player_pos[1] -= data->camera_dir[1] * (float)MOVE_SPEED;
+	}
+}
+
+void	move_sideways(t_data *data)
+{
+	if (data->controls.a)
+	{
+    	t_v2f new_dir = { -data->camera_dir[1], data->camera_dir[0] };
+    	if (data->map[(int)(data->player_pos[0] + new_dir[0] * (float)MOVE_SPEED)][(int)data->player_pos[1]] != '1')
+    	    data->player_pos[0] += new_dir[0] * (float)MOVE_SPEED;
+    	if (data->map[(int)data->player_pos[0]][(int)(data->player_pos[1] + new_dir[1] * (float)MOVE_SPEED)] != '1')
+    	    data->player_pos[1] += new_dir[1] * (float)MOVE_SPEED;
+	}
+	if (data->controls.d)
+	{
+	    t_v2f new_dir = { data->camera_dir[1], -data->camera_dir[0] };
+	    if (data->map[(int)(data->player_pos[0] + new_dir[0] * (float)MOVE_SPEED)][(int)data->player_pos[1]] != '1')
+	        data->player_pos[0] += new_dir[0] * (float)MOVE_SPEED;
+	    if (data->map[(int)data->player_pos[0]][(int)(data->player_pos[1] + new_dir[1] * (float)MOVE_SPEED)] != '1')
+	        data->player_pos[1] += new_dir[1] * (float)MOVE_SPEED;
 	}
 }
