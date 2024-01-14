@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:11:12 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/14 13:05:55 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/14 18:12:48 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void	move_right_arrow(t_data *data, t_v2f old_dir, float angle)
 void	good_dir(t_data *data, int x, int y)
 {
 	float	angle;
+
 	(void)x;
 	(void)y;
 	data->camera_dir[0] = -1.0;

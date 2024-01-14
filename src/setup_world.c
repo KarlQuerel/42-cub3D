@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_world.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 20:58:53 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/12 18:15:59 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/14 18:24:41 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ bool	setup_world(t_data *data, char *map)
 	fd = open(map, O_RDONLY);
 	if (fd < 0)
 		return (ft_print_fd(2, "Error\nmap file : open error\n"), false);
-	while ("jusqu'ici tout va bien")
+	while (1)
 	{
 		line = ft_get_next_line(fd);
 		if (!line)
@@ -49,9 +49,8 @@ bool	setup_world(t_data *data, char *map)
 		{
 			if (!fill_new_line(data, &line, fd))
 			{
-				
 				ft_print_fd(2, "Error\nmap file : spurious line in file\n");
-				return (free(line), unleekGnl(fd), close(fd), false);
+				return (free(line), unleek_gnl(fd), close(fd), false);
 			}
 		}
 		free(line);

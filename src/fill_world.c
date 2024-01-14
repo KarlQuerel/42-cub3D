@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_world.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 12:02:01 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/12 18:14:41 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/14 18:13:30 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,23 +75,24 @@ bool	fill_map(t_data *data, char **line, int fd)
 	char	*map;
 
 	data->map = NULL;
-	data->width = 1;
+	data->width = 0;
 	data->height = ft_strlen(*line) - 1;
 	map = malloc(1);
 	if (!map)
-		return (unleekGnl(fd), false);
+		return (unleek_gnl(fd), false);
 	map[0] = 0;
-	while (*line)
+	while (*line && count_char_in_str('1', *line))
 	{
+		data->width++;
 		free_strs(&data->map);
 		if (!ft_strjoin(&map, map, *line, 3))
-			return (unleekGnl(fd), false);
+			return (unleek_gnl(fd), false);
 		data->map = ft_split(map, '\n');
 		if (!data->map)
-			return (free(map), unleekGnl(fd), false);
+			return (free(map), unleek_gnl(fd), false);
 		*line = ft_get_next_line(fd);
-		data->width++;
 	}
+	unleek_gnl(fd);
 	free(map);
 	data->nb_side_parsed++;
 	return (true);

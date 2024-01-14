@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 16:29:45 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/13 20:24:53 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/14 18:16:09 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,13 @@ void	draw_minimap(t_data *data, int x, int y)
 		it_y = 0;
 		while (it_y < MINIMAP_WIDTH)
 		{
-			if (x + it_x > data->width - 2 || y + it_y > data->height - 1 || data->map[x + it_x][y + it_y] == '1'|| data->map[x + it_x][y + it_y] == 0 || is_a_white_space(data->map[x + it_x][y + it_y]))
+			if (x + it_x > data->width - 2 || y + it_y > data->height - 1 || \
+			data->map[x + it_x][y + it_y] == '1' || \
+			data->map[x + it_x][y + it_y] == 0 || \
+			is_a_white_space(data->map[x + it_x][y + it_y]))
 				draw_map_components(data, it_x, it_y, 0x000000);
-			else if ((x + it_x) == (int)data->player_pos[0] && (y + it_y) == (int)data->player_pos[1])
+			else if ((x + it_x) == (int)data->player_pos[0] && \
+			(y + it_y) == (int)data->player_pos[1])
 				draw_map_components(data, it_x, it_y, 0x00ffffff);
 			else
 				draw_map_components(data, it_x, it_y, 0x003722);

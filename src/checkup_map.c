@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 11:18:43 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/13 14:53:15 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/14 18:14:41 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,24 @@ bool	check_left_wall(char **map)
 bool	check_right_wall(char **map)
 {
 	int	i;
+	int	j;
 	int	start;
 	int	end;
 
 	start = 0;
-	end = ft_strlen(*map) - 1;
-	while (*map)
+	end = ft_strlen(*map);
+	while (*map != NULL)
 	{
+		j = 0;
 		i = ft_strlen(*map) - 1;
 		while (is_a_white_space((*map)[i]))
 			i--;
-		if ((*map)[i] != '1' || i < start - 1 || i > end + 1)
+		while (i + j > end + 1 && (*map)[i + j] == '1')
+			j--;
+		if ((*map)[i + j] != '1' || i + j < start - 1 || i + j > end + 1)
 			return (false);
 		end = i;
+		i += j;
 		while (i >= 0 && (*map)[i] == '1')
 			i--;
 		start = i + 1;

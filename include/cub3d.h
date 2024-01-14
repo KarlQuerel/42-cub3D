@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:58:33 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/14 12:54:56 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/14 18:43:09 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "../minilibx-linux/mlx_int.h"
 # include "../minilibx-linux/mlx.h"
 # include "../libft/include/libft.h"
-
 
 // Movement Macros
 # define MOVE_SPEED	0.0045
@@ -29,7 +28,7 @@
 # define TEX_HEIGHT	128
 # define MINIMAP_WIDTH 20
 # define MINIMAP_HEIGHT 20
-# define TILE_SIZE	10
+# define TILE_SIZE	8
 
 # define PI	3.14
 
@@ -170,7 +169,6 @@ void	rotate_camera(t_data *data);
 void	move_longitudinal(t_data *data);
 void	move_sideways(t_data *data);
 
-
 /* Parsing_utils_1 */
 void	free_strs(char ***strs);
 bool	is_a_white_space(char c);
@@ -212,8 +210,6 @@ void	render(t_data *data);
 bool	side_assignment(t_data *data, t_v2f delta_dist);
 void	side_calc(t_data *data, t_v2f ray, t_v2f delta_dist);
 void	next_cube(t_data *data, t_v2f ray, int x, t_v2f delta_dist);
-
-
-void	unleekGnl(int fd);
+void	unleek_gnl(int fd);
 
 #endif
