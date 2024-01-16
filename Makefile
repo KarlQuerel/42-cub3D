@@ -38,6 +38,7 @@ SRC =	main.c \
 		draw.c \
 		mouse_handling.c \
 		mouse_move.c \
+		door.c
 
 # Object files
 OBJ		= $(addprefix $(BIN_PATH), $(SRC:.c=.o))

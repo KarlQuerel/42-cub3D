@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:44:49 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/13 17:09:43 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/16 09:43:11 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ void	render(t_data *data)
 	int		y;
 
 	i = 0;
+	close_doors(data);
+	open_doors(data);
 	while (i < IMG_HEIGHT)
 	{
 		ray = get_ray(data, i);

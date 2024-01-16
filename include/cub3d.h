@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:58:33 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/16 08:56:15 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/16 10:43:48 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,5 +231,11 @@ void	move_mouse(t_data *data);
 
 int		enter_win(t_data *data);
 int		leave_win(t_data *data);
+
+// door
+void	open_doors(t_data *data);
+bool	can_i_close_the_door(t_data *data, int x, int y);
+void	close_doors(t_data *data);
+int	data_clear_le_2(t_data *data);
 
 #endif

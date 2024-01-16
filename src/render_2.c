@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:44:49 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/13 17:09:13 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/16 09:28:40 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ bool	side_assignment(t_data *data, t_v2f delta_dist)
 		else
 			data->side = EAST;
 	}
-	if (data->map[data->map_x][data->map_y] == '1')
+	if (data->map[data->map_x][data->map_y] == '1' || data->map[data->map_x][data->map_y] == 'D')
 		return (true);
 	return (false);
 }

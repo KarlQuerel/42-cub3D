@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 13:10:52 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/16 07:01:46 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/16 10:43:15 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,24 @@ void	mini_mlx_clear(t_data *data)
 	mlx_destroy_image(data->mlx, data->img.img);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
+}
+
+int	data_clear_le_2(t_data *data)
+{
+	mlx_destroy_window(data->mlx, data->win);
+	mlx_destroy_image(data->mlx, data->img.img);
+	if (data->north.img)
+		mlx_destroy_image(data->mlx, data->north.img);
+	if (data->south.img)
+		mlx_destroy_image(data->mlx, data->south.img);
+	if (data->east.img)
+		mlx_destroy_image(data->mlx, data->east.img);
+	if (data->west.img)
+		mlx_destroy_image(data->mlx, data->west.img);
+	mlx_destroy_display(data->mlx);
+	free(data->mlx);
+	free_strs(&data->map);
+	return (0);
 }
 
 int	data_clear(t_data *data)

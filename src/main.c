@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 11:06:48 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/16 07:02:12 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/16 10:43:21 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,11 @@ int	main(int argc, char **argv)
 	make_data_null(&data);
 	data.nb_side_parsed = 0;
 	if (!setup_world(&data, argv[1]))
-		return (data_clear(&data), 1);
+		return (data_clear_le_2(&data), 1);
 	if (!checkup_map(data.map))
-		return (data_clear(&data), 1);
+		return (data_clear_le_2(&data), 1);
 	if (!find_player(&data))
-		return (data_clear(&data), 1);
+		return (data_clear_le_2(&data), 1);
 	init_values(&data);
 	render(&data);
 	mlx_hook(data.win, EXIT, 0, data_clear, &data);
