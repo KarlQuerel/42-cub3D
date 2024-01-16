@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   setup_world.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 20:58:53 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/14 18:24:41 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/15 10:25:58 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-bool	fill_new_line(t_data *data, char **line, int fd)
+bool	fill_new_line(t_data *data, char **line)
 {
 	int				type;
-	static bool		(*fill_functions[])() = {NULL, fill_north, fill_east,
-		fill_west, fill_south, fill_ceiling, fill_floor};
+	static bool		(*fill_functions[])() = {NULL, fill_north, fill_south,
+		fill_west, fill_east, fill_ceiling, fill_floor};
 
 	type = identify_line(*line);
 	if (!type)
@@ -27,7 +27,7 @@ bool	fill_new_line(t_data *data, char **line, int fd)
 	}
 	if (type == MAP)
 	{
-		return (fill_map(data, line, fd));
+		return (fill_map(data, line));
 	}
 	return (true);
 }
@@ -35,27 +35,26 @@ bool	fill_new_line(t_data *data, char **line, int fd)
 bool	setup_world(t_data *data, char *map)
 {
 	char	*line;
-	int		fd;
 
-	fd = open(map, O_RDONLY);
-	if (fd < 0)
+	data->fd = open(map, O_RDONLY);
+	if (data->fd < 0)
 		return (ft_print_fd(2, "Error\nmap file : open error\n"), false);
 	while (1)
 	{
-		line = ft_get_next_line(fd);
+		line = ft_get_next_line(data->fd);
 		if (!line)
 			break ;
 		if (line[0] != '#' && line[0] && !is_a_white_space(line[0]))
 		{
-			if (!fill_new_line(data, &line, fd))
+			if (!fill_new_line(data, &line))
 			{
 				ft_print_fd(2, "Error\nmap file : spurious line in file\n");
-				return (free(line), unleek_gnl(fd), close(fd), false);
+				return (free(line), unleek_gnl(data->fd), close(data->fd), false);
 			}
 		}
 		free(line);
 	}
-	close(fd);
+	close(data->fd);
 	if (data->nb_side_parsed != 7)
 		return (ft_print_fd(2, "Error\nmap file : incomplete file\n"), false);
 	return (true);

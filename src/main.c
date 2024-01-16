@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 11:06:48 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/14 18:13:32 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/16 07:02:12 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,24 @@ int	update_display(t_data *data)
 	return (0);
 }
 
+bool	is_cub_file(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (!is_a_white_space(line[i]) && line[i])
+		i++;
+	return (!(i < 5 || ft_strncmp(line + i - 4, ".cub", 3)));
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	data;
 
 	if (argc != 2)
-		return (ft_print_fd(2, "Error\nYou must specified a name map.\n"), 1);
+		return (ft_print_fd(2, "Error\nYou must specified a name map, (only a name map).\n"), 1);
+	if (!is_cub_file(argv[1]))
+		return (ft_print_fd(2, "Error\nYour map have to be a cub file.\n"), 1);
 	if (!setup_mlx(&data))
 		return (1);
 	make_data_null(&data);
@@ -61,7 +73,10 @@ int	main(int argc, char **argv)
 	mlx_hook(data.win, EXIT, 0, data_clear, &data);
 	mlx_hook(data.win, 02, KeyPressMask, key_event, &data);
 	mlx_hook(data.win, 03, 1L << 1, key_release, &data);
-	mlx_loop_hook(data.mlx, update_display, (void *)&data);
+	mlx_hook(data.win, 7, 1L << 4, enter_win, &data);
+	mlx_hook(data.win, 8, 1L << 5, leave_win, &data);
+	mlx_hook(data.win, 6, 1L << 6, mouse_handler, &data);
+	mlx_loop_hook(data.mlx, update_display, &data);
 	mlx_loop(data.mlx);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:59:01 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/13 20:21:07 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/16 06:40:52 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	move(t_data *data)
 {
 	move_longitudinal(data);
 	move_sideways(data);
+	move_mouse(data);
 	rotate_camera(data);
 	render(data);
 }

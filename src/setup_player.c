@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:11:12 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/14 18:12:48 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/15 17:48:23 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,25 @@ void	good_dir(t_data *data, int x, int y)
 		angle = 1.57;
 	}
 	move_right_arrow(data, data->camera_dir, angle);
+}
+
+bool	check_size_wall(t_data *data)
+{
+	int	size;
+
+	size = ft_strlen(data->north.addr);
+	if (size / 4 / TEX_WIDTH < TEX_HEIGHT)
+		return (false);//msg
+	size = ft_strlen(data->south.addr);
+	if (size / 4 / TEX_WIDTH < TEX_HEIGHT)
+		return (false);//msg
+	size = ft_strlen(data->west.addr);
+	if (size / 4 / TEX_WIDTH < TEX_HEIGHT)
+		return (false);//msg
+	size = ft_strlen(data->east.addr);
+	if (size / 4 / TEX_WIDTH < TEX_HEIGHT)
+		return (false);//msg
+	return (true);
 }
 
 bool	find_player(t_data *data)

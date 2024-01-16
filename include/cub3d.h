@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:58:33 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/14 18:43:09 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/16 08:56:15 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,31 +18,35 @@
 # include "../libft/include/libft.h"
 
 // Movement Macros
-# define MOVE_SPEED	0.0045
-# define ROT_SPEED	0.003
+# define MOVE_SPEED		0.0045
+# define ROT_SPEED		0.0015
 
 // Window Macros
-# define IMG_WIDTH	640
-# define IMG_HEIGHT	640
-# define TEX_WIDTH	128
-# define TEX_HEIGHT	128
-# define MINIMAP_WIDTH 20
+# define IMG_WIDTH		640
+# define IMG_HEIGHT		640
+# define TEX_WIDTH		128
+# define TEX_HEIGHT		128
+# define MINIMAP_WIDTH	20
 # define MINIMAP_HEIGHT 20
-# define TILE_SIZE	8
+# define TILE_SIZE		8
 
-# define PI	3.14
+# define PI				3.14
 
 // Keys Macros
-# define UP		65362
-# define DOWN	65364
-# define RIGHT	65363
-# define LEFT	65361
-# define UP_W		119
-# define DOWN_S		115
-# define RIGHT_D	100
-# define LEFT_A		97
-# define EXIT		17
-# define KEY_ESC	65307
+# define UP				65362
+# define DOWN			65364
+# define RIGHT			65363
+# define LEFT			65361
+# define UP_W			119
+# define DOWN_S			115
+# define RIGHT_D		100
+# define LEFT_A			97
+# define EXIT			17
+# define KEY_ESC		65307
+
+// Game Macros
+# define DOOR_OPENED	'O'
+# define DOOR_CLOSED	'D'
 
 typedef float	t_color	__attribute__((vector_size (16)));
 typedef float	t_v2f	__attribute__((vector_size (8)));
@@ -78,6 +82,8 @@ typedef struct s_control
 	bool		d;
 	bool		left_arrow;
 	bool		right_arrow;
+	bool		left_mouse;
+	bool		right_mouse;
 }	t_control;
 
 /* General structure */
@@ -125,6 +131,9 @@ typedef struct s_data
 	void		*minimap;
 	int			dir;
 
+	int			fd;
+
+	bool		in_win;
 }	t_data;
 
 /* Checkup_map */
@@ -148,7 +157,7 @@ void	draw_ceiling(t_data *data, int x, int *i);
 void	draw_slice(t_data *data, int x);
 
 /* Fill_world */
-bool	fill_map(t_data *data, char **line, int fd);
+bool	fill_map(t_data *data, char **line);
 bool	fill_ceiling(t_data *data, char *line);
 bool	fill_floor(t_data *data, char *line);
 
@@ -193,7 +202,7 @@ bool	setup_mlx(t_data *data);
 bool	find_player(t_data *data);
 
 /* Setup_world */
-bool	fill_new_line(t_data *data, char **line, int fd);
+bool	fill_new_line(t_data *data, char **line);
 bool	setup_world(t_data *data, char *map);
 
 /* Minimap */
@@ -211,5 +220,16 @@ bool	side_assignment(t_data *data, t_v2f delta_dist);
 void	side_calc(t_data *data, t_v2f ray, t_v2f delta_dist);
 void	next_cube(t_data *data, t_v2f ray, int x, t_v2f delta_dist);
 void	unleek_gnl(int fd);
+
+char	*ft_strndup(char *s, int size);
+bool	dup_next_world(char *str, char **dest);
+void	jump_word(char **str);
+
+int		mouse_handler(int x, int y, t_data *data);
+void	rotate(t_v2f *v2f, float angle);
+void	move_mouse(t_data *data);
+
+int		enter_win(t_data *data);
+int		leave_win(t_data *data);
 
 #endif

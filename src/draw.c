@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:53:37 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/12 11:19:58 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/14 21:52:49 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@ void	draw_wall(t_data *data, int x, int end, int *i)
 	{
 		tex_y = (int)data->tex_pos & (TEX_HEIGHT - 1);
 		data->tex_pos += data->step_all;
-		if (data->side == NORTH)
+		if (data->side == SOUTH)
 			color = ((int *)data->north.addr)[tex_y * TEX_HEIGHT + data->tex_x];
-		else if (data->side == SOUTH)
+		else if (data->side == NORTH)
 			color = ((int *)data->south.addr)[tex_y * TEX_HEIGHT + data->tex_x];
-		else if (data->side == WEST)
+		else if (data->side == EAST)
 			color = ((int *)data->west.addr)[tex_y * TEX_HEIGHT + data->tex_x];
 		else
 			color = ((int *)data->east.addr)[tex_y * TEX_HEIGHT + data->tex_x];

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 13:10:52 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/14 18:16:25 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/16 07:01:46 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ void	init_values(t_data *data)
 	data->controls.d = false;
 	data->controls.left_arrow = false;
 	data->controls.right_arrow = false;
+	data->in_win = false;
+	data->controls.left_mouse = false;
+	data->controls.right_mouse = false;
 }
 
 void	mini_mlx_clear(t_data *data)
