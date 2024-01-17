@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:58:33 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/16 10:43:48 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/17 15:45:25 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,7 @@ int		count_char_in_map(char c, char **map);
 bool	is_char_in_map_are_normal(char **map);
 bool	is_char_valid_in_map(char c);
 bool	is_a_zero_next_to_wrong(char **map);
+void	err(char *s);
 
 /* Draw */
 void	ft_my_put_pixel(t_data *data, int x, int y, int color);
