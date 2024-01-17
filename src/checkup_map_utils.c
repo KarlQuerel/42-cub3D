@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:40:49 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/17 15:48:06 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/17 18:18:15 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,5 @@ bool	is_a_zero_next_to_wrong(char **map)
 
 void	err(char *s)
 {
-	write(2, "Error\n", 6);
-	while (*s)
-		write(2, s++, 1);
-	write(2, "\n", 1);
+	ft_print_fd(2, "Error\n%s\n", s);
 }

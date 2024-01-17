@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_world.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 20:58:53 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/15 10:25:58 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/17 18:03:55 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ bool	setup_world(t_data *data, char *map)
 
 	data->fd = open(map, O_RDONLY);
 	if (data->fd < 0)
-		return (ft_print_fd(2, "Error\nmap file : open error\n"), false);
+		return (err("Map file: open error"), false);
 	while (1)
 	{
 		line = ft_get_next_line(data->fd);
@@ -48,14 +48,15 @@ bool	setup_world(t_data *data, char *map)
 		{
 			if (!fill_new_line(data, &line))
 			{
-				ft_print_fd(2, "Error\nmap file : spurious line in file\n");
-				return (free(line), unleek_gnl(data->fd), close(data->fd), false);
+				err("Map file: spurious line in file");
+				free(line);
+				return (unleek_gnl(data->fd), close(data->fd), false);
 			}
 		}
 		free(line);
 	}
 	close(data->fd);
 	if (data->nb_side_parsed != 7)
-		return (ft_print_fd(2, "Error\nmap file : incomplete file\n"), false);
+		return (err("Map file: incomplete file"), false);
 	return (true);
 }

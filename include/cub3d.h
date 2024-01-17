@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:58:33 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/17 15:45:25 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/17 17:40:19 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -237,6 +237,6 @@ int		leave_win(t_data *data);
 void	open_doors(t_data *data);
 bool	can_i_close_the_door(t_data *data, int x, int y);
 void	close_doors(t_data *data);
-int	data_clear_le_2(t_data *data);
+int		data_clear_le_2(t_data *data);
 
 #endif

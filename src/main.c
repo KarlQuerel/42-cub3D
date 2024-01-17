@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 11:06:48 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/16 10:43:21 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/17 17:47:47 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ int	main(int argc, char **argv)
 	t_data	data;
 
 	if (argc != 2)
-		return (ft_print_fd(2, "Error\nYou must specified a name map, (only a name map).\n"), 1);
+	return (err("You must specify a map name, and only a map name."), 1);
 	if (!is_cub_file(argv[1]))
-		return (ft_print_fd(2, "Error\nYour map have to be a cub file.\n"), 1);
+		return (err("Your map have to be a cub file."), 1);
 	if (!setup_mlx(&data))
 		return (1);
 	make_data_null(&data);

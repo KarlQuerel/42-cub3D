@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 13:10:52 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/16 10:43:15 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/17 18:02:10 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,20 +74,20 @@ bool	setup_mlx(t_data *data)
 {
 	data->mlx = mlx_init();
 	if (!data->mlx)
-		return (ft_print_fd(2, "Error\nmlx : error on new ptr"), false);
+		return (err("Mlx: error on new ptr"), false);
 	data->win = mlx_new_window(data->mlx, IMG_WIDTH, IMG_HEIGHT, "cub3D");
 	if (!data->win)
-		return (ft_print_fd(2, "Error\nmlx : error on new window\n"),
+		return (err("Mlx: error on new img"),
 			mlx_destroy_image(data->mlx, data->img.img),
 			mlx_destroy_display(data->mlx), free(data->mlx), false);
 	data->img.img = mlx_new_image(data->mlx, IMG_WIDTH, IMG_HEIGHT);
 	if (!data->img.img)
-		return (ft_print_fd(2, "Error\nmlx : error on new img\n"),
+		return (err("Mlx: error on new img"),
 			mlx_destroy_display(data->mlx), free(data->mlx), false);
 	data->img.addr = mlx_get_data_addr(data->img.img, &data->img.bpp,
 			&data->img.ll, &data->img.endian);
 	if (!data->img.addr)
-		return (ft_print_fd(2, "Error\nmlx : error on get addr\n"),
+		return (err("Mlx: error on get addr"),
 			mlx_destroy_image(data->mlx, data->img.img),
 			mlx_destroy_display(data->mlx), free(data->mlx), false);
 	data->img.bpp /= 8;
