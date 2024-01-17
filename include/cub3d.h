@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:58:33 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/17 17:40:19 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/17 19:17:33 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ typedef struct s_img_info
 	int		bpp;
 	int		ll;
 	int		endian;
+	int		width;
+	int		height;
 }	t_img_info;
 
 typedef struct s_control
@@ -134,6 +136,8 @@ typedef struct s_data
 	int			fd;
 
 	bool		in_win;
+	// le dernier bonus encore en vie
+	t_img_info	alice[18];
 }	t_data;
 
 /* Checkup_map */
@@ -238,5 +242,8 @@ void	open_doors(t_data *data);
 bool	can_i_close_the_door(t_data *data, int x, int y);
 void	close_doors(t_data *data);
 int		data_clear_le_2(t_data *data);
+
+bool    get_alice(t_data *data);
+void    draw_alice(t_data *data, int x, int y);
 
 #endif

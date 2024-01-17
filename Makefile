@@ -4,7 +4,7 @@ NAME = cub3D
 
 # Compiler
 CC		= cc
-CFLAGS	= -Wall -Werror -Wextra -MMD -MP -Ofast -ffast-math
+CFLAGS	= -Wall -Werror -Wextra -MMD -MP -Ofast -ffast-math -g3
 
 # Paths
 SRC_PATH = ./src/
@@ -38,7 +38,9 @@ SRC =	main.c \
 		draw.c \
 		mouse_handling.c \
 		mouse_move.c \
-		door.c
+		door.c \
+		ce_que_karl_devait_faire.c \
+		draw_alice.c \
 
 # Object files
 OBJ		= $(addprefix $(BIN_PATH), $(SRC:.c=.o))
