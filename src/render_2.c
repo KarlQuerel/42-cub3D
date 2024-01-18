@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:44:49 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/16 09:28:40 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/18 14:43:58 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,17 @@ bool	side_assignment(t_data *data, t_v2f delta_dist)
 			data->side = EAST;
 	}
 	if (data->map[data->map_x][data->map_y] == '1' || data->map[data->map_x][data->map_y] == 'D')
+	{
+		if (data->map[data->map_x][data->map_y] == 'D')
+			data->display_door = true;
+		else
+			data->display_door = false;
+		if (data->map_x == 0 && data->map_y == 3)
+			data->display_catterpilar = true;
+		else
+			data->display_catterpilar = false;
 		return (true);
+	}
 	return (false);
 }
 

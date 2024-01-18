@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 16:29:45 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/17 18:29:30 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/18 13:57:38 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	draw_minimap(t_data *data, int x, int y)
 			if (x + it_x > data->width - 2 || y + it_y > data->height - 1 || \
 			data->map[x + it_x][y + it_y] == '1' || \
 			data->map[x + it_x][y + it_y] == 0 || \
-			is_a_white_space(data->map[x + it_x][y + it_y]))
+			is_a_white_space(data->map[x + it_x][y + it_y]) || y + it_y > ft_strlen(data->map[x + it_x]))
 				draw_map_components(data, it_x, it_y, 0x000000);
 			else if (data->map[x + it_x][y + it_y] == 'D' || data->map[x + it_x][y + it_y] == 'O')
 				draw_map_components(data, it_x, it_y, 0x00F6BE00);

@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:11:12 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/15 17:48:23 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/18 13:44:37 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ bool	find_player(t_data *data)
 				data->player_pos[0] = x + 0.5f;
 				data->player_pos[1] = y + 0.5f;
 				data->plane[0] = 0.0f;
-				data->plane[1] = 0.66f;
+				data->plane[1] = 0.57f;
 				good_dir(data, x, y);
 				return (true);
 			}

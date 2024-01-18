@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:58:33 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/18 09:53:40 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/18 14:47:37 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@
 # include "../libft/include/libft.h"
 
 // Movement Macros
-# define MOVE_SPEED		0.0045
-# define ROT_SPEED		0.0015
+# define MOVE_SPEED		0.009
+# define ROT_SPEED		0.0030
 
 // Window Macros
-# define IMG_WIDTH		640
+# define IMG_WIDTH		960
 # define IMG_HEIGHT		640
 # define TEX_WIDTH		128
 # define TEX_HEIGHT		128
@@ -143,7 +143,10 @@ typedef struct s_data
 	t_img_info	cheshire_cat[6];
 	t_img_info	white_rabbit[10];
 
+	t_img_info	door;
 	int			time;
+	bool		display_catterpilar;
+	bool		display_door;
 }	t_data;
 
 /* Checkup_map */
@@ -256,5 +259,7 @@ bool    get_white_rabbit(t_data *data);
 void    draw_alice(t_data *data, int x, int y);
 void    draw_white_rabbit(t_data *data, int x, int y);
 bool    upload_img(t_data *data, t_img_info *img, char *file);
+bool    get_door(t_data *data);
+bool	get_characters(t_data *data);
 
 #endif

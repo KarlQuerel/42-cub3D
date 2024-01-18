@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 11:06:48 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/18 10:30:30 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/18 14:35:23 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	main(int argc, char **argv)
 		return (data_clear_le_2(&data), 1);
 	if (!find_player(&data))
 		return (data_clear_le_2(&data), 1);
-	if (!get_alice(&data) || !get_catterpilar(&data) || !get_cheshire_cat(&data) || !get_white_rabbit(&data))
+	if (!get_characters(&data))
 		return (1);	//
 	init_values(&data);
 	

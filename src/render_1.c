@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:44:49 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/18 10:08:08 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/18 14:04:29 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	render(t_data *data)
 		data->time = 0;
 	close_doors(data);
 	open_doors(data);
-	while (i < IMG_HEIGHT)
+	while (i < IMG_WIDTH)
 	{
 		ray = get_ray(data, i);
 		next_cube(data, ray, i, delta_dist_calc(data, &ray));
@@ -91,7 +91,7 @@ void	render(t_data *data)
 	x = (int)data->player_pos[0] / MINIMAP_HEIGHT * MINIMAP_HEIGHT;
 	y = (int)data->player_pos[1] / MINIMAP_WIDTH * MINIMAP_WIDTH;
 	draw_minimap(data, x, y);
-	draw_alice(data, 500, 30);
-	draw_white_rabbit(data, 500, 470);
+	draw_alice(data, IMG_HEIGHT - IMG_HEIGHT / 20 - 128, IMG_WIDTH / 20);
+	draw_white_rabbit(data, IMG_HEIGHT - IMG_HEIGHT / 20 - 128, IMG_WIDTH - IMG_WIDTH / 20 - 128);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 }

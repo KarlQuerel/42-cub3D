@@ -2,6 +2,20 @@
 #include "../include/cub3d.h"
 #include <errno.h>
 
+bool    get_door(t_data *data)
+{
+    if (!upload_img(data, &data->door, "./img/XPM/Walls/DOOR.xpm\0"))
+    {
+        ft_print_fd(2, "%s\n", strerror(errno));
+        return (false);
+    }
+    // data->door.addr = mlx_get_data_addr(data->door.img, \
+	// &data->door.bpp, &data->door.ll, &data->door.endian);
+	// if (!data->door.addr)
+	// 	return (false);
+    return (true);
+}
+
 bool    get_cheshire_cat(t_data *data)
 {
     static char    file[] = "img/Cheshire_cat/x.xpm\0";
@@ -58,5 +72,13 @@ bool    get_white_rabbit(t_data *data)
         }
         i++;
     }
+    return (true);
+}
+
+bool get_characters(t_data *data)
+{
+    if (!get_alice(data) || !get_catterpilar(data) || \
+        !get_cheshire_cat(data) || !get_white_rabbit(data) || !get_door(data))
+        return (false);
     return (true);
 }
