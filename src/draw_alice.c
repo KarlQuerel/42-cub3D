@@ -58,18 +58,35 @@ void    draw_alice(t_data *data, int x, int y)
 {
     static int anim = 0;
 
-    my_put_img_to_img_2(data, &data->alice[anim/200], &data->img, x, y);
-    anim++;
-    if (anim / 200 > 16)
-        anim = 0;
+    if (ALICE_1 <= data->dialog_stage && data->dialog_stage <= ALICE_4)
+    {
+        my_put_img_to_img_2(data, &data->alice[anim/150], &data->img, x, y);
+        anim++;
+        if (anim / 150 > 16)
+            anim = 0;
+    }
+    else
+    {
+        // if (anim / 150 > 2)
+        //     anim = 0;
+        my_put_img_to_img_2(data, &data->alice[0], &data->img, x, y);
+        // anim++;
+    }
 }
 
 void    draw_white_rabbit(t_data *data, int x, int y)
 {
     static int anim = 0;
 
-    my_put_img_to_img(data, &data->white_rabbit[anim/200], &data->img, x, y);
-    anim++;
-    if (anim / 200 > 9)
-        anim = 0;
+    if (WHITE_RABBIT_1 <= data->dialog_stage && data->dialog_stage <= WHITE_RABBIT_3)
+    {
+        my_put_img_to_img(data, &data->white_rabbit[anim/150], &data->img, x, y);
+        anim++;
+        if (anim / 150 > 9)
+            anim = 0;
+    }
+    else if (ALICE_2 <= data->dialog_stage && data->dialog_stage <= ALICE_3)
+    {
+        my_put_img_to_img(data, &data->white_rabbit[0], &data->img, x, y);
+    }
 }

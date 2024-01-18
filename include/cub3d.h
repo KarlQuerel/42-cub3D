@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:58:33 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/18 15:44:56 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/18 17:35:59 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,19 @@ enum e_parse
 	OUT,
 	PLAYER,
 	MAP,
+};
+
+enum e_dialog
+{
+	DIALOG_NOT_STARTED,
+	ALICE_1,
+	ALICE_2,
+	ALICE_3,
+	ALICE_4,
+	WHITE_RABBIT_1,
+	WHITE_RABBIT_2,
+	WHITE_RABBIT_3,
+	DIALOG_FINISH,
 };
 
 /* Image info for the MLX */
@@ -146,8 +159,11 @@ typedef struct s_data
 	t_img_info	door;
 	t_img_info	dialog_box;
 	int			time;
+	long		time_2_le_retour;
 	bool		display_catterpilar;
 	bool		display_door;
+
+	int			dialog_stage;
 }	t_data;
 
 /* Checkup_map */

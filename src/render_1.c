@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:44:49 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/18 15:39:24 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/18 17:56:22 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,28 @@ t_v2f	delta_dist_calc(t_data *data, t_v2f *ray)
 	return (delta_dist);
 }
 
+static void	update_time(t_data *data)
+{
+	if (data->dialog_stage != DIALOG_FINISH)
+		data->time_2_le_retour++;
+	if (data->time_2_le_retour > 22500)
+		data->dialog_stage = DIALOG_FINISH;
+	else if (data->time_2_le_retour > 20000)
+		data->dialog_stage = ALICE_4;
+	else if (data->time_2_le_retour > 17500)
+		data->dialog_stage = WHITE_RABBIT_3;
+	else if (data->time_2_le_retour > 15000)
+		data->dialog_stage = ALICE_3;
+	else if (data->time_2_le_retour > 12500)
+		data->dialog_stage = WHITE_RABBIT_2;
+	else if (data->time_2_le_retour > 10000)
+		data->dialog_stage = ALICE_2;
+	else if (data->time_2_le_retour > 7500)
+		data->dialog_stage = WHITE_RABBIT_1;
+	else if (data->time_2_le_retour > 5000)
+		data->dialog_stage = ALICE_1;
+}
+
 void	render(t_data *data)
 {
 	t_v2f	ray;
@@ -80,6 +102,7 @@ void	render(t_data *data)
 	data->time++;
 	if (data->time / 200 > 16)
 		data->time = 0;
+	update_time(data);
 	close_doors(data);
 	open_doors(data);
 	while (i < IMG_WIDTH)
@@ -92,7 +115,10 @@ void	render(t_data *data)
 	y = (int)data->player_pos[1] / MINIMAP_WIDTH * MINIMAP_WIDTH;
 	draw_minimap(data, x, y);
 	draw_alice(data, IMG_HEIGHT - IMG_HEIGHT / 20 - 128, IMG_WIDTH / 20);
-	draw_white_rabbit(data, IMG_HEIGHT - IMG_HEIGHT / 20 - 128, IMG_WIDTH - IMG_WIDTH / 20 - 128);
-	draw_dialog_box(data, IMG_HEIGHT - IMG_HEIGHT / 20 - 128, IMG_WIDTH / 20 + 192);
+	if (data->dialog_stage != DIALOG_NOT_STARTED && data->dialog_stage != DIALOG_FINISH)
+	{
+		draw_white_rabbit(data, IMG_HEIGHT - IMG_HEIGHT / 20 - 128, IMG_WIDTH - IMG_WIDTH / 20 - 128);
+		draw_dialog_box(data, IMG_HEIGHT - IMG_HEIGHT / 20 - 128, IMG_WIDTH / 20 + 192);
+	}
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 }

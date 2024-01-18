@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 13:10:52 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/18 13:14:58 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/18 17:44:40 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	init_values(t_data *data)
 	data->time = 0;
 	restore_floor_player(data);
 	ft_print_strs(data->map);
+	data->time_2_le_retour = 0;
+	data->dialog_stage = DIALOG_NOT_STARTED;
 }
 
 void	mini_mlx_clear(t_data *data)

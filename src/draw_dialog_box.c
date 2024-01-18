@@ -68,10 +68,26 @@ void	draw_dialog_box_right(t_data *data, int x, int y)
 
 }
 
+// void	draw_dialog_box_message(t_data *data, int x, int y)
+// {
+
+// }
+
+void	draw_text(t_data *data, int x, int y)
+{
+	mlx_set_font(data->mlx, data->img.img, "10x20");
+	mlx_string_put(data->mlx, data->img.img, x, y, 0x00BFF, "BONJOUR PABLO");
+}
+
 void	draw_dialog_box(t_data *data, int x, int y)
 {
-	draw_dialog_box_left(data, x, y);
-	draw_dialog_box_mid(data, x, y + 16);
-	draw_dialog_box_right(data, x, 960 - y - 64);
+	if (data->dialog_stage != DIALOG_NOT_STARTED && data->dialog_stage != DIALOG_FINISH)
+	{
+		draw_dialog_box_left(data, x, y);
+		draw_dialog_box_mid(data, x, y + 16);
+		draw_dialog_box_right(data, x, 960 - y - 64);
+		draw_text(data, x + 10, y);
+	}
 }
+
 
