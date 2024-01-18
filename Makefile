@@ -42,6 +42,7 @@ SRC =	main.c \
 		door.c \
 		ce_que_karl_devait_faire.c \
 		draw_alice.c \
+		draw_dialog_box.c
 
 # Object files
 OBJ		= $(addprefix $(BIN_PATH), $(SRC:.c=.o))

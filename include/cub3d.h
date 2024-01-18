@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:58:33 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/18 14:47:37 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/18 15:44:56 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,7 @@ typedef struct s_data
 	t_img_info	white_rabbit[10];
 
 	t_img_info	door;
+	t_img_info	dialog_box;
 	int			time;
 	bool		display_catterpilar;
 	bool		display_door;
@@ -261,5 +262,6 @@ void    draw_white_rabbit(t_data *data, int x, int y);
 bool    upload_img(t_data *data, t_img_info *img, char *file);
 bool    get_door(t_data *data);
 bool	get_characters(t_data *data);
+void	draw_dialog_box(t_data *data, int x, int y);
 
 #endif
