@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 11:18:43 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/14 18:14:41 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/17 16:26:22 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,16 +85,16 @@ bool	is_many_map(char **map)
 bool	checkup_map(char **map)
 {
 	if (nb_player(map) != 1)
-		return (false);
+		return (err("Invalid player number"), false);
 	if (!check_left_wall(map))
-		return (false);
+		return (err("Invalid left wall"),false);
 	if (!check_right_wall(map))
-		return (false);
+		return (err("Invalid right wall"),false);
 	if (!is_many_map(map))
-		return (false);
+		return (err("Invalid map number"),false);
 	if (!is_char_in_map_are_normal(map))
-		return (false);
+		return (err("Invalid characters in map"),false);
 	if (!is_a_zero_next_to_wrong(map))
-		return (false);
+		return (err("Invalid door placement"),false);
 	return (true);
 }

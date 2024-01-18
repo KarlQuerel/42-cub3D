@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:44:49 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/16 09:43:11 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/18 10:08:08 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,9 @@ void	render(t_data *data)
 	int		y;
 
 	i = 0;
+	data->time++;
+	if (data->time / 200 > 16)
+		data->time = 0;
 	close_doors(data);
 	open_doors(data);
 	while (i < IMG_HEIGHT)
@@ -88,5 +91,7 @@ void	render(t_data *data)
 	x = (int)data->player_pos[0] / MINIMAP_HEIGHT * MINIMAP_HEIGHT;
 	y = (int)data->player_pos[1] / MINIMAP_WIDTH * MINIMAP_WIDTH;
 	draw_minimap(data, x, y);
+	draw_alice(data, 500, 30);
+	draw_white_rabbit(data, 500, 470);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 }

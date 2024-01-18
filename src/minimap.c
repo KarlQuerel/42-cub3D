@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 16:29:45 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/14 18:16:09 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/17 18:29:30 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,12 @@ void	draw_minimap(t_data *data, int x, int y)
 			data->map[x + it_x][y + it_y] == 0 || \
 			is_a_white_space(data->map[x + it_x][y + it_y]))
 				draw_map_components(data, it_x, it_y, 0x000000);
-			else if ((x + it_x) == (int)data->player_pos[0] && \
-			(y + it_y) == (int)data->player_pos[1])
-				draw_map_components(data, it_x, it_y, 0x00ffffff);
-			else
+			else if (data->map[x + it_x][y + it_y] == 'D' || data->map[x + it_x][y + it_y] == 'O')
+				draw_map_components(data, it_x, it_y, 0x00F6BE00);
+			else if (data->map[x + it_x][y + it_y] == '0')
 				draw_map_components(data, it_x, it_y, 0x003722);
+			if ((x + it_x) == (int)data->player_pos[0] && (y + it_y) == (int)data->player_pos[1])
+				draw_map_components(data, it_x, it_y, 0x00ffffff);
 			it_y++;
 		}
 		it_x++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkup_map_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 17:40:49 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/16 09:23:39 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/17 18:18:15 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,9 @@ bool	is_a_zero_next_to_wrong(char **map)
 		j++;
 	}
 	return (true);
+}
+
+void	err(char *s)
+{
+	ft_print_fd(2, "Error\n%s\n", s);
 }

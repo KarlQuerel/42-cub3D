@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:58:33 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/16 10:43:48 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/18 09:53:40 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ typedef struct s_img_info
 	int		bpp;
 	int		ll;
 	int		endian;
+	int		width;
+	int		height;
 }	t_img_info;
 
 typedef struct s_control
@@ -117,6 +119,7 @@ typedef struct s_data
 	t_v2f		camera_dir;
 
 	float		tex_pos;
+	float		tex_pos_tmp;
 	float		step_all;
 	int			tex_x;
 	int			side;
@@ -134,6 +137,13 @@ typedef struct s_data
 	int			fd;
 
 	bool		in_win;
+	// le dernier bonus encore en vie
+	t_img_info	alice[18];
+	t_img_info	catterpilar[17];
+	t_img_info	cheshire_cat[6];
+	t_img_info	white_rabbit[10];
+
+	int			time;
 }	t_data;
 
 /* Checkup_map */
@@ -148,6 +158,7 @@ int		count_char_in_map(char c, char **map);
 bool	is_char_in_map_are_normal(char **map);
 bool	is_char_valid_in_map(char c);
 bool	is_a_zero_next_to_wrong(char **map);
+void	err(char *s);
 
 /* Draw */
 void	ft_my_put_pixel(t_data *data, int x, int y, int color);
@@ -236,6 +247,14 @@ int		leave_win(t_data *data);
 void	open_doors(t_data *data);
 bool	can_i_close_the_door(t_data *data, int x, int y);
 void	close_doors(t_data *data);
-int	data_clear_le_2(t_data *data);
+int		data_clear_le_2(t_data *data);
+
+bool    get_alice(t_data *data);
+bool    get_catterpilar(t_data *data);
+bool    get_cheshire_cat(t_data *data);
+bool    get_white_rabbit(t_data *data);
+void    draw_alice(t_data *data, int x, int y);
+void    draw_white_rabbit(t_data *data, int x, int y);
+bool    upload_img(t_data *data, t_img_info *img, char *file);
 
 #endif

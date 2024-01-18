@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils_1.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 09:45:32 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/13 20:26:35 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/17 17:48:13 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	identify_line(char *str)
 		str++;
 	if (*str == '1' || *str == '0')
 		return (MAP);
-	write(1, "error\n", 6);
+	err("");
 	return (0);
 }
 

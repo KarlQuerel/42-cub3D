@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:53:37 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/14 21:52:49 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/18 10:05:21 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	draw_wall(t_data *data, int x, int end, int *i)
 	int	color;
 	int	tex_y;
 
+	data->tex_pos_tmp = data->tex_pos;
 	while (*i <= end && *i < IMG_HEIGHT)
 	{
 		tex_y = (int)data->tex_pos & (TEX_HEIGHT - 1);
@@ -82,12 +83,31 @@ void	draw_ceiling(t_data *data, int x, int *i)
 	}
 }
 
+void	draw_catterpilar(t_data *data, int x, int end, int i)
+{
+	int	color;
+	int	tex_y;
+
+	while (i <= end && i < IMG_HEIGHT)
+	{
+		tex_y = (int)data->tex_pos_tmp & (128 - 1);
+		data->tex_pos_tmp += data->step_all;
+		color = ((int *)data->catterpilar[data->time/200].addr)[tex_y * 128 + data->tex_x];
+		if (color > 0)
+			ft_my_put_pixel(data, i, x, color);
+		(i)++;
+	}
+}
+
 void	draw_slice(t_data *data, int x)
 {
 	int	i;
+	int	tmp;
 
 	i = 0;
 	draw_floor(data, x, data->draw_start, &i);
+	tmp = i;
 	draw_wall(data, x, data->draw_end, &i);
+	draw_catterpilar(data, x, data->draw_end, tmp);
 	draw_ceiling(data, x, &i);
 }
