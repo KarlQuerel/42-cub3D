@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 06:32:48 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/16 07:12:06 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/18 20:06:46 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,12 @@
 
 int	enter_win(t_data *data)
 {
-	// if (data->end || data->start)
-	// 	return (0);
 	data->in_win = true;
 	return (0);
 }
 
 int	leave_win(t_data *data)
 {
-	// if (data->end || data->start)
-	// 	return (0);
 	data->in_win = false;
 	data->controls.left_mouse = false;
 	data->controls.right_mouse = false;
@@ -33,8 +29,6 @@ int	leave_win(t_data *data)
 int	mouse_handler(int x, int y, t_data *data)
 {
 	(void)y;
-	// if (data->end || data->start)
-	// 	return (0);
 	if (data->in_win && (x <= IMG_WIDTH / 6 && x >= 0))
 	{
 		data->controls.left_arrow = true;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:58:33 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/18 17:35:59 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/18 21:28:50 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,14 @@
 # include "../minilibx-linux/mlx_int.h"
 # include "../minilibx-linux/mlx.h"
 # include "../libft/include/libft.h"
+# include <errno.h>
 
 // Movement Macros
-# define MOVE_SPEED		0.009
-# define ROT_SPEED		0.0030
+// # define MOVE_SPEED		0.009
+// # define ROT_SPEED		0.0030
+
+# define MOVE_SPEED		0.015
+# define ROT_SPEED		0.0045
 
 // Window Macros
 # define IMG_WIDTH		960
@@ -139,6 +143,10 @@ typedef struct s_data
 
 	int			map_x;
 	int			map_y;
+
+	int			it_x;
+	int			it_y;
+
 	t_v2f		step;
 	t_v2f		side_dist;
 	int			draw_start;
@@ -150,7 +158,6 @@ typedef struct s_data
 	int			fd;
 
 	bool		in_win;
-	// le dernier bonus encore en vie
 	t_img_info	alice[18];
 	t_img_info	catterpilar[17];
 	t_img_info	cheshire_cat[6];
@@ -267,16 +274,31 @@ int		leave_win(t_data *data);
 void	open_doors(t_data *data);
 bool	can_i_close_the_door(t_data *data, int x, int y);
 void	close_doors(t_data *data);
-int		data_clear_le_2(t_data *data);
+int		data_clear_2(t_data *data);
 
-bool    get_alice(t_data *data);
-bool    get_catterpilar(t_data *data);
-bool    get_cheshire_cat(t_data *data);
-bool    get_white_rabbit(t_data *data);
-void    draw_alice(t_data *data, int x, int y);
-void    draw_white_rabbit(t_data *data, int x, int y);
-bool    upload_img(t_data *data, t_img_info *img, char *file);
-bool    get_door(t_data *data);
+/* Draw_characters */
+// void	draw_catterpilar(t_data *data, int x, int end, int i);
+
+/* Draw_worlds */
+
+/* Draw_utils */
+
+/* Fill_utils */
+
+/* Check_up_map_utils_2 */
+bool	is_cub_file(char *line);
+
+/* Render_3.c */
+void	draw_all(t_data *data);
+
+bool	get_alice(t_data *data);
+bool	get_catterpilar(t_data *data);
+bool	get_cheshire_cat(t_data *data);
+bool	get_white_rabbit(t_data *data);
+void	draw_alice(t_data *data, int x, int y);
+void	draw_white_rabbit(t_data *data, int x, int y);
+bool	upload_img(t_data *data, t_img_info *img, char *file);
+bool	get_door(t_data *data);
 bool	get_characters(t_data *data);
 void	draw_dialog_box(t_data *data, int x, int y);
 

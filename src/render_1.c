@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:44:49 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/18 17:56:22 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/18 21:16:53 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,6 @@ void	render(t_data *data)
 {
 	t_v2f	ray;
 	int		i;
-	int		x;
-	int		y;
 
 	i = 0;
 	data->time++;
@@ -111,14 +109,5 @@ void	render(t_data *data)
 		next_cube(data, ray, i, delta_dist_calc(data, &ray));
 		i++;
 	}
-	x = (int)data->player_pos[0] / MINIMAP_HEIGHT * MINIMAP_HEIGHT;
-	y = (int)data->player_pos[1] / MINIMAP_WIDTH * MINIMAP_WIDTH;
-	draw_minimap(data, x, y);
-	draw_alice(data, IMG_HEIGHT - IMG_HEIGHT / 20 - 128, IMG_WIDTH / 20);
-	if (data->dialog_stage != DIALOG_NOT_STARTED && data->dialog_stage != DIALOG_FINISH)
-	{
-		draw_white_rabbit(data, IMG_HEIGHT - IMG_HEIGHT / 20 - 128, IMG_WIDTH - IMG_WIDTH / 20 - 128);
-		draw_dialog_box(data, IMG_HEIGHT - IMG_HEIGHT / 20 - 128, IMG_WIDTH / 20 + 192);
-	}
-	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
+	draw_all(data);
 }

@@ -4,7 +4,7 @@ NAME = cub3D
 
 # Compiler
 CC		= cc
-CFLAGS	= -Wall -Werror -Wextra -MMD -MP -Ofast -ffast-math -g3
+CFLAGS	= -Wall -Werror -Wextra -MMD -MP #-Ofast -ffast-math -g3
 
 # Paths
 SRC_PATH = ./src/
@@ -22,26 +22,32 @@ RM	= rm -rf
 # Files
 SRC =	main.c \
 		setup_mlx.c \
+		setup_mlx_utils.c \
 		setup_world.c \
 		setup_player.c \
 		mlx_handling_1.c \
 		mlx_handling_2.c \
+		mlx_handling_3.c \
 		parsing_utils_1.c \
 		parsing_utils_2.c \
 		fill_world.c \
 		fill_sides.c \
 		fill_adults.c \
+		fill_utils.c \
 		checkup_map.c \
 		checkup_map_utils.c \
+		checkup_map_utils_2.c \
 		render_1.c \
 		render_2.c \
+		render_3.c \
 		minimap.c \
-		draw.c \
+		draw_world.c \
+		draw_utils.c \
 		mouse_handling.c \
 		mouse_move.c \
 		door.c \
-		ce_que_karl_devait_faire.c \
-		draw_alice.c \
+		get_images.c \
+		draw_characters.c \
 		draw_dialog_box.c
 
 # Object files

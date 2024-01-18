@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 11:06:48 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/18 14:35:23 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/18 19:02:29 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	unleek_gnl(int fd)
 {
 	char	*line;
 
-	while ("jusqu'ici tout va bien")
+	while (1)
 	{
 		line = ft_get_next_line(fd);
 		if (!line)
@@ -40,14 +40,17 @@ int	update_display(t_data *data)
 	return (0);
 }
 
-bool	is_cub_file(char *line)
+bool	check_all(t_data *data, char **av)
 {
-	int	i;
-
-	i = 0;
-	while (!is_a_white_space(line[i]) && line[i])
-		i++;
-	return (!(i < 5 || ft_strncmp(line + i - 4, ".cub", 3)));
+	if (!setup_world(data, av[1]))
+		return (data_clear_2(data), false);
+	if (!checkup_map(data->map))
+		return (data_clear_2(data), false);
+	if (!find_player(data))
+		return (data_clear_2(data), false);
+	if (!get_characters(data))
+		return (false);
+	return (true);
 }
 
 int	main(int argc, char **argv)
@@ -55,23 +58,16 @@ int	main(int argc, char **argv)
 	t_data	data;
 
 	if (argc != 2)
-	return (err("You must specify a map name, and only a map name."), 1);
+		return (err("You must specify a map name, and only a map name."), 1);
 	if (!is_cub_file(argv[1]))
 		return (err("Your map have to be a cub file."), 1);
 	if (!setup_mlx(&data))
 		return (1);
 	make_data_null(&data);
 	data.nb_side_parsed = 0;
-	if (!setup_world(&data, argv[1]))
-		return (data_clear_le_2(&data), 1);
-	if (!checkup_map(data.map))
-		return (data_clear_le_2(&data), 1);
-	if (!find_player(&data))
-		return (data_clear_le_2(&data), 1);
-	if (!get_characters(&data))
-		return (1);	//
+	if (!check_all(&data, argv))
+		return (1);
 	init_values(&data);
-	
 	render(&data);
 	mlx_hook(data.win, EXIT, 0, data_clear, &data);
 	mlx_hook(data.win, 02, KeyPressMask, key_event, &data);

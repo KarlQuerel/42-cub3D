@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_handling_2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:59:01 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/16 09:41:04 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/18 19:50:07 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,21 +55,24 @@ void	rotate_camera(t_data *data)
 	}
 }
 
+void	move_w(t_data *data)
+{
+	if (data->map[(int)(data->player_pos[0] + data->camera_dir[0] \
+	* (float)MOVE_SPEED)][(int)data->player_pos[1]] != '1'
+	&& data->map[(int)(data->player_pos[0] + data->camera_dir[0] \
+	* (float)MOVE_SPEED)][(int)data->player_pos[1]] != 'D')
+		data->player_pos[0] += data->camera_dir[0] * (float)MOVE_SPEED;
+	if (data->map[(int)data->player_pos[0]][(int)(data->player_pos[1] \
+	+ data->camera_dir[1] * (float)MOVE_SPEED)] != '1'
+	&& data->map[(int)data->player_pos[0]][(int)(data->player_pos[1] \
+	+ data->camera_dir[1] * (float)MOVE_SPEED)] != 'D')
+		data->player_pos[1] += data->camera_dir[1] * (float)MOVE_SPEED;
+}
+
 void	move_longitudinal(t_data *data)
 {
 	if (data->controls.w)
-	{
-		if (data->map[(int)(data->player_pos[0] + data->camera_dir[0] \
-		* (float)MOVE_SPEED)][(int)data->player_pos[1]] != '1'
-		&& data->map[(int)(data->player_pos[0] + data->camera_dir[0] \
-		* (float)MOVE_SPEED)][(int)data->player_pos[1]] != 'D')
-			data->player_pos[0] += data->camera_dir[0] * (float)MOVE_SPEED;
-		if (data->map[(int)data->player_pos[0]][(int)(data->player_pos[1] \
-		+ data->camera_dir[1] * (float)MOVE_SPEED)] != '1'
-		&& data->map[(int)data->player_pos[0]][(int)(data->player_pos[1] \
-		+ data->camera_dir[1] * (float)MOVE_SPEED)] != 'D')
-			data->player_pos[1] += data->camera_dir[1] * (float)MOVE_SPEED;
-	}
+		move_w(data);
 	if (data->controls.s)
 	{
 		if (data->map[(int)(data->player_pos[0] - data->camera_dir[0] \
@@ -82,41 +85,5 @@ void	move_longitudinal(t_data *data)
 		&& data->map[(int)data->player_pos[0]][(int)(data->player_pos[1] \
 		- data->camera_dir[1] * (float)MOVE_SPEED)] != 'D')
 			data->player_pos[1] -= data->camera_dir[1] * (float)MOVE_SPEED;
-	}
-}
-
-void	move_sideways(t_data *data)
-{
-	t_v2f	new_dir;
-
-	if (data->controls.a)
-	{
-		new_dir[0] = -data->camera_dir[1];
-		new_dir[1] = data->camera_dir[0];
-		if (data->map[(int)(data->player_pos[0] + new_dir[0] * \
-		(float)MOVE_SPEED)][(int)data->player_pos[1]] != '1'
-		&& data->map[(int)(data->player_pos[0] + new_dir[0] * \
-		(float)MOVE_SPEED)][(int)data->player_pos[1]] != 'D')
-			data->player_pos[0] += new_dir[0] * (float)MOVE_SPEED;
-		if (data->map[(int)data->player_pos[0]][(int)(data->player_pos[1] + \
-		new_dir[1] * (float)MOVE_SPEED)] != '1'
-		&& data->map[(int)data->player_pos[0]][(int)(data->player_pos[1] + \
-		new_dir[1] * (float)MOVE_SPEED)] != 'D')
-			data->player_pos[1] += new_dir[1] * (float)MOVE_SPEED;
-	}
-	if (data->controls.d)
-	{
-		new_dir[0] = data->camera_dir[1];
-		new_dir[1] = -data->camera_dir[0];
-		if (data->map[(int)(data->player_pos[0] + new_dir[0] * \
-		(float)MOVE_SPEED)][(int)data->player_pos[1]] != '1'
-		&& data->map[(int)(data->player_pos[0] + new_dir[0] * \
-		(float)MOVE_SPEED)][(int)data->player_pos[1]] != 'D')
-			data->player_pos[0] += new_dir[0] * (float)MOVE_SPEED;
-		if (data->map[(int)data->player_pos[0]][(int)(data->player_pos[1] + \
-		new_dir[1] * (float)MOVE_SPEED)] != '1'
-		&& data->map[(int)data->player_pos[0]][(int)(data->player_pos[1] + \
-		new_dir[1] * (float)MOVE_SPEED)] != 'D')
-			data->player_pos[1] += new_dir[1] * (float)MOVE_SPEED;
 	}
 }

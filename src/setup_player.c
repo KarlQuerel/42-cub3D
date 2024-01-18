@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:11:12 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/18 13:44:37 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/18 18:51:16 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,16 @@ bool	check_size_wall(t_data *data)
 
 	size = ft_strlen(data->north.addr);
 	if (size / 4 / TEX_WIDTH < TEX_HEIGHT)
-		return (false);//msg
+		return (err("North size is too small"), false);
 	size = ft_strlen(data->south.addr);
 	if (size / 4 / TEX_WIDTH < TEX_HEIGHT)
-		return (false);//msg
+		return (err("South size is too small"), false);
 	size = ft_strlen(data->west.addr);
 	if (size / 4 / TEX_WIDTH < TEX_HEIGHT)
-		return (false);//msg
+		return (err("West size is too small"), false);
 	size = ft_strlen(data->east.addr);
 	if (size / 4 / TEX_WIDTH < TEX_HEIGHT)
-		return (false);//msg
+		return (err("East size is too small"), false);
 	return (true);
 }
 

@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   render_2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:44:49 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/18 14:43:58 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/18 19:11:58 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+void	door_behavior(t_data *data)
+{
+	if (data->map[data->map_x][data->map_y] == 'D')
+		data->display_door = true;
+	else
+		data->display_door = false;
+	if (data->map_x == 0 && data->map_y == 3)
+		data->display_catterpilar = true;
+	else
+		data->display_catterpilar = false;
+}
 
 bool	side_assignment(t_data *data, t_v2f delta_dist)
 {
@@ -32,18 +44,9 @@ bool	side_assignment(t_data *data, t_v2f delta_dist)
 		else
 			data->side = EAST;
 	}
-	if (data->map[data->map_x][data->map_y] == '1' || data->map[data->map_x][data->map_y] == 'D')
-	{
-		if (data->map[data->map_x][data->map_y] == 'D')
-			data->display_door = true;
-		else
-			data->display_door = false;
-		if (data->map_x == 0 && data->map_y == 3)
-			data->display_catterpilar = true;
-		else
-			data->display_catterpilar = false;
-		return (true);
-	}
+	if (data->map[data->map_x][data->map_y] == '1' || \
+		data->map[data->map_x][data->map_y] == 'D')
+		return (door_behavior(data), true);
 	return (false);
 }
 
