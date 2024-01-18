@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 20:58:53 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/15 10:25:58 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/17 09:59:30 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ bool	setup_world(t_data *data, char *map)
 			if (!fill_new_line(data, &line))
 			{
 				ft_print_fd(2, "Error\nmap file : spurious line in file\n");
-				return (free(line), unleek_gnl(data->fd), close(data->fd), false);
+				return (free(line), unleek_gnl(data->fd), close(data->fd), \
+				false);
 			}
 		}
 		free(line);

@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 06:41:01 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/16 07:07:10 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/17 09:55:23 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,10 @@ void	move_mouse(t_data *data)
 	{
 		rotate(&data->camera_dir, (-ROT_SPEED));
 		rotate(&data->plane, (-ROT_SPEED));
-		// rotate(data->coord.screen_dir, (-0.1 / ROT_SPEED));
 	}
 	if (data->controls.left_mouse)
 	{
 		rotate(&data->camera_dir, (ROT_SPEED));
 		rotate(&data->plane, (ROT_SPEED));
-		// rotate(data->coord.screen_dir, (0.1 / ROT_SPEED));
 	}
 }

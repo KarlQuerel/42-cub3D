@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 09:45:32 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/14 22:11:14 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/17 10:02:07 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ bool	is_alpha(char c)
 {
 	return (c >= '0' && c <= '9');
 }
+
+// static bool	atocolor_2(char *str, t_color *color)
+// {
+
+
+// }
 
 bool	atocolor(char *str, t_color *color)
 {
@@ -52,7 +58,6 @@ bool	atocolor(char *str, t_color *color)
 	if (!is_alpha(*str) && *str != '+' && *str != '-')
 		return (false);
 	ft_atoi(&color_tmp, str);
-	// printf("error6\n");
 	while (is_alpha(*str) || *str == '+' || *str == '-')
 		str++;
 	(*color)[2] = color_tmp;
@@ -60,6 +65,5 @@ bool	atocolor(char *str, t_color *color)
 		(*color)[1] > 255 || (*color)[2] < 0 || (*color)[2] > 255 || *str)
 		return (false);
 	str = tmp;
-	// printf("error12\n");
 	return (true);
 }
