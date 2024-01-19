@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 18:53:29 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/18 18:54:11 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/19 13:46:46 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	data_clear_2(t_data *data)
 		mlx_destroy_image(data->mlx, data->east.img);
 	if (data->west.img)
 		mlx_destroy_image(data->mlx, data->west.img);
+	clear_characters(data);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
 	free_strs(&data->map);
@@ -42,6 +43,7 @@ int	data_clear(t_data *data)
 		mlx_destroy_image(data->mlx, data->east.img);
 	if (data->west.img)
 		mlx_destroy_image(data->mlx, data->west.img);
+	clear_characters(data);
 	mlx_destroy_display(data->mlx);
 	free(data->mlx);
 	free_strs(&data->map);

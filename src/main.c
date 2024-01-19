@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 11:06:48 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/18 19:02:29 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/19 13:46:26 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int	main(int argc, char **argv)
 {
 	t_data	data;
 
+	setup_characters(&data);
 	if (argc != 2)
 		return (err("You must specify a map name, and only a map name."), 1);
 	if (!is_cub_file(argv[1]))

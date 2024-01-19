@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_handling_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:59:01 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/16 06:40:52 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/19 13:50:55 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	ft_handle_key_arrow(int key, t_data *data)
 		data->controls.a = true;
 	else if (key == RIGHT_D)
 		data->controls.d = true;
+	else if (key == O_DOOR)
+		data->controls.door = !data->controls.door;
 }
 
 void	move(t_data *data)

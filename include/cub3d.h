@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:58:33 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/18 21:28:50 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/19 13:50:06 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@
 # define DOWN_S			115
 # define RIGHT_D		100
 # define LEFT_A			97
+# define O_DOOR			111
 # define EXIT			17
 # define KEY_ESC		65307
 
@@ -103,6 +104,7 @@ typedef struct s_control
 	bool		right_arrow;
 	bool		left_mouse;
 	bool		right_mouse;
+	bool		door;
 }	t_control;
 
 /* General structure */
@@ -301,5 +303,8 @@ bool	upload_img(t_data *data, t_img_info *img, char *file);
 bool	get_door(t_data *data);
 bool	get_characters(t_data *data);
 void	draw_dialog_box(t_data *data, int x, int y);
+
+void    clear_characters(t_data *data);
+void    setup_characters(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 13:10:52 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/18 18:54:07 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/19 13:46:03 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	init_values(t_data *data)
 	data->controls.d = false;
 	data->controls.left_arrow = false;
 	data->controls.right_arrow = false;
+	data->controls.door = true;
 	data->in_win = false;
 	data->controls.left_mouse = false;
 	data->controls.right_mouse = false;

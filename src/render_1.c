@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:44:49 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/18 21:16:53 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/19 13:47:58 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_v2f	get_ray(t_data *data, int x)
 	t_v2f	ray;
 	float	cam;
 
-	cam = 2.0f * (float)x / (float)IMG_HEIGHT - 1;
+	cam = 2.0f * (float)x / (float)IMG_WIDTH - 1;
 	ray[0] = data->camera_dir[0] + data->plane[0] * cam;
 	ray[1] = data->camera_dir[1] + data->plane[1] * cam;
 	return (ray);
@@ -102,7 +102,8 @@ void	render(t_data *data)
 		data->time = 0;
 	update_time(data);
 	close_doors(data);
-	open_doors(data);
+	if (data->controls.door)
+		open_doors(data);
 	while (i < IMG_WIDTH)
 	{
 		ray = get_ray(data, i);
