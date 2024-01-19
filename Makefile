@@ -49,7 +49,8 @@ SRC =	main.c \
 		get_images.c \
 		draw_characters.c \
 		draw_dialog_box.c \
-		clean_characters.c
+		clean_characters.c \
+		fill_text.c
 
 # Object files
 OBJ		= $(addprefix $(BIN_PATH), $(SRC:.c=.o))
