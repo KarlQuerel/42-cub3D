@@ -1,10 +1,22 @@
 #include "../include/cub3d.h"
 
-void	draw_smart(t_data *data, t_img_info *img, int x, int y)
+void	draw_msg(t_data *data, int x, int y)
 {
-	static int	info = {0, 3,  ALICE_2, ALICE_3, ALICE_4, WHITE_RABBIT_1, WHITE_RABBIT_2, WHITE_RABBIT_3,};
-	int			width;
+	int	i;
+	int	j;
+	int	pixel;
 
-	width = ft_strlen(img->addr) / ( * info[data->dialog_stage]);
-
+	i = 0;
+	while (i < 58)
+	{
+		j = 0;
+		while (j < 400)
+		{
+			pixel = ((int *)data->dialog[data->dialog_stage].addr)[i * 400 + j];
+			if (pixel > 0)
+				ft_my_put_pixel(data, x + i, y + j, pixel);
+			j++;
+		}
+		i++;
+	}
 }

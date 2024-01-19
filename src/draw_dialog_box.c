@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_dialog_box.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 18:38:21 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/19 15:18:31 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/19 16:10:31 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,11 @@ void	my_put_img_to_img_3(t_data *data, t_img_info *src, t_img_info *dest, int x,
 	}
 }
 
-void	draw_msg(t_data *data, int x, int y)
-{
-	// static t_img_info	imgs[] = {data->}
-	my_put_img_to_img_3(data, data->dialog[0], x, y);
-}
+// void	draw_msg(t_data *data, int x, int y)
+// {
+// 	// static t_img_info	imgs[] = {data->}
+// 	my_put_img_to_img_3(data, data->dialog[0], x, y);
+// }
 
 //Trouver un moyen d'ecrire le texte des enfers
 void	draw_dialog_box(t_data *data, int x, int y)
@@ -112,6 +112,6 @@ void	draw_dialog_box(t_data *data, int x, int y)
 		draw_dialog_box_left(data, x, y);
 		draw_dialog_box_mid(data, x, y + 16);
 		draw_dialog_box_right(data, x, 960 - y - 64);
-		draw_msg(data, x + 20, y);
+		draw_msg(data, x + 30, y + 45);
 	}
 }

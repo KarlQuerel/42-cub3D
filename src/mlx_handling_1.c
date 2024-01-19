@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx_handling_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 10:59:01 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/19 13:50:55 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/19 16:03:13 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	key_release(int key, t_data *data)
 int	key_event(int keycode, t_data *data)
 {
 	if (keycode == KEY_ESC)
-		return (data_clear(data), 0);
+		return (data_clear_2(data), 0);
 	ft_handle_key_arrow(keycode, data);
 	return (0);
 }

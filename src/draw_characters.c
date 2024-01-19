@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_characters.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 18:15:00 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/18 21:24:41 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/19 16:21:59 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ void	draw_alice(t_data *data, int x, int y)
 
 	if (ALICE_1 <= data->dialog_stage && data->dialog_stage <= ALICE_4)
 	{
-		my_put_img_to_img_2(data, &data->alice[anim / 150], &data->img, x, y);
+		my_put_img_to_img_2(data, &data->alice[anim / 75], &data->img, x, y);
 		anim++;
-		if (anim / 150 > 16)
+		if (anim / 75 > 16)
 			anim = 0;
 	}
 	else
@@ -78,10 +78,10 @@ void	draw_white_rabbit(t_data *data, int x, int y)
 	if (WHITE_RABBIT_1 <= data->dialog_stage && \
 		data->dialog_stage <= WHITE_RABBIT_3)
 	{
-		my_put_img_to_img(data, &data->white_rabbit[anim / 150], \
+		my_put_img_to_img(data, &data->white_rabbit[anim / 75], \
 			&data->img, x, y);
 		anim++;
-		if (anim / 150 > 9)
+		if (anim / 75 > 9)
 			anim = 0;
 	}
 	else if (ALICE_2 <= data->dialog_stage && data->dialog_stage <= ALICE_3)

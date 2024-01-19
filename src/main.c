@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 11:06:48 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/19 13:46:26 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/19 16:29:30 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	make_data_null(t_data *data)
 	data->south.img = NULL;
 	data->west.img = NULL;
 	data->map = NULL;
+	setup_text(data);
 }
 
 void	unleek_gnl(int fd)
