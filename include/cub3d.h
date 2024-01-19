@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:58:33 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/19 18:23:13 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/19 18:34:35 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,54 +125,41 @@ typedef struct s_data
 	t_img_info	east;
 	t_img_info	floor;
 	t_img_info	ceiling;
-
 	t_color		floor_color;
 	int			floor_color_2;
 	t_color		ceiling_color;
 	int			ceiling_color_2;
-
 	int			nb_side_parsed;
-
 	int			img_width;
 	int			img_height;
-
 	char		**map;
 	int			width;
 	int			height;
 	t_control	controls;
-
 	t_v2f		plane;
 	t_v2f		player_pos;
 	t_v2f		camera_dir;
-
 	float		tex_pos;
 	float		tex_pos_tmp;
 	float		step_all;
 	int			tex_x;
 	int			side;
-
 	int			map_x;
 	int			map_y;
-
 	int			it_x;
 	int			it_y;
-
 	t_v2f		step;
 	t_v2f		side_dist;
 	int			draw_start;
 	int			draw_end;
-
 	void		*minimap;
 	int			dir;
-
 	int			fd;
-
 	bool		in_win;
 	t_img_info	alice[18];
 	t_img_info	catterpilar[17];
 	t_img_info	cheshire_cat[6];
 	t_img_info	white_rabbit[10];
-
 	t_img_info	door;
 	t_img_info	dialog_box;
 	t_img_info	dialog[8];
@@ -180,7 +167,6 @@ typedef struct s_data
 	long		time_2_le_retour;
 	bool		display_catterpilar;
 	bool		display_door;
-
 	int			dialog_stage;
 	bool		still_run;
 }	t_data;
