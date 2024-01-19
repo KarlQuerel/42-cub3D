@@ -3,23 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   draw_characters.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 18:15:00 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/19 16:21:59 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/19 17:48:04 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-void	my_put_img_to_img_2(t_data *data, t_img_info *src, t_img_info *dest, int x, int y)
+void	my_put_img_to_img_2(t_data *data, t_img_info *src, int x, int y)
 {
 	int	i;
 	int	j;
 	int	pixel;
 
 	i = 0;
-	(void)dest;
 	while (i < 128)
 	{
 		j = 0;
@@ -34,14 +33,13 @@ void	my_put_img_to_img_2(t_data *data, t_img_info *src, t_img_info *dest, int x,
 	}
 }
 
-void	my_put_img_to_img(t_data *data, t_img_info *src, t_img_info *dest, int x, int y)
+void	my_put_img_to_img(t_data *data, t_img_info *src, int x, int y)
 {
 	int	i;
 	int	j;
 	int	pixel;
 
 	i = 0;
-	(void)dest;
 	while (i < 128)
 	{
 		j = 0;
@@ -62,13 +60,13 @@ void	draw_alice(t_data *data, int x, int y)
 
 	if (ALICE_1 <= data->dialog_stage && data->dialog_stage <= ALICE_4)
 	{
-		my_put_img_to_img_2(data, &data->alice[anim / 75], &data->img, x, y);
+		my_put_img_to_img_2(data, &data->alice[anim / 75], x, y);
 		anim++;
 		if (anim / 75 > 16)
 			anim = 0;
 	}
 	else
-		my_put_img_to_img_2(data, &data->alice[0], &data->img, x, y);
+		my_put_img_to_img_2(data, &data->alice[0], x, y);
 }
 
 void	draw_white_rabbit(t_data *data, int x, int y)
@@ -79,11 +77,11 @@ void	draw_white_rabbit(t_data *data, int x, int y)
 		data->dialog_stage <= WHITE_RABBIT_3)
 	{
 		my_put_img_to_img(data, &data->white_rabbit[anim / 75], \
-			&data->img, x, y);
+			x, y);
 		anim++;
 		if (anim / 75 > 9)
 			anim = 0;
 	}
 	else if (ALICE_2 <= data->dialog_stage && data->dialog_stage <= ALICE_3)
-		my_put_img_to_img(data, &data->white_rabbit[0], &data->img, x, y);
+		my_put_img_to_img(data, &data->white_rabbit[0], x, y);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fill_text.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/19 17:36:53 by kquerel           #+#    #+#             */
+/*   Updated: 2024/01/19 17:37:13 by kquerel          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/cub3d.h"
 
 void	setup_text(t_data *data)
@@ -14,16 +26,15 @@ void	setup_text(t_data *data)
 
 void	clear_text(t_data *data)
 {
-    int    i;
+	int	i;
 
-    i = 0;
-    while (i < 8)
-    {
-
-        if (data->dialog[i].img)
-            mlx_destroy_image(data->mlx, data->dialog[i].img);
-        i++;
-    }
+	i = 0;
+	while (i < 8)
+	{
+		if (data->dialog[i].img)
+			mlx_destroy_image(data->mlx, data->dialog[i].img);
+		i++;
+	}
 }
 
 bool	get_text(t_data *data)

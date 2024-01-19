@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_dialog_box.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 18:38:21 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/19 16:10:31 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/19 17:45:16 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,35 +75,6 @@ void	draw_dialog_box_right(t_data *data, int x, int y)
 	}
 }
 
-void	my_put_img_to_img_3(t_data *data, t_img_info *src, t_img_info *dest, int x, int y)
-{
-	int	i;
-	int	j;
-	int	pixel;
-
-	i = 0;
-	(void)dest;
-	while (i < 128)
-	{
-		j = 0;
-		while (j < 128)
-		{
-			pixel = ((int *)src->addr)[i * 128 + j];
-			if (pixel > 0)
-				ft_my_put_pixel(data, x + i, y + j, pixel);
-			j++;
-		}
-		i++;
-	}
-}
-
-// void	draw_msg(t_data *data, int x, int y)
-// {
-// 	// static t_img_info	imgs[] = {data->}
-// 	my_put_img_to_img_3(data, data->dialog[0], x, y);
-// }
-
-//Trouver un moyen d'ecrire le texte des enfers
 void	draw_dialog_box(t_data *data, int x, int y)
 {
 	if (data->dialog_stage != DIALOG_NOT_STARTED && \

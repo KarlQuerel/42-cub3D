@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_1.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:44:49 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/19 16:03:45 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/19 17:38:27 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ void	render(t_data *data)
 	data->time++;
 	if (data->time / 200 > 16)
 		data->time = 0;
-	// data_clear_2(data);
 	close_doors(data);
 	if (data->controls.door)
 		open_doors(data);
