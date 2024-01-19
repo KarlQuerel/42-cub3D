@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:58:33 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/19 16:28:00 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/19 16:44:41 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ enum e_parse
 # define	ALICE_D_2 "img/XPM/Dialog/ALICE_2.xpm"
 # define	ALICE_D_3 "img/XPM/Dialog/ALICE_3.xpm"
 # define	ALICE_D_4 "img/XPM/Dialog/ALICE_4.xpm"
-# define	RABBIT_D_1 "img/XPM/Dialog/RABBIT_2.xpm"
+# define	RABBIT_D_1 "img/XPM/Dialog/RABBIT_1.xpm"
 # define	RABBIT_D_2 "img/XPM/Dialog/RABBIT_2.xpm"
 # define	RABBIT_D_3 "img/XPM/Dialog/RABBIT_3.xpm"
 

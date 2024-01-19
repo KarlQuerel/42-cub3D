@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 13:10:52 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/19 14:23:58 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/19 17:28:57 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	init_values(t_data *data)
 	ft_print_strs(data->map);
 	data->time_2_le_retour = 0;
 	data->dialog_stage = DIALOG_NOT_STARTED;
+	setup_text(data);
 	opti(data);
 }
 
