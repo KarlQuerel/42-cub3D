@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:58:33 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/19 13:50:06 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/19 14:20:26 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,9 @@ typedef struct s_data
 	t_img_info	ceiling;
 
 	t_color		floor_color;
+	int			floor_color_2;
 	t_color		ceiling_color;
+	int			ceiling_color_2;
 
 	int			nb_side_parsed;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 13:10:52 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/19 13:46:03 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/19 14:23:58 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,20 @@ void	restore_floor_player(t_data *data)
 	}
 }
 
+void	opti(t_data *data)
+{
+	data->ceiling_color_2 = data->ceiling_color[0];
+	data->ceiling_color_2 <<= 8;
+	data->ceiling_color_2 += data->ceiling_color[1];
+	data->ceiling_color_2 <<= 8;
+	data->ceiling_color_2 += data->ceiling_color[2];
+	data->floor_color_2 = data->floor_color[0];
+	data->floor_color_2 <<= 8;
+	data->floor_color_2 += data->floor_color[1];
+	data->floor_color_2 <<= 8;
+	data->floor_color_2 += data->floor_color[2];
+}
+
 void	init_values(t_data *data)
 {
 	data->controls.w = false;
@@ -50,6 +64,7 @@ void	init_values(t_data *data)
 	ft_print_strs(data->map);
 	data->time_2_le_retour = 0;
 	data->dialog_stage = DIALOG_NOT_STARTED;
+	opti(data);
 }
 
 void	mini_mlx_clear(t_data *data)

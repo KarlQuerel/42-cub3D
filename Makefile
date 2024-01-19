@@ -4,7 +4,7 @@ NAME = cub3D
 
 # Compiler
 CC		= cc
-CFLAGS	= -Wall -Werror -Wextra -MMD -MP #-Ofast -ffast-math -g3
+CFLAGS	= -Wall -Werror -Wextra -MMD -MP -Ofast -ffast-math -g3
 
 # Paths
 SRC_PATH = ./src/

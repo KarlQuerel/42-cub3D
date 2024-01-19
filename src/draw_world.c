@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_world.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:53:37 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/18 18:39:50 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/19 14:24:22 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,11 @@
 
 void	draw_floor(t_data *data, int x, int start, int *i)
 {
-	int	color;
-
 	while (*i <= start && *i < IMG_HEIGHT)
 	{
 		if (!data->floor.img)
 		{
-			color = data->floor_color[0];
-			color <<= 8;
-			color += data->floor_color[1];
-			color <<= 8;
-			color += data->floor_color[2];
-			ft_my_put_pixel(data, *i, x, color);
+			ft_my_put_pixel(data, *i, x, data->floor_color_2);
 			(*i)++;
 		}
 	}
@@ -62,18 +55,11 @@ void	draw_wall(t_data *data, int x, int end, int *i)
 
 void	draw_ceiling(t_data *data, int x, int *i)
 {
-	int	color;
-
 	while (*i < IMG_HEIGHT)
 	{
 		if (!data->ceiling.img)
 		{
-			color = data->ceiling_color[0];
-			color <<= 8;
-			color += data->ceiling_color[1];
-			color <<= 8;
-			color += data->ceiling_color[2];
-			ft_my_put_pixel(data, *i, x, color);
+			ft_my_put_pixel(data, *i, x, data->ceiling_color_2);
 			(*i)++;
 		}
 	}
