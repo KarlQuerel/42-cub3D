@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:58:33 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/19 14:20:26 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/19 15:15:53 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,23 @@ enum e_parse
 	MAP,
 };
 
+
+# define	ALICE_D_1A "img/XPM/Dialog/Alice_1-a.xpm"
+# define	ALICE_D_1B "img/XPM/Dialog/Alice_1-b.xpm"
+# define	ALICE_D_2A "img/XPM/Dialog/Alice_2-a.xpm"
+# define	ALICE_D_2B "img/XPM/Dialog/Alice_2-b.xpm"
+# define	ALICE_D_3 "img/XPM/Dialog/Alice_3.xpm"
+# define	ALICE_D_4 "img/XPM/Dialog/Alice_4.xpm"
+# define	RABBIT_D_1 "img/XPM/Dialog/Rabbit_1.xpm"
+# define	RABBIT_D_2A "img/XPM/Dialog/Rabbit_2-a.xpm"
+# define	RABBIT_D_2B "img/XPM/Dialog/Rabbit_2-b.xpm"
+# define	RABBIT_D_3A "img/XPM/Dialog/Rabbit_3-a.xpm"
+# define	RABBIT_D_3B "img/XPM/Dialog/Rabbit_3-b.xpm"
+
+
 enum e_dialog
 {
-	DIALOG_NOT_STARTED,
+	DIALOG_NOT_STARTED = 0,
 	ALICE_1,
 	ALICE_2,
 	ALICE_3,
@@ -169,6 +183,7 @@ typedef struct s_data
 
 	t_img_info	door;
 	t_img_info	dialog_box;
+	t_img_info	dialog[11];
 	int			time;
 	long		time_2_le_retour;
 	bool		display_catterpilar;
@@ -306,7 +321,8 @@ bool	get_door(t_data *data);
 bool	get_characters(t_data *data);
 void	draw_dialog_box(t_data *data, int x, int y);
 
-void    clear_characters(t_data *data);
-void    setup_characters(t_data *data);
+void	clear_characters(t_data *data);
+void	setup_characters(t_data *data);
+bool	get_text(t_data *data);
 
 #endif

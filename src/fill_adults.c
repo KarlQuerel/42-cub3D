@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 18:27:31 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/18 18:32:05 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/19 14:51:34 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ bool	get_characters(t_data *data)
 	if (!get_alice(data) || !get_catterpilar(data) || \
 			!get_white_rabbit(data) || \
 			!get_door(data) || \
-			!get_dialog_box(data))
+			!get_dialog_box(data) || \
+			!get_text(data))
 		return (false);
 	return (true);
 }

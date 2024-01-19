@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:44:49 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/19 13:47:58 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/19 15:17:08 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,10 +100,11 @@ void	render(t_data *data)
 	data->time++;
 	if (data->time / 200 > 16)
 		data->time = 0;
-	update_time(data);
+	data_clear(data);
 	close_doors(data);
 	if (data->controls.door)
 		open_doors(data);
+	update_time(data);
 	while (i < IMG_WIDTH)
 	{
 		ray = get_ray(data, i);
