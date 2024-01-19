@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:44:49 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/18 19:11:58 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/19 17:58:58 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	door_behavior(t_data *data)
 		data->display_door = true;
 	else
 		data->display_door = false;
-	if (data->map_x == 0 && data->map_y == 3)
+	if (data->map_x == 0 && data->map_y == 10)
 		data->display_catterpilar = true;
 	else
 		data->display_catterpilar = false;

@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:44:49 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/19 16:03:45 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/19 18:02:39 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,21 +73,21 @@ static void	update_time(t_data *data)
 {
 	if (data->dialog_stage != DIALOG_FINISH)
 		data->time_2_le_retour++;
-	if (data->time_2_le_retour > 22500)
+	if (data->time_2_le_retour > 16000)
 		data->dialog_stage = DIALOG_FINISH;
-	else if (data->time_2_le_retour > 20000)
+	else if (data->time_2_le_retour > 13500)
 		data->dialog_stage = ALICE_4;
-	else if (data->time_2_le_retour > 17500)
+	else if (data->time_2_le_retour > 11000)
 		data->dialog_stage = WHITE_RABBIT_3;
-	else if (data->time_2_le_retour > 15000)
+	else if (data->time_2_le_retour > 8500)
 		data->dialog_stage = ALICE_3;
 	else if (data->time_2_le_retour > 12500)
 		data->dialog_stage = WHITE_RABBIT_2;
-	else if (data->time_2_le_retour > 10000)
+	else if (data->time_2_le_retour > 6000)
 		data->dialog_stage = ALICE_2;
-	else if (data->time_2_le_retour > 7500)
+	else if (data->time_2_le_retour > 3500)
 		data->dialog_stage = WHITE_RABBIT_1;
-	else if (data->time_2_le_retour > 5000)
+	else if (data->time_2_le_retour > 1000)
 		data->dialog_stage = ALICE_1;
 }
 
@@ -98,7 +98,7 @@ void	render(t_data *data)
 
 	i = 0;
 	data->time++;
-	if (data->time / 200 > 16)
+	if (data->time / 100 > 16)
 		data->time = 0;
 	// data_clear_2(data);
 	close_doors(data);

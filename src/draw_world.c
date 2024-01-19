@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:53:37 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/19 14:24:22 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/19 18:08:38 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	draw_wall(t_data *data, int x, int end, int *i)
 			color = ((int *)data->west.addr)[tex_y * TEX_HEIGHT + data->tex_x];
 		else
 			color = ((int *)data->east.addr)[tex_y * TEX_HEIGHT + data->tex_x];
-		if (data->side - 2)
+		if (!data->display_door)
 			color = (color >> 1) & 8355711;
 		ft_my_put_pixel(data, *i, x, color);
 		(*i)++;
@@ -74,7 +74,7 @@ void	draw_catterpilar(t_data *data, int x, int end, int i)
 	{
 		tex_y = (int)data->tex_pos_tmp & (128 - 1);
 		data->tex_pos_tmp += data->step_all;
-		color = ((int *)data->catterpilar[data->time / 200].addr) \
+		color = ((int *)data->catterpilar[data->time / 100].addr) \
 			[tex_y * 128 + data->tex_x];
 		if (color > 0)
 			ft_my_put_pixel(data, i, x, color);
