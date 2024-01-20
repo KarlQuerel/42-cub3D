@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_mlx.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 13:10:52 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/20 13:14:02 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/20 14:51:25 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,10 @@ void	init_values(t_data *data)
 	data->controls.right_mouse = false;
 	data->time = 0;
 	data->still_run = true;
-	// restore_floor_player(data);
-	// ft_print_strs(data->map);
 	data->time_2_le_retour = 0;
 	data->dialog_stage = DIALOG_NOT_STARTED;
 	opti(data);
 	restore_floor_player(data);
-	// mlx_destroy_image(data->mlx, data->door.img);
-	// mlx_destroy_image(data->mlx, data->dialog_box.img);
 }
 
 void	mini_mlx_clear(t_data *data)
