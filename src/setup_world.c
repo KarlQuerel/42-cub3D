@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_world.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 20:58:53 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/20 15:13:37 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/20 15:21:06 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ bool	fill_new_line(t_data *data, char **line)
 	type = identify_line(*line);
 	if (!type)
 		return (false);
-	if ((NORTH <= type && type < DOOR_2) || ( FLOOR <= type && type <= CEILING))
+	if ((NORTH <= type && type < DOOR_2) || (FLOOR <= type && type <= CEILING))
 	{
 		return (fill_functions[type](data, *line));
 	}
