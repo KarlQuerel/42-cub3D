@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:44:49 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/20 14:51:45 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/20 15:15:33 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,17 @@ static bool	side_assignment(t_data *data, t_v2f delta_dist)
 		data->side_dist[0] += delta_dist[0];
 		data->map_x += data->step[0];
 		data->side = 2 - (data->map_x > data->player_pos[0]);
+		if (data->map[data->map_x][data->map_y] == 'D')
+			return (data->side = DOOR, true);
 	}
 	else
 	{
 		data->side_dist[1] += delta_dist[1];
 		data->map_y += data->step[1];
 		data->side = EAST - (data->map_y > data->player_pos[1]);
+		if (data->map[data->map_x][data->map_y] == 'D')
+			return (data->side = DOOR_2, true);
 	}
-	if (data->map[data->map_x][data->map_y] == 'D')
-		return (data->side = DOOR, true);
 	if (data->map[data->map_x][data->map_y] == '1')
 	{
 		if (data->map_x == 0 && data->map_y == 10)

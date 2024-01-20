@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 20:58:53 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/18 09:04:54 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/20 15:13:37 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ bool	fill_new_line(t_data *data, char **line)
 {
 	int				type;
 	static bool		(*fill_functions[])() = {NULL, fill_north, fill_south,
-		fill_west, fill_east, fill_ceiling, fill_floor};
+		fill_west, fill_east, NULL, fill_ceiling, fill_floor};
 
 	type = identify_line(*line);
 	if (!type)
 		return (false);
-	if (NORTH <= type && type <= CEILING)
+	if ((NORTH <= type && type < DOOR_2) || ( FLOOR <= type && type <= CEILING))
 	{
 		return (fill_functions[type](data, *line));
 	}

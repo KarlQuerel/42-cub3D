@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_world.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 13:53:37 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/20 14:51:05 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/20 15:17:11 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	draw_floor(t_data *data, int x, int start, int *i)
 {
-	static int	*imgs[5] = {NULL, NULL, NULL, NULL, NULL};
+	static int	*imgs[] = {NULL, NULL, NULL, NULL, NULL, NULL};
 	int			color;
 	int			tex_y;
 
@@ -25,12 +25,13 @@ void	draw_floor(t_data *data, int x, int start, int *i)
 		imgs[2] = (int *)data->south.addr;
 		imgs[3] = (int *)data->west.addr;
 		imgs[4] = (int *)data->east.addr;
+		imgs[5] = (int *)data->door.addr;
 	}
 	while (*i <= start && *i < IMG_HEIGHT)
 	{
 		tex_y = (int)data->tex_pos & (TEX_HEIGHT - 1);
 		color = imgs[data->side][tex_y * TEX_HEIGHT + data->tex_x];
-		if (data->side)
+		if (data->side && data->side != DOOR_2)
 			color = (color >> 1) & 8355711;
 		ft_my_put_pixel(data, *i, x, data->floor_color_2);
 		(*i)++;
@@ -39,7 +40,7 @@ void	draw_floor(t_data *data, int x, int start, int *i)
 
 void	draw_wall(t_data *data, int x, int end, int *i)
 {
-	static int	*imgs[5] = {NULL, NULL, NULL, NULL, NULL};
+	static int	*imgs[] = {NULL, NULL, NULL, NULL, NULL, NULL};
 	int			color;
 	int			tex_y;
 
@@ -50,6 +51,7 @@ void	draw_wall(t_data *data, int x, int end, int *i)
 		imgs[2] = (int *)data->south.addr;
 		imgs[3] = (int *)data->west.addr;
 		imgs[4] = (int *)data->east.addr;
+		imgs[5] = (int *)data->door.addr;
 	}
 	data->tex_pos_tmp = data->tex_pos;
 	while (*i <= end && *i < IMG_HEIGHT)
@@ -66,7 +68,7 @@ void	draw_wall(t_data *data, int x, int end, int *i)
 
 void	draw_ceiling(t_data *data, int x, int *i)
 {
-	static int	*imgs[5] = {NULL, NULL, NULL, NULL, NULL};
+	static int	*imgs[] = {NULL, NULL, NULL, NULL, NULL, NULL};
 	int			color;
 	int			tex_y;
 
@@ -77,6 +79,7 @@ void	draw_ceiling(t_data *data, int x, int *i)
 		imgs[2] = (int *)data->south.addr;
 		imgs[3] = (int *)data->west.addr;
 		imgs[4] = (int *)data->east.addr;
+		imgs[5] = (int *)data->door.addr;
 	}
 	while (*i < IMG_HEIGHT)
 	{

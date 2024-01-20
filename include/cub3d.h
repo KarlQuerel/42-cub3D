@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:58:33 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/20 12:31:23 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/20 15:09:42 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ enum e_parse
 	SOUTH,
 	WEST,
 	EAST,
+	DOOR_2,
 	FLOOR,
 	CEILING,
 	OUT,
