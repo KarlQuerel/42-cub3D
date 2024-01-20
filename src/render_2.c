@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   render_2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:44:49 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/20 11:27:20 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/20 14:51:45 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-// void	door_behavior(t_data *data)
-// {
-// 	if (data->map[data->map_x][data->map_y] == 'D')
-// 		data->side = DOOR;
-// 	// else
-// 	// 	data->display_door = false;
-// }
 
 static bool	side_assignment(t_data *data, t_v2f delta_dist)
 {
@@ -27,20 +19,12 @@ static bool	side_assignment(t_data *data, t_v2f delta_dist)
 		data->side_dist[0] += delta_dist[0];
 		data->map_x += data->step[0];
 		data->side = 2 - (data->map_x > data->player_pos[0]);
-		// if (data->map_x > data->player_pos[0])
-		// 	data->side = NORTH;
-		// else
-		// 	data->side = SOUTH;
 	}
 	else
 	{
 		data->side_dist[1] += delta_dist[1];
 		data->map_y += data->step[1];
 		data->side = EAST - (data->map_y > data->player_pos[1]);
-		// if (data->map_y > data->player_pos[1])
-		// 	data->side = WEST;
-		// else
-		// 	data->side = EAST;
 	}
 	if (data->map[data->map_x][data->map_y] == 'D')
 		return (data->side = DOOR, true);
