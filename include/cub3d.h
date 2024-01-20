@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 16:58:33 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/19 18:34:35 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/20 12:31:23 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <errno.h>
 
 // Movement Macros
-# define MOVE_SPEED		0.006
-# define ROT_SPEED		0.002
+# define MOVE_SPEED		0.03
+# define ROT_SPEED		0.01
 
 // Window Macros
 # define IMG_WIDTH		960
@@ -64,7 +64,8 @@ typedef float	t_v2f	__attribute__((vector_size (8)));
 
 enum e_parse
 {
-	NORTH = 1,
+	DOOR = 0,
+	NORTH,
 	SOUTH,
 	WEST,
 	EAST,
@@ -119,6 +120,7 @@ typedef struct s_data
 	void		*win;
 	void		*mlx;
 	t_img_info	img;
+	t_img_info	door;
 	t_img_info	north;
 	t_img_info	south;
 	t_img_info	west;
@@ -160,7 +162,6 @@ typedef struct s_data
 	t_img_info	catterpilar[17];
 	t_img_info	cheshire_cat[6];
 	t_img_info	white_rabbit[10];
-	t_img_info	door;
 	t_img_info	dialog_box;
 	t_img_info	dialog[8];
 	int			time;
@@ -313,13 +314,13 @@ bool	atocolor(char *str, t_color *color);
 /* Render_1 */
 t_v2f	get_ray(t_data *data, int x);
 void	wall_calc(t_data *data, t_v2f ray, float perp_wall_dist);
-t_v2f	delta_dist_calc(t_data *data, t_v2f *ray);
+// t_v2f	delta_dist_calc(t_data *data, t_v2f *ray);
 void	render(t_data *data);
 
 /* Render_2 */
 void	door_behavior(t_data *data);
-bool	side_assignment(t_data *data, t_v2f delta_dist);
-void	side_calc(t_data *data, t_v2f ray, t_v2f delta_dist);
+// bool	side_assignment(t_data *data, t_v2f delta_dist);
+// void	side_calc(t_data *data, t_v2f ray, t_v2f delta_dist);
 void	next_cube(t_data *data, t_v2f ray, int x, t_v2f delta_dist);
 
 /* Render_3 */

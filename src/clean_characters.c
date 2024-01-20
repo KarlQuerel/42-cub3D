@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   clean_characters.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:38:50 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/19 17:41:32 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/20 13:21:24 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,10 @@ void	clear_characters(t_data *data)
 			mlx_destroy_image(data->mlx, data->alice[i].img);
 		i++;
 	}
-	mlx_destroy_image(data->mlx, data->door.img);
-	mlx_destroy_image(data->mlx, data->dialog_box.img);
-}
-
-void	set_null(t_data *data)
-{
-	data->door.img = NULL;
-	data->door.addr = NULL;
-	data->dialog_box.img = NULL;
-	data->dialog_box.addr = NULL;
+	if (data->door.img)
+		mlx_destroy_image(data->mlx, data->door.img);
+	if (data->dialog_box.img)
+		mlx_destroy_image(data->mlx, data->dialog_box.img);
 }
 
 void	setup_characters(t_data *data)
@@ -52,22 +46,18 @@ void	setup_characters(t_data *data)
 	while ((i < 10))
 	{
 		data->white_rabbit[i].img = NULL;
-		data->white_rabbit[i].addr = NULL;
 		i++;
 	}
 	i = 0;
 	while ((i < 18))
 	{
 		data->catterpilar[i].img = NULL;
-		data->catterpilar[i].addr = NULL;
 		i++;
 	}
 	i = 0;
 	while ((i < 18))
 	{
 		data->alice[i].img = NULL;
-		data->alice[i].addr = NULL;
 		i++;
 	}
-	set_null(data);
 }

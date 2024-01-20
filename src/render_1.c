@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:44:49 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/19 18:14:06 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/20 12:15:47 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	wall_calc(t_data *data, t_v2f ray, float perp_wall_dist)
 	* data->step_all;
 }
 
-t_v2f	delta_dist_calc(t_data *data, t_v2f *ray)
+static t_v2f	delta_dist_calc(t_data *data, t_v2f *ray)
 {
 	t_v2f	delta_dist;
 

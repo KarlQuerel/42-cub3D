@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 11:06:48 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/19 17:28:19 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/20 13:16:34 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,14 @@ void	make_data_null(t_data *data)
 	data->east.img = NULL;
 	data->south.img = NULL;
 	data->west.img = NULL;
+	data->door.img = NULL;
+	data->dialog_box.img = NULL;
 	data->map = NULL;
+	setup_characters(data);
+	setup_text(data);
+	data->nb_side_parsed = 0;
+
+
 }
 
 void	unleek_gnl(int fd)
@@ -43,13 +50,13 @@ int	update_display(t_data *data)
 bool	check_all(t_data *data, char **av)
 {
 	if (!setup_world(data, av[1]))
-		return (data_clear_2(data), false);
+		return (data_clear(data), false);
 	if (!checkup_map(data->map))
-		return (data_clear_2(data), false);
+		return (data_clear(data), false);
 	if (!find_player(data))
-		return (data_clear_2(data), false);
+		return (data_clear(data), false);
 	if (!get_characters(data))
-		return (false);
+		return (data_clear(data), false);
 	return (true);
 }
 
@@ -57,15 +64,13 @@ int	main(int argc, char **argv)
 {
 	t_data	data;
 
-	setup_characters(&data);
 	if (argc != 2)
 		return (err("You must specify a map name, and only a map name."), 1);
 	if (!is_cub_file(argv[1]))
 		return (err("Your map have to be a cub file."), 1);
+	make_data_null(&data);
 	if (!setup_mlx(&data))
 		return (1);
-	make_data_null(&data);
-	data.nb_side_parsed = 0;
 	if (!check_all(&data, argv))
 		return (1);
 	init_values(&data);

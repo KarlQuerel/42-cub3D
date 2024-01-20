@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 13:10:52 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/19 18:25:25 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/01/20 13:14:02 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,20 @@ void	restore_floor_player(t_data *data)
 	int		j;
 
 	i = 0;
-	while (data->map[i])
+	if (data->map)
 	{
-		j = 0;
-		while (data->map[i][j])
+		while (data->map[i])
 		{
-			c = data->map[i][j];
-			if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-				data->map[i][j] = '0';
-			j++;
+			j = 0;
+			while (data->map[i][j])
+			{
+				c = data->map[i][j];
+				if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
+					data->map[i][j] = '0';
+				j++;
+			}
+			i++;
 		}
-		i++;
 	}
 }
 
@@ -61,12 +64,14 @@ void	init_values(t_data *data)
 	data->controls.right_mouse = false;
 	data->time = 0;
 	data->still_run = true;
-	restore_floor_player(data);
-	ft_print_strs(data->map);
+	// restore_floor_player(data);
+	// ft_print_strs(data->map);
 	data->time_2_le_retour = 0;
 	data->dialog_stage = DIALOG_NOT_STARTED;
-	setup_text(data);
 	opti(data);
+	restore_floor_player(data);
+	// mlx_destroy_image(data->mlx, data->door.img);
+	// mlx_destroy_image(data->mlx, data->dialog_box.img);
 }
 
 void	mini_mlx_clear(t_data *data)

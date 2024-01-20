@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkup_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 11:18:43 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/18 18:14:34 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/01/20 14:44:26 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,6 @@ bool	checkup_map(char **map)
 	if (!is_char_in_map_are_normal(map))
 		return (err("Invalid characters in map"), false);
 	if (!is_a_zero_next_to_wrong(map))
-		return (err("Invalid door placement"), false);
+		return (err("Invalid ground placement"), false);
 	return (true);
 }
