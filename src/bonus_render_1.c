@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_1.c                                         :+:      :+:    :+:   */
+/*   bonus_render_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 10:23:17 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/01 10:19:54 by pcheron          ###   ########.fr       */
+/*   Created: 2024/02/01 10:17:22 by pcheron           #+#    #+#             */
+/*   Updated: 2024/02/03 10:17:25 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include/cub3d_bonus.h"
 
 static t_v2f	get_ray(t_data *data, int x)
 {
@@ -23,6 +23,7 @@ static t_v2f	get_ray(t_data *data, int x)
 	ray[1] = data->camera_dir[1] + data->plane[1] * cam;
 	return (ray);
 }
+
 
 static void	side_calc(t_data *data, t_v2f ray, t_v2f delta_dist)
 {
@@ -81,7 +82,7 @@ static bool	side_assignment(t_data *data, t_v2f delta_dist)
 	return (false);
 }
 
-void	next_cube(t_data *data, t_v2f ray, int x, t_v2f delta_dist)
+static void	next_cube(t_data *data, t_v2f ray, int x, t_v2f delta_dist)
 {
 	side_calc(data, ray, delta_dist);
 	while (!side_assignment(data, delta_dist))
@@ -94,14 +95,25 @@ void	next_cube(t_data *data, t_v2f ray, int x, t_v2f delta_dist)
 void	render(t_data *data)
 {
 	t_v2f	ray;
+	t_v2f	dist;
 	int		i;
 
 	i = 0;
+	data->time++;
+	if (data->time / 100 > 16)
+		data->time = 0;
+	close_doors(data);
+	if (data->controls.door)
+		open_doors(data);
+	update_time(data);
 	while (i < IMG_WIDTH)
 	{
 		ray = get_ray(data, i);
-		next_cube(data, ray, i, delta_dist_calc(data, &ray));
+		dist = delta_dist_calc(data, &ray);
+		next_cube(data, ray, i, dist);
+		last_cube(data, ray, i, dist);
 		i++;
 	}
+	draw_all(data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 }

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   bonus_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/23 08:41:23 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/27 17:03:34 by pcheron          ###   ########.fr       */
+/*   Created: 2024/01/27 17:02:35 by pcheron           #+#    #+#             */
+/*   Updated: 2024/02/03 10:01:23 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/cub3d.h"
+#include "../include/cub3d_bonus.h"
 
 static bool	is_cub_file(char *line)
 {
@@ -35,6 +35,8 @@ int	main(int argc, char **argv)
 		return (1);
 	if (!setup_game(&data))
 		return (1);
+	if (!setup_bonus(&data))
+		return (1);
 	render(&data);
 	mlx_hook(data.win, EXIT, 0, data_clear, &data);
 	mlx_hook(data.win, 02, KeyPressMask, key_event, &data);
@@ -44,5 +46,6 @@ int	main(int argc, char **argv)
 	mlx_hook(data.win, 6, 1L << 6, mouse_handler, &data);
 	mlx_loop_hook(data.mlx, update_display, &data);
 	mlx_loop(data.mlx);
+
 	return (0);
 }

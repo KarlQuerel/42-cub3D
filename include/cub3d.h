@@ -5,22 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/13 16:58:33 by kquerel           #+#    #+#             */
-/*   Updated: 2024/01/20 15:09:42 by pcheron          ###   ########.fr       */
+/*   Created: 2024/01/23 08:41:52 by pcheron           #+#    #+#             */
+/*   Updated: 2024/02/03 10:10:52 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
+// ************************************************************************** //
+//  INCLUDES
+// ************************************************************************** //
+
 # include "../minilibx-linux/mlx_int.h"
 # include "../minilibx-linux/mlx.h"
 # include "../libft/include/libft.h"
 # include <errno.h>
 
+// ************************************************************************** //
+//  DEFINES
+// ************************************************************************** //
+
 // Movement Macros
-# define MOVE_SPEED		0.03
-# define ROT_SPEED		0.01
+# define MOVE_SPEED		0.011
+# define ROT_SPEED		0.004
+# define PI				3.14
 
 // Window Macros
 # define IMG_WIDTH		960
@@ -30,8 +39,6 @@
 # define MINIMAP_WIDTH	20
 # define MINIMAP_HEIGHT 20
 # define TILE_SIZE		8
-
-# define PI				3.14
 
 // Keys Macros
 # define UP				65362
@@ -58,9 +65,29 @@
 // Game Macros
 # define DOOR_OPENED	'O'
 # define DOOR_CLOSED	'D'
+# define COLLECTIBLE	'C'
+# define CHESHIRE_CAT	'P'
 
-typedef float	t_color	__attribute__((vector_size (16)));
-typedef float	t_v2f	__attribute__((vector_size (8)));
+// dialog state
+enum e_dialog
+{
+	DIALOG_NOT_STARTED = 0,
+	ALICE_1,
+	ALICE_2,
+	ALICE_3,
+	ALICE_4,
+	WHITE_RABBIT_1,
+	WHITE_RABBIT_2,
+	WHITE_RABBIT_3,
+	DIALOG_FINISH_1,
+};
+
+// ALICE_5	// Hi mister cat, Would you tell me, please, which way I ought to go from here?
+// ALICE_6	// I don't much care where 
+// ALICE_7	// The mushrooms ? there is no mushroom here, no ?
+// CHESHIRE_CAT_1	// Hello there
+// CHESHIRE_CAT_2	// That depends a good deal on where you want to get to.
+// CHESHIRE_CAT_3	// Then it doesn't matter which way you go. But you should eat the mushrooms
 
 enum e_parse
 {
@@ -77,20 +104,14 @@ enum e_parse
 	MAP,
 };
 
-enum e_dialog
-{
-	DIALOG_NOT_STARTED = 0,
-	ALICE_1,
-	ALICE_2,
-	ALICE_3,
-	ALICE_4,
-	WHITE_RABBIT_1,
-	WHITE_RABBIT_2,
-	WHITE_RABBIT_3,
-	DIALOG_FINISH,
-};
 
-/* Image info for the MLX */
+// ************************************************************************** //
+//  STRUCTURES
+// ************************************************************************** //
+
+typedef float	t_color	__attribute__((vector_size (16)));
+typedef float	t_v2f	__attribute__((vector_size (8)));
+
 typedef struct s_img_info
 {
 	void	*img;
@@ -115,24 +136,32 @@ typedef struct s_control
 	bool		door;
 }	t_control;
 
-/* General structure */
 typedef struct s_data
 {
+	//			mlx
 	void		*win;
 	void		*mlx;
 	t_img_info	img;
-	t_img_info	door;
+
+	//			parsing
+	int			fd;
+	int			nb_side_parsed;
+
+	//			img
 	t_img_info	north;
 	t_img_info	south;
 	t_img_info	west;
 	t_img_info	east;
 	t_img_info	floor;
 	t_img_info	ceiling;
+
+
+	//			render
+
 	t_color		floor_color;
 	int			floor_color_2;
 	t_color		ceiling_color;
 	int			ceiling_color_2;
-	int			nb_side_parsed;
 	int			img_width;
 	int			img_height;
 	char		**map;
@@ -153,198 +182,101 @@ typedef struct s_data
 	int			it_y;
 	t_v2f		step;
 	t_v2f		side_dist;
-	int			draw_start;
-	int			draw_end;
 	void		*minimap;
 	int			dir;
-	int			fd;
 	bool		in_win;
+	int			time;
+	long		time_2_le_retour;
+
+	//			draw
+	int			draw_start;
+	int			draw_end;
+
+	//			bonus
+	t_img_info	door;
 	t_img_info	alice[18];
 	t_img_info	catterpilar[17];
 	t_img_info	cheshire_cat[6];
 	t_img_info	white_rabbit[10];
 	t_img_info	dialog_box;
 	t_img_info	dialog[8];
-	int			time;
-	long		time_2_le_retour;
+	int			dialog_stage;
 	bool		display_catterpilar;
 	bool		display_door;
-	int			dialog_stage;
-	bool		still_run;
+	bool		drogue;
+	int			drogue_timer;
+
 }	t_data;
 
-/* Checkup_map */
-bool	check_left_wall(char **map);
-bool	check_right_wall(char **map);
-int		nb_player(char **map);
-bool	is_many_map(char **map);
-bool	checkup_map(char **map);
+// ************************************************************************** //
+//  PROTOTYPES
+// ************************************************************************** //
 
-/* Check_up_map_utils */
-int		count_char_in_map(char c, char **map);
-bool	is_char_in_map_are_normal(char **map);
-bool	is_char_valid_in_map(char c);
-bool	is_a_zero_next_to_wrong(char **map);
-void	err(char *s);
+//		setup
+void	make_data_null(t_data *data);
 
-/* Check_up_map_utils_2 */
-bool	is_cub_file(char *line);
 
-/* Clean_characters */
-void	clear_characters(t_data *data);
-void	set_null(t_data *data);
-void	setup_characters(t_data *data);
-
-/* Door */
-void	open_doors(t_data *data);
-bool	can_i_close_the_door(t_data *data, int x, int y);
-void	close_doors(t_data *data);
-
-/* Draw_characters */
-void	my_put_img_to_img_2(t_data *data, t_img_info *src, int x, int y);
-void	my_put_img_to_img(t_data *data, t_img_info *src, int x, int y);
-void	draw_alice(t_data *data, int x, int y);
-void	draw_white_rabbit(t_data *data, int x, int y);
-
-/* Draw_dialog_box */
-void	draw_dialog_box_left(t_data *data, int x, int y);
-void	draw_dialog_box_mid(t_data *data, int x, int y);
-void	draw_dialog_box_right(t_data *data, int x, int y);
-void	draw_dialog_box(t_data *data, int x, int y);
-
-/* Draw_smart */
-void	draw_msg(t_data *data, int x, int y);
-
-/* Draw_utils */
-void	ft_my_put_pixel(t_data *data, int x, int y, int color);
-
-/* Draw_world */
-void	draw_floor(t_data *data, int x, int start, int *i);
-void	draw_wall(t_data *data, int x, int end, int *i);
-void	draw_ceiling(t_data *data, int x, int *i);
-void	draw_catterpilar(t_data *data, int x, int end, int i);
-void	draw_slice(t_data *data, int x);
-
-/* Fill_adults */
-bool	get_dialog_box(t_data *data);
-bool	get_door(t_data *data);
-bool	get_catterpilar(t_data *data);
-bool	get_white_rabbit(t_data *data);
-bool	get_characters(t_data *data);
-
-/* Fill_sides */
+//		fill world
 bool	fill_north(t_data *data, char *line);
 bool	fill_south(t_data *data, char *line);
 bool	fill_west(t_data *data, char *line);
 bool	fill_east(t_data *data, char *line);
-
-/* Draw */
-void	ft_my_put_pixel(t_data *data, int x, int y, int color);
-void	draw_floor(t_data *data, int x, int start, int *i);
-void	draw_wall(t_data *data, int x, int end, int *i);
-void	draw_ceiling(t_data *data, int x, int *i);
-void	draw_slice(t_data *data, int x);
-
-/* Fill_text */
-void	setup_text(t_data *data);
-void	clear_text(t_data *data);
-bool	get_text(t_data *data);
-
-/* Fill_utils */
-char	*ft_strndup(char *s, int size);
-bool	dup_next_world(char *str, char **dest);
-void	jump_word(char **str);
-
-/* Fill_world */
 bool	fill_ceiling(t_data *data, char *line);
 bool	fill_floor(t_data *data, char *line);
+bool	fill_new_line(t_data *data, char **line);
 bool	fill_map(t_data *data, char **line);
+bool	fill_map_file(t_data *data, char *map);
+bool	setup_mlx(t_data *data);
 
-/* Get_images */
-bool	upload_img(t_data *data, t_img_info *img, char *file);
-bool	get_alice(t_data *data);
-
-/* Main */
-void	make_data_null(t_data *data);
+//		parse utils
+bool	is_a_white_space(char c);
 void	unleek_gnl(int fd);
-int		update_display(t_data *data);
-bool	check_all(t_data *data, char **av);
+void	jump_word(char **str);
+char	*ft_strndup(char *s, int size);
+bool	dup_next_world(char *str, char **dest);
+void	jump_int(char **str);
+bool	is_alpha(char c);
+bool	atocolor(char *str, t_color *color);
+int		count_char_in_str(char c, char *str);
 
-/* Minimap */
-void	draw_map_components(t_data *data, int x, int y, int color);
-void	draw_minimap(t_data *data, int x, int y);
 
-/* Mlx_handling_1 */
-void	ft_handle_key_arrow(int key, t_data *data);
-void	move(t_data *data);
-int		key_release(int key, t_data *data);
-int		key_event(int keycode, t_data *data);
+//		render
+void	wall_calc(t_data *data, t_v2f ray, float perp_wall_dist);
+t_v2f	delta_dist_calc(t_data *data, t_v2f *ray);
+void	render(t_data *data);
 
-/* Mlx_handling_2 */
-void	rotate_camera(t_data *data);
-void	move_w(t_data *data);
+//		draw
+void	ft_my_put_pixel(t_data *data, int x, int y, int color);
+void	draw_slice(t_data *data, int x);
+
+//		move
 void	move_longitudinal(t_data *data);
-
-/* Mlx_handling_3 */
-void	move_left(t_data *data);
-void	move_right(t_data *data);
 void	move_sideways(t_data *data);
+void	rotate(t_data *data, float angle, t_v2f old_dir);
+int		update_display(t_data *data);
 
-/* Mouse_handling */
+
+//		key / mous handling
+int		key_event(int keycode, t_data *data);
+int		key_release(int key, t_data *data);
 int		enter_win(t_data *data);
 int		leave_win(t_data *data);
 int		mouse_handler(int x, int y, t_data *data);
 
-/* Mouse_move */
-void	rotate(t_v2f *v2f, float angle);
-void	move_mouse(t_data *data);
-
-/* Parsing_utils_1 */
-void	free_strs(char ***strs);
-bool	is_a_white_space(char c);
-int		identify_line(char *str);
-int		count_char_in_str(char c, char *str);
-float	abs_value(float x);
-
-/* Parsing_utils_2 */
-void	jump_int(char **str);
-bool	is_alpha(char c);
-bool	atocolor_continued(char *str, t_color *color, int color_tmp, char *tmp);
-bool	atocolor(char *str, t_color *color);
-
-/* Render_1 */
-t_v2f	get_ray(t_data *data, int x);
-void	wall_calc(t_data *data, t_v2f ray, float perp_wall_dist);
-// t_v2f	delta_dist_calc(t_data *data, t_v2f *ray);
-void	render(t_data *data);
-
-/* Render_2 */
-void	door_behavior(t_data *data);
-// bool	side_assignment(t_data *data, t_v2f delta_dist);
-// void	side_calc(t_data *data, t_v2f ray, t_v2f delta_dist);
-void	next_cube(t_data *data, t_v2f ray, int x, t_v2f delta_dist);
-
-/* Render_3 */
-void	draw_all(t_data *data);
-
-/* Setup_mlx_utils */
-int		data_clear_2(t_data *data);
+//		cleaning
+void	err(char *s);
 int		data_clear(t_data *data);
+void	free_strs(char ***strs);
 
-/* Setup_mlx */
-void	restore_floor_player(t_data *data);
-void	opti(t_data *data);
-void	init_values(t_data *data);
-void	mini_mlx_clear(t_data *data);
-bool	setup_mlx(t_data *data);
+//		checkup map
+int		count_char_in_map(char c, char **map);
+bool	is_char_in_map_are_normal(char **map);
+bool	is_char_valid_in_map(char c);
+bool	is_a_zero_next_to_wrong(char **map);
+void	setup_dir(t_data *data, int x, int y);
+bool	checkup_map(char **map);
 
-/* Setup_player */
-void	good_dir(t_data *data, int x, int y);
-bool	check_size_wall(t_data *data);
-bool	find_player(t_data *data);
-
-/* Setup_world */
-bool	fill_new_line(t_data *data, char **line);
-bool	setup_world(t_data *data, char *map);
+//
+bool	setup_game(t_data *data);
 
 #endif

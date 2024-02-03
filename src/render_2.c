@@ -5,76 +5,61 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 12:44:49 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/20 15:15:33 by pcheron          ###   ########.fr       */
+/*   Created: 2024/01/23 10:26:01 by pcheron           #+#    #+#             */
+/*   Updated: 2024/01/29 13:43:22 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-static bool	side_assignment(t_data *data, t_v2f delta_dist)
+static float	abs_value(float x)
 {
-	if (data->side_dist[0] < data->side_dist[1])
-	{
-		data->side_dist[0] += delta_dist[0];
-		data->map_x += data->step[0];
-		data->side = 2 - (data->map_x > data->player_pos[0]);
-		if (data->map[data->map_x][data->map_y] == 'D')
-			return (data->side = DOOR, true);
-	}
-	else
-	{
-		data->side_dist[1] += delta_dist[1];
-		data->map_y += data->step[1];
-		data->side = EAST - (data->map_y > data->player_pos[1]);
-		if (data->map[data->map_x][data->map_y] == 'D')
-			return (data->side = DOOR_2, true);
-	}
-	if (data->map[data->map_x][data->map_y] == '1')
-	{
-		if (data->map_x == 0 && data->map_y == 10)
-			data->display_catterpilar = true;
-		else
-			data->display_catterpilar = false;
-		return (true);
-	}
-	return (false);
+	return ((x < 0) * -x + x * (x >= 0));
 }
 
-static void	side_calc(t_data *data, t_v2f ray, t_v2f delta_dist)
+void	wall_calc(t_data *data, t_v2f ray, float perp_wall_dist)
 {
-	if (ray[0] < 0)
-	{
-		data->step[0] = -1;
-		data->side_dist[0] = (data->player_pos[0] - data->map_x) \
-		* delta_dist[0];
-	}
+	int		line_height;
+	float	wall_x;
+
+	line_height = (int)(IMG_HEIGHT / perp_wall_dist);
+	data->draw_start = (IMG_HEIGHT - line_height) / 2;
+	if (data->draw_start < 0)
+		data->draw_start = 0;
+	if (data->draw_start >= IMG_HEIGHT)
+		data->draw_start = IMG_HEIGHT - 1;
+	data->draw_end = (line_height + IMG_HEIGHT) / 2;
+	if (data->draw_end >= IMG_HEIGHT)
+		data->draw_end = IMG_HEIGHT - 1;
+	if (!(data->side / 3))
+		wall_x = data->player_pos[1] + perp_wall_dist * ray[1];
 	else
-	{
-		data->step[0] = 1;
-		data->side_dist[0] = (data->map_x + 1.0 - data->player_pos[0]) \
-		* delta_dist[0];
-	}
-	if (ray[1] < 0)
-	{
-		data->step[1] = -1;
-		data->side_dist[1] = (data->player_pos[1] - data->map_y) * \
-		delta_dist[1];
-	}
-	else
-	{
-		data->step[1] = 1;
-		data->side_dist[1] = (data->map_y + 1.0 - data->player_pos[1]) * \
-		delta_dist[1];
-	}
+		wall_x = data->player_pos[0] + perp_wall_dist * ray[0];
+	wall_x -= (int)wall_x;
+	data->tex_x = (int)(wall_x * (float)TEX_WIDTH);
+	if (!(data->side / 3) && ray[0] > 0)
+		data->tex_x = TEX_WIDTH - data->tex_x - 1;
+	if (data->side / 3 && ray[1] < 0)
+		data->tex_x = TEX_WIDTH - data->tex_x - 1;
+	data->step_all = 1.0 * TEX_HEIGHT / line_height;
+	data->tex_pos = (data->draw_start - IMG_HEIGHT / 2 + line_height / 2) \
+	* data->step_all;
 }
 
-void	next_cube(t_data *data, t_v2f ray, int x, t_v2f delta_dist)
+t_v2f	delta_dist_calc(t_data *data, t_v2f *ray)
 {
-	side_calc(data, ray, delta_dist);
-	while (!side_assignment(data, delta_dist))
-		;
-	wall_calc(data, ray, data->side_dist[data->side / 3] \
-	- delta_dist[data->side / 3]);
-	draw_slice(data, x);
+	t_v2f	delta_dist;
+
+	// printf("<%f/%f>\n", (*ray))
+	data->map_x = (int)data->player_pos[0];
+	data->map_y = (int)data->player_pos[1];
+	if (!(*ray)[0])
+		delta_dist[0] = 1e30;
+	else
+		delta_dist[0] = abs_value(1 / (*ray)[0]);
+	if (!(*ray)[1])
+		delta_dist[1] = 1e30;
+	else
+		delta_dist[1] = abs_value(1 / (*ray)[1]);
+	return (delta_dist);
 }
