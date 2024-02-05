@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 09:32:54 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/03 09:37:06 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/04 10:59:26 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ bool	is_char_in_map_are_normal(char **map)
 		{
 			if ((*map)[i] && (*map)[i] != '1' && (*map)[i] != '0' && \
 			(*map)[i] != 'N' && (*map)[i] != 'S' && (*map)[i] != 'W' && \
-			(*map)[i] != 'E' && (*map)[i] != 'D' \
+			(*map)[i] != 'E' && (*map)[i] != 'D' && (*map)[i] != 'C'\
 			&& !is_a_white_space((*map)[i]))
 				return (false);
 			i++;
@@ -54,7 +54,7 @@ bool	is_char_in_map_are_normal(char **map)
 bool	is_char_valid_in_map(char c)
 {
 	return (c == '1' || c == '0' || c == 'N' || c == 'S' || \
-	c == 'W' || c == 'E' || c == 'D');
+	c == 'W' || c == 'E' || c == 'D' || c == 'C');
 }
 
 bool	is_a_zero_next_to_wrong(char **map)

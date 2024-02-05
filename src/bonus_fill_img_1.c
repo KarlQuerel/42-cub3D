@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:26:47 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/30 09:27:23 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/03 11:24:51 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ bool	get_characters(t_data *data)
 			!get_white_rabbit(data) || \
 			!get_door(data) || \
 			!get_dialog_box(data) || \
-			!get_text(data))
+			!get_text(data) || !get_cheschire_cat(data))
 		return (false);
 	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 10:17:22 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/03 10:17:25 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/04 11:57:06 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ void	render(t_data *data)
 	if (data->controls.door)
 		open_doors(data);
 	update_time(data);
+	take_collectibles(data);
 	while (i < IMG_WIDTH)
 	{
 		ray = get_ray(data, i);

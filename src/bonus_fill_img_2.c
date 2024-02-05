@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:28:53 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/30 09:44:47 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/03 11:26:36 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ bool	get_cheschire_cat(t_data *data)
 	while (i < 7)
 	{
 		file[16] = '0' + i;
-		if (!upload_img(data, &((data->dialog)[1]), file))
+		// printf("j'ouvre cette merde : <%s>\n", file);
+		if (!upload_img(data, &((data->cheshire_cat)[i - 1]), file))
 			return (err(strerror(errno)), false);
 		i++;
 	}
