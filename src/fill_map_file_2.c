@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_map_file_2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 09:19:33 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/27 11:11:22 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/05 20:18:55 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ bool	fill_north(t_data *data, char *line)
 		return (false);
 	if (!dup_next_world(line + 2, &new_line))
 		return (false);
-	// printf("<%s>\n", new_line);
 	data->north.img = mlx_xpm_file_to_image(data->mlx, new_line, \
 	&data->img_width, &data->img_height);
 	if (!data->north.img)

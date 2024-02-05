@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_draw.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:29:55 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/03 10:12:45 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/05 20:21:59 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ static void	draw_wall(t_data *data, int x, int end, int *i)
 	int			color;
 	int			tex_y;
 
-	// printf("wtf : %p\n", imgs[0]);
 	if (!imgs[1])
 	{
 		imgs[0] = (int *)data->door.addr;
@@ -97,6 +96,20 @@ void	draw_ceiling(t_data *data, int x, int *i)
 	}
 }
 
+void	draw_slice(t_data *data, int x)
+{
+	int	i;
+	int	tmp;
+
+	i = 0;
+	draw_floor(data, x, data->draw_start, &i);
+	tmp = i;
+	draw_wall(data, x, data->draw_end, &i);
+	if (data->display_catterpilar || data->drogue)
+		draw_catterpilar(data, x, data->draw_end, tmp);
+	draw_ceiling(data, x, &i);
+}
+
 // void	draw_catterpilar(t_data *data, int x, int end, int i) // bonus
 // {
 // 	int	color;
@@ -113,17 +126,3 @@ void	draw_ceiling(t_data *data, int x, int *i)
 // 		(i)++;
 // 	}
 // }
-
-void	draw_slice(t_data *data, int x)
-{
-	int	i;
-	int	tmp;
-
-	i = 0;
-	draw_floor(data, x, data->draw_start, &i);
-	tmp = i;
-	draw_wall(data, x, data->draw_end, &i);
-	if (data->display_catterpilar || data->drogue)
-		draw_catterpilar(data, x, data->draw_end, tmp);
-	draw_ceiling(data, x, &i);
-}

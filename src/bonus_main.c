@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 17:02:35 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/03 10:01:23 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/05 20:22:24 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,5 @@ int	main(int argc, char **argv)
 	mlx_hook(data.win, 6, 1L << 6, mouse_handler, &data);
 	mlx_loop_hook(data.mlx, update_display, &data);
 	mlx_loop(data.mlx);
-
 	return (0);
 }

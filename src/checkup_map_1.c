@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkup_map_1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 10:52:18 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/27 11:49:29 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/05 20:18:40 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ bool	check_right_wall(char **map)
 
 int	nb_player(char **map)
 {
-	// printf("%d %d %d %d\n", count_char_in_map('N', map), count_char_in_map('S', map), count_char_in_map('W', map), count_char_in_map('E', map));
 	return (count_char_in_map('N', map) + count_char_in_map('S', map) \
 	+ count_char_in_map('W', map) + count_char_in_map('E', map));
 }

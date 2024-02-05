@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 08:41:52 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/03 10:10:52 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/05 19:54:20 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,6 @@ enum e_dialog
 	DIALOG_FINISH_1,
 };
 
-// ALICE_5	// Hi mister cat, Would you tell me, please, which way I ought to go from here?
-// ALICE_6	// I don't much care where 
-// ALICE_7	// The mushrooms ? there is no mushroom here, no ?
-// CHESHIRE_CAT_1	// Hello there
-// CHESHIRE_CAT_2	// That depends a good deal on where you want to get to.
-// CHESHIRE_CAT_3	// Then it doesn't matter which way you go. But you should eat the mushrooms
-
 enum e_parse
 {
 	DOOR = 0,
@@ -103,7 +96,6 @@ enum e_parse
 	PLAYER,
 	MAP,
 };
-
 
 // ************************************************************************** //
 //  STRUCTURES
@@ -138,25 +130,19 @@ typedef struct s_control
 
 typedef struct s_data
 {
-	//			mlx
 	void		*win;
 	void		*mlx;
 	t_img_info	img;
 
-	//			parsing
 	int			fd;
 	int			nb_side_parsed;
 
-	//			img
 	t_img_info	north;
 	t_img_info	south;
 	t_img_info	west;
 	t_img_info	east;
 	t_img_info	floor;
 	t_img_info	ceiling;
-
-
-	//			render
 
 	t_color		floor_color;
 	int			floor_color_2;
@@ -188,15 +174,14 @@ typedef struct s_data
 	int			time;
 	long		time_2_le_retour;
 
-	//			draw
 	int			draw_start;
 	int			draw_end;
 
-	//			bonus
 	t_img_info	door;
 	t_img_info	alice[18];
 	t_img_info	catterpilar[17];
 	t_img_info	cheshire_cat[6];
+	t_img_info	dialog_cat[6];
 	t_img_info	white_rabbit[10];
 	t_img_info	dialog_box;
 	t_img_info	dialog[8];
@@ -214,7 +199,6 @@ typedef struct s_data
 
 //		setup
 void	make_data_null(t_data *data);
-
 
 //		fill world
 bool	fill_north(t_data *data, char *line);
@@ -239,7 +223,6 @@ bool	is_alpha(char c);
 bool	atocolor(char *str, t_color *color);
 int		count_char_in_str(char c, char *str);
 
-
 //		render
 void	wall_calc(t_data *data, t_v2f ray, float perp_wall_dist);
 t_v2f	delta_dist_calc(t_data *data, t_v2f *ray);
@@ -254,7 +237,6 @@ void	move_longitudinal(t_data *data);
 void	move_sideways(t_data *data);
 void	rotate(t_data *data, float angle, t_v2f old_dir);
 int		update_display(t_data *data);
-
 
 //		key / mous handling
 int		key_event(int keycode, t_data *data);

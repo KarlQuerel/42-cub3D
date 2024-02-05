@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_collectibles.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 09:21:57 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/04 12:01:48 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/05 20:21:04 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 static bool	can_i_take_this(t_data *data, int x, int y)
 {
-	int	v;
-	int	w;
+	int		v;
+	int		w;
 	float	frac_v;
 	float	frac_w;
 
-	// printf("je passe ici\n");
 	v = data->player_pos[0];
 	w = data->player_pos[1];
 	if (v == x && w == y)
