@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 08:41:52 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/03 10:10:52 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/07 20:17:47 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,14 @@ enum e_dialog
 	WHITE_RABBIT_2,
 	WHITE_RABBIT_3,
 	DIALOG_FINISH_1,
+	ALICE_5,
+	ALICE_6,
+	ALICE_7,
+	ALICE_8,
+	CHESHIRE_CAT_1,
+	CHESHIRE_CAT_2,
+	CHESHIRE_CAT_3,
+	CHESHIRE_CAT_4,
 };
 
 // ALICE_5	// Hi mister cat, Would you tell me, please, which way I ought to go from here?
