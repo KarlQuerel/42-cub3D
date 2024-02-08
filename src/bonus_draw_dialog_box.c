@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 17:09:36 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/08 09:21:31 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/08 15:19:33 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,8 @@ void draw_all(t_data *data)
 
 	x = (int)data->player_pos[0] / MINIMAP_HEIGHT * MINIMAP_HEIGHT;
 	y = (int)data->player_pos[1] / MINIMAP_WIDTH * MINIMAP_WIDTH;
-	draw_minimap(data, x, y);
+	if (!data->drogue)
+		draw_minimap(data, x, y);
 	draw_alice(data, IMG_HEIGHT - IMG_HEIGHT / 20 - 128, IMG_WIDTH / 20);
 	if (data->dialog_stage && \
 		data->dialog_stage < DIALOG_FINISH_1)
@@ -107,7 +108,8 @@ void draw_all(t_data *data)
 	else if (data->dialog_stage >= ALICE_5 \
 		&& data->dialog_stage < DIALOG_FINISH_2)
 	{
-
+		draw_cheshire_cat(data, IMG_HEIGHT - IMG_HEIGHT / 20 - 128, \
+			IMG_WIDTH - IMG_WIDTH / 20 - 128);
 		draw_dialog_box(data, IMG_HEIGHT - IMG_HEIGHT / 20 - 128, \
 			IMG_WIDTH / 20 + 192);
 	}

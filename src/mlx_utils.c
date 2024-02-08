@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 09:12:51 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/02 10:30:25 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/08 15:18:48 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 
 void	ft_my_put_pixel(t_data *data, int x, int y, int color)
 {
-	((int *)data->img.addr)[x * (IMG_WIDTH * !data->drogue + IMG_HEIGHT * data->drogue) + y] = color;
+	((int *)data->img.addr)[x * (IMG_WIDTH * !data->drogue + IMG_HEIGHT * data->drogue) + ((IMG_WIDTH - IMG_HEIGHT) / 2 * IMG_HEIGHT * data->drogue) + y] = color;
 	// (IMG_WIDTH * !data->drogue + IMG_HEIGHT * data->drogue)
 	// ((int *)data->img.addr)[x * IMG_HEIGHT  + y + IMG_WIDTH * ((IMG_WIDTH - IMG_HEIGHT) / 2) ] = color;
 }

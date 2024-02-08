@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 09:21:57 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/08 09:36:23 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/08 15:25:25 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,24 @@ static bool	can_i_take_this(t_data *data, int x, int y)
 	return (false);
 }
 
+static void paint_it_black(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < IMG_HEIGHT)
+	{
+		j = 0;
+		while (j < IMG_WIDTH)
+		{
+			ft_my_put_pixel(data, i, j, 0x00000000);
+			j++;
+		}
+		i++;
+	}
+}
+
 void	take_collectibles(t_data *data)
 {
 	int	i;
@@ -45,6 +63,7 @@ void	take_collectibles(t_data *data)
 			if (data->map[i][j] == COLLECTIBLE && \
 			can_i_take_this(data, i, j))
 			{
+				paint_it_black(data);
 				data->drogue = true;
 				data->drogue_timer = 0;
 				data->map[i][j] = '0';
