@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 09:47:32 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/27 17:03:39 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/08 09:44:24 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,12 @@ int	data_clear(t_data *data)
 	mlx_destroy_display(data->mlx);
 	free_strs(&data->map);
 	free(data->mlx);
+	return (0);
+}
+
+int quit_game(t_data *data)
+{
+	data_clear(data);
+	exit(0);
 	return (0);
 }

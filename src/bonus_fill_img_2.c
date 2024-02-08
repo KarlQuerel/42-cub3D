@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:28:53 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/03 11:26:36 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/08 09:57:03 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,32 @@ bool	upload_img(t_data *data, t_img_info *img, char *file)
 	return (true);
 }
 
-bool	get_cheschire_cat(t_data *data)
+bool	get_wall_cat(t_data *data)
 {
-	static char	file[] = "img/CheshireCat/x.xpm";
+	static char	file[] = "img/CheshireCat/wall_cat/x.xpm";
 	int			i;
 
 	i = 1;
 	while (i < 7)
 	{
-		file[16] = '0' + i;
-		// printf("j'ouvre cette merde : <%s>\n", file);
+		file[25] = '0' + i;
 		if (!upload_img(data, &((data->cheshire_cat)[i - 1]), file))
+			return (err(strerror(errno)), false);
+		i++;
+	}
+	return (true);
+}
+
+bool	get_dialog_cat(t_data *data)
+{
+	static char	file[] = "img/CheshireCat/dialog_cat/x.xpm";
+	int			i;
+
+	i = 1;
+	while (i < 7)
+	{
+		file[27] = '0' + i;
+		if (!upload_img(data, &((data->dialog)[i + 7]), file))
 			return (err(strerror(errno)), false);
 		i++;
 	}

@@ -3,19 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_render_back.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 10:15:29 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/05 09:56:10 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/05 16:31:57 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d_bonus.h"
 
-void	collectible_calc(t_data *data, t_v2f ray, float perp_coll_dist)
+void	collectible_calc(t_data *data, t_v2f ray)
 {
 	int		line_height;
-	// float	wall_x;
+	float	perp_coll_dist;
+	
+	perp_coll_dist = abs_value(data->player_pos[0] - data->map_x + 0.5 + data->player_pos[1] - data->map_y + 0.5);
 	(void)ray;
 	line_height = (int)(IMG_HEIGHT / perp_coll_dist);
 	data->draw_start = (IMG_HEIGHT - line_height) / 2;
@@ -64,13 +66,13 @@ static void	go_back_to_last_cube(t_data *data, t_v2f ray, t_v2f delta_dist)
 	{
 		data->side_dist[0] += delta_dist[0];
 		data->map_x += data->step[0];
-		// data->side = 2 - (data->map_x > data->player_pos[0]);
+		data->side = 2 - (data->map_x > data->player_pos[0]);
 	}
 	else
 	{
 		data->side_dist[1] += delta_dist[1];
 		data->map_y += data->step[1];
-		// data->side = EAST - (data->map_y > data->player_pos[1]);
+		data->side = EAST - (data->map_y > data->player_pos[1]);
 	}
 }
 
@@ -82,7 +84,7 @@ void	last_cube(t_data *data, t_v2f ray, int i, t_v2f delta_dist)
 		go_back_to_last_cube(data, ray, delta_dist);
 		back_side_calc(data, ray, delta_dist);
 		data->side_dist[data->side / 3] -= delta_dist[data->side / 3];
-		collectible_calc(data, ray, data->side_dist);
+		collectible_calc(data, ray);
 	// 	data->side_dist[data->side / 3] \
 	// - delta_dist[data->side / 3]
 		draw_someone(data, i);

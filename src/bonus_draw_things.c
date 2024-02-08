@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bonus_draw.c                                       :+:      :+:    :+:   */
+/*   bonus_draw_things.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 17:04:19 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/27 17:15:36 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/07 21:05:47 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	draw_alice(t_data *data, int x, int y)
 {
 	static int	anim = 0;
 
-	if (ALICE_1 <= data->dialog_stage && data->dialog_stage <= ALICE_4)
+	if ((ALICE_1 <= data->dialog_stage && data->dialog_stage <= ALICE_4) || (ALICE_5 <= data->dialog_stage && data->dialog_stage <= ALICE_8))
 	{
 		my_put_img_to_img_reverse(data, &data->alice[anim / 75], x, y);
 		anim++;
@@ -63,6 +63,23 @@ void	draw_alice(t_data *data, int x, int y)
 	}
 	else
 		my_put_img_to_img_reverse(data, &data->alice[0], x, y);
+}
+
+void	draw_cheshire_cat(t_data *data, int x, int y)
+{
+	static int	anim = 0;
+
+	if (CHESHIRE_CAT_1 <= data->dialog_stage && \
+		data->dialog_stage <= CHESHIRE_CAT_4)
+	{
+		my_put_img_to_img(data, &data->white_rabbit[anim / 120], \
+			x, y);
+		anim++;
+		if (anim / 120 > 5)
+			anim = 0;
+	}
+	else if (ALICE_2 <= data->dialog_stage && data->dialog_stage <= ALICE_3)
+		my_put_img_to_img(data, &data->white_rabbit[0], x, y);
 }
 
 void	draw_white_rabbit(t_data *data, int x, int y)

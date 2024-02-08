@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 09:48:21 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/26 09:45:44 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/05 14:33:31 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,18 @@ bool	is_alpha(char c)
 	return (c >= '0' && c <= '9');
 }
 
-static bool	atocolor_continued(char *str, t_color *color, int color_tmp, char *tmp)
+static bool	atocolor_continued(char *s, t_color *col, int col_tmp, char *tmp)
 {
-	if (!is_alpha(*str) && *str != '+' && *str != '-')
+	if (!is_alpha(*s) && *s != '+' && *s != '-')
 		return (false);
-	ft_atoi(&color_tmp, str);
-	while (is_alpha(*str) || *str == '+' || *str == '-')
-		str++;
-	(*color)[2] = color_tmp;
-	if ((*color)[0] < 0 || (*color)[0] > 255 || (*color)[1] < 0 || \
-		(*color)[1] > 255 || (*color)[2] < 0 || (*color)[2] > 255 || *str)
+	ft_atoi(&col_tmp, s);
+	while (is_alpha(*s) || *s == '+' || *s == '-')
+		s++;
+	(*col)[2] = col_tmp;
+	if ((*col)[0] < 0 || (*col)[0] > 255 || (*col)[1] < 0 || \
+		(*col)[1] > 255 || (*col)[2] < 0 || (*col)[2] > 255 || *s)
 		return (false);
-	str = tmp;
+	s = tmp;
 	return (true);
 }
 

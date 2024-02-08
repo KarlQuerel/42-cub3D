@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 17:01:40 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/04 10:56:25 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/07 21:01:36 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,23 @@ bool	get_dialog_box(t_data *data);
 bool	get_door(t_data *data);
 bool	get_catterpilar(t_data *data);
 bool	get_white_rabbit(t_data *data);
-bool	get_cheschire_cat(t_data *data);
+bool	get_wall_cat(t_data *data);
+bool	get_dialog_cat(t_data *data);
 bool	get_characters(t_data *data);
 
 void	last_cube(t_data *data, t_v2f ray, int i, t_v2f delta_dist);
 void	draw_someone(t_data *data, int col);
 
-
-void draw_all(t_data *data);
+void	draw_all(t_data *data);
 void	draw_minimap(t_data *data, int x, int y);
 void	draw_alice(t_data *data, int x, int y);
 void	draw_white_rabbit(t_data *data, int x, int y);
+void	draw_cheshire_cat(t_data *data, int x, int y);
 
 // time
 void	update_time(t_data *data);
 bool	setup_bonus(t_data *data);
 
+float	abs_value(float x);
 
 #endif

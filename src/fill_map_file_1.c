@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_map_file_1.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 09:03:43 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/27 11:11:28 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/05 20:19:50 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ bool	fill_new_line(t_data *data, char **line)
 		fill_west, fill_east, NULL, fill_ceiling, fill_floor};
 
 	type = identify_line(*line);
-	// printf("<%s>\n", *line);
 	if (!type)
 		return (false);
 	if ((NORTH <= type && type < DOOR_2) || (FLOOR <= type && type <= CEILING))
@@ -49,8 +48,6 @@ bool	fill_new_line(t_data *data, char **line)
 		return (fill_map(data, line));
 	return (true);
 }
-
-
 
 static void	fill_better_colors(t_data *data)
 {
@@ -64,6 +61,15 @@ static void	fill_better_colors(t_data *data)
 	data->floor_color_2 += data->floor_color[1];
 	data->floor_color_2 <<= 8;
 	data->floor_color_2 += data->floor_color[2];
+}
+
+void	fill_map_file_cont(t_data *data, char *line)
+{
+	ft_print_fd(2, line);
+	err("Map file: spurious line in file");
+	free(line);
+	unleek_gnl(data->fd);
+	close(data->fd);
 }
 
 bool	fill_map_file(t_data *data, char *map)
@@ -81,11 +87,7 @@ bool	fill_map_file(t_data *data, char *map)
 		if (line[0] != '#' && line[0] && !is_a_white_space(line[0]))
 		{
 			if (!fill_new_line(data, &line))
-			{
-				ft_print_fd(2, line);
-				err("Map file: spurious line in file");
-				return (free(line), unleek_gnl(data->fd), close(data->fd), false);
-			}
+				return (fill_map_file_cont(data, line), false);
 		}
 		free(line);
 	}

@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 09:42:18 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/04 11:18:12 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/08 12:03:36 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	draw_collectible(t_data *data, int x, int end, int i)
 	{
 		tex_y = (int)data->tex_pos & (128 - 1);
 		data->tex_pos += data->step_all;
-		color = data->cheshire_cat[0].addr[tex_y * 128 + data->tex_x];
+		// color = data->cheshire_cat[0].addr[tex_y * 128 + data->tex_x];
+		color = 0x00101010;
 		if (!(color & 0xff000000))
 			ft_my_put_pixel(data, i, x, color);
 		i++;

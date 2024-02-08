@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   render_2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:26:01 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/29 13:43:22 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/05 20:19:11 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
 
-static float	abs_value(float x)
+float	abs_value(float x)
 {
 	return ((x < 0) * -x + x * (x >= 0));
 }
@@ -50,7 +50,6 @@ t_v2f	delta_dist_calc(t_data *data, t_v2f *ray)
 {
 	t_v2f	delta_dist;
 
-	// printf("<%f/%f>\n", (*ray))
 	data->map_x = (int)data->player_pos[0];
 	data->map_y = (int)data->player_pos[1];
 	if (!(*ray)[0])

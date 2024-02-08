@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 09:21:57 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/04 12:01:48 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/08 09:36:23 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,11 @@
 
 static bool	can_i_take_this(t_data *data, int x, int y)
 {
-	int	v;
-	int	w;
+	int		v;
+	int		w;
 	float	frac_v;
 	float	frac_w;
 
-	// printf("je passe ici\n");
 	v = data->player_pos[0];
 	w = data->player_pos[1];
 	if (v == x && w == y)
@@ -46,7 +45,6 @@ void	take_collectibles(t_data *data)
 			if (data->map[i][j] == COLLECTIBLE && \
 			can_i_take_this(data, i, j))
 			{
-				printf("je prend la drogue\n");
 				data->drogue = true;
 				data->drogue_timer = 0;
 				data->map[i][j] = '0';
