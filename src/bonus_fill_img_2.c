@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_fill_img_2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:28:53 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/08 14:31:44 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/08 14:44:35 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,25 +54,6 @@ bool	get_dialog_cat(t_data *data)
 			return (err(strerror(errno)), false);
 		i++;
 	}
-	return (true);
-}
-
-bool	get_text(t_data *data)
-{
-	if (!upload_img(data, &((data->dialog)[1]), ALICE_D_1))
-		return (err(strerror(errno)), false);
-	if (!upload_img(data, &((data->dialog)[2]), ALICE_D_2))
-		return (err(strerror(errno)), false);
-	if (!upload_img(data, &((data->dialog)[3]), ALICE_D_3))
-		return (err(strerror(errno)), false);
-	if (!upload_img(data, &((data->dialog)[4]), ALICE_D_4))
-		return (err(strerror(errno)), false);
-	if (!upload_img(data, &((data->dialog)[5]), RABBIT_D_1))
-		return (err(strerror(errno)), false);
-	if (!upload_img(data, &((data->dialog)[6]), RABBIT_D_2))
-		return (err(strerror(errno)), false);
-	if (!upload_img(data, &((data->dialog)[7]), RABBIT_D_3))
-		return (err(strerror(errno)), false);
 	return (true);
 }
 

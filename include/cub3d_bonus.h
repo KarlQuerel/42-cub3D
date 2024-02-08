@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 17:01:40 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/07 21:01:36 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/08 15:11:33 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	close_doors(t_data *data);
 void	take_collectibles(t_data *data);
 
 bool	upload_img(t_data *data, t_img_info *img, char *file);
-bool	get_text(t_data *data);
+bool	get_all_dialog(t_data *data);
 bool	get_alice(t_data *data);
 bool	get_dialog_box(t_data *data);
 bool	get_door(t_data *data);

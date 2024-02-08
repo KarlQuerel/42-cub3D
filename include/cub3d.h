@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 08:41:52 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/08 14:40:54 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/08 15:26:53 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,19 @@
 # define KEY_ESC		65307
 
 // Dialog Images
-# define ALICE_D_1 "img/XPM/Dialog/ALICE_1.xpm"
-# define ALICE_D_2 "img/XPM/Dialog/ALICE_2.xpm"
-# define ALICE_D_3 "img/XPM/Dialog/ALICE_3.xpm"
-# define ALICE_D_4 "img/XPM/Dialog/ALICE_4.xpm"
-# define RABBIT_D_1 "img/XPM/Dialog/RABBIT_1.xpm"
-# define RABBIT_D_2 "img/XPM/Dialog/RABBIT_2.xpm"
-# define RABBIT_D_3 "img/XPM/Dialog/RABBIT_3.xpm"
+# define ALICE_D_1	"img/XPM/Dialog/ALICE_1.xpm"
+# define ALICE_D_2	"img/XPM/Dialog/ALICE_2.xpm"
+# define ALICE_D_3	"img/XPM/Dialog/ALICE_3.xpm"
+# define ALICE_D_4	"img/XPM/Dialog/ALICE_4.xpm"
+# define ALICE_D_5	"img/XPM/Dialog/ALICE_4.xpm"
+# define ALICE_D_6	"img/XPM/Dialog/ALICE_4.xpm"
+# define ALICE_D_7	"img/XPM/Dialog/ALICE_4.xpm"
+# define RABBIT_D_1	"img/XPM/Dialog/RABBIT_1.xpm"
+# define RABBIT_D_2	"img/XPM/Dialog/RABBIT_2.xpm"
+# define RABBIT_D_3	"img/XPM/Dialog/RABBIT_3.xpm"
+# define CAT_D_1	"img/XPM/Dialog/CAT_1.xpm"
+# define CAT_D_2	"img/XPM/Dialog/CAT_2.xpm"
+# define CAT_D_3	"img/XPM/Dialog/CAT_3.xpm"
 
 // Game Macros
 # define DOOR_OPENED	'O'

@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:26:47 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/05 20:14:11 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/02/08 15:11:26 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ bool	get_characters(t_data *data)
 			!get_white_rabbit(data) || \
 			!get_door(data) || \
 			!get_dialog_box(data) || \
-			!get_text(data) || !get_wall_cat(data) || \
+			!get_all_dialog(data) || !get_wall_cat(data) || \
 			!get_dialog_cat(data))
 		return (false);
 	return (true);
