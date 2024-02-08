@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:28:53 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/08 09:57:03 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/08 14:31:44 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ bool	get_dialog_cat(t_data *data)
 	while (i < 7)
 	{
 		file[27] = '0' + i;
-		if (!upload_img(data, &((data->dialog)[i + 7]), file))
+		if (!upload_img(data, &((data->dialog_cat)[i - 1]), file))
 			return (err(strerror(errno)), false);
 		i++;
 	}
