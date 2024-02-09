@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 09:03:43 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/05 20:19:50 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/02/09 16:41:14 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ static void	fill_better_colors(t_data *data)
 
 void	fill_map_file_cont(t_data *data, char *line)
 {
-	ft_print_fd(2, line);
 	err("Map file: spurious line in file");
 	free(line);
 	unleek_gnl(data->fd);
