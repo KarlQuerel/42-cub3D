@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 10:17:22 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/09 12:46:12 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/09 13:39:06 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,9 @@ static bool	side_assignment(t_data *data, t_v2f delta_dist)
 
 void	debug(t_data *data, t_v2f delta_dist)
 {
-	printf("quand je fini ce rayon je suis a : map_x_y<%i/%i> delta_dist<%f/%f>\
-	\n", data->map_x, data->map_y, delta_dist[0], delta_dist[1]);
+	printf("quand je fini ce rayon je suis a : map_x_y<%i/%i>\ndelta_dist<%f/%f>\
+	\nla_dist<%f>\nside_dist<%f/%f>\n", data->map_x, data->map_y, delta_dist[0], delta_dist[1], data->side_dist[data->side / 3] \
+	- delta_dist[data->side / 3], data->side_dist[0], data->side_dist[1]);
 }
 
 
@@ -97,7 +98,7 @@ static void	next_cube(t_data *data, t_v2f ray, int x, t_v2f delta_dist)
 	wall_calc(data, ray, data->side_dist[data->side / 3] \
 	- delta_dist[data->side / 3]);
 	draw_slice(data, x);
-	debug(data, delta_dist);
+	// debug(data, delta_dist);
 }
 
 void	render(t_data *data)
