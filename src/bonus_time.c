@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 09:14:27 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/09 10:10:34 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/09 15:13:48 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	update_time(t_data *data)
 		data->dialog_stage = WHITE_RABBIT_1;
 	else if (data->time_2_le_retour > 1000)
 		data->dialog_stage = ALICE_1;
-	else
-		return ;
-	debug_time_state(data->dialog_stage);
+	// else
+	// 	return ;
+	// debug_time_state(data->dialog_stage);
 }
