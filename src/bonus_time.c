@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_time.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 09:14:27 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/09 15:13:48 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/09 21:10:30 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,26 @@ void	debug_time_state(int state)
 	printf("\n");
 }
 
+void	update_time_continued(t_data *data)
+{
+	if (data->time_2_le_retour > 18500)
+		data->dialog_stage = DIALOG_FINISH_1;
+	else if (data->time_2_le_retour > 16000)
+		data->dialog_stage = ALICE_4;
+	else if (data->time_2_le_retour > 13500)
+		data->dialog_stage = WHITE_RABBIT_3;
+	else if (data->time_2_le_retour > 11000)
+		data->dialog_stage = ALICE_3;
+	else if (data->time_2_le_retour > 8500)
+		data->dialog_stage = WHITE_RABBIT_2;
+	else if (data->time_2_le_retour > 6000)
+		data->dialog_stage = ALICE_2;
+	else if (data->time_2_le_retour > 3500)
+		data->dialog_stage = WHITE_RABBIT_1;
+	else if (data->time_2_le_retour > 1000)
+		data->dialog_stage = ALICE_1;
+}
+
 void	update_time(t_data *data)
 {
 	if (data->dialog_stage < DIALOG_FINISH_2)
@@ -66,23 +86,9 @@ void	update_time(t_data *data)
 		data->dialog_stage = ALICE_5;
 	else if (data->time_2_le_retour > 21000)
 		data->dialog_stage = CHESHIRE_CAT_1;
-	else if (data->time_2_le_retour > 18500)
-		data->dialog_stage = DIALOG_FINISH_1;
-	else if (data->time_2_le_retour > 16000)
-		data->dialog_stage = ALICE_4;
-	else if (data->time_2_le_retour > 13500)
-		data->dialog_stage = WHITE_RABBIT_3;
-	else if (data->time_2_le_retour > 11000)
-		data->dialog_stage = ALICE_3;
-	else if (data->time_2_le_retour > 8500)
-		data->dialog_stage = WHITE_RABBIT_2;
-	else if (data->time_2_le_retour > 6000)
-		data->dialog_stage = ALICE_2;
-	else if (data->time_2_le_retour > 3500)
-		data->dialog_stage = WHITE_RABBIT_1;
-	else if (data->time_2_le_retour > 1000)
-		data->dialog_stage = ALICE_1;
 	// else
 	// 	return ;
 	// debug_time_state(data->dialog_stage);
+	update_time_continued(data);
 }
+

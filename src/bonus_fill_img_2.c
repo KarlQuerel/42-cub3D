@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:28:53 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/08 14:44:35 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/02/09 20:54:54 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ bool	get_wall_cat(t_data *data)
 	while (i < 7)
 	{
 		file[25] = '0' + i;
-		if (!upload_img(data, &((data->cheshire_cat)[i - 1]), file))
+		if (!upload_img(data, &((data->wall_cat)[i - 1]), file))
 			return (err(strerror(errno)), false);
 		i++;
 	}
@@ -59,7 +59,7 @@ bool	get_dialog_cat(t_data *data)
 
 bool	get_alice(t_data *data)
 {
-	static char	file[17] = "img/Alice/xx.xpm\0";
+	static char	file[17] = "img/Alice/xx.xpm";
 	int			i;
 
 	i = 1;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_draw_protagonists.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 09:42:18 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/09 12:39:08 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/09 20:15:43 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,6 @@ void	draw_collectible(t_data *data, int x, int end, int i)
 	}
 }
 
-// void	draw_protagonist(t_data *data)
-// {
-	
-// }
-
 void	draw_someone(t_data *data, int col)
 {
 	int	pos_someone_x;
@@ -44,8 +39,4 @@ void	draw_someone(t_data *data, int col)
 	{
 		draw_collectible(data, col, data->draw_end, data->draw_start);
 	}
-	// else if (data->map[pos_someone_x][pos_someone_y] == 'P')
-	// {
-	// 	// draw_protagonist();
-	// }
 }

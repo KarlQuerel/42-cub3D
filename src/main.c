@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 08:41:23 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/08 09:45:16 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/09 20:33:42 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ int	main(int argc, char **argv)
 		return (err("Your map have to be a cub file."), 1);
 	make_data_null(&data);
 	if (!setup_mlx(&data))
-		return (1);
+		return (data_clear(&data), 1);
 	if (!fill_map_file(&data, argv[1]))
-		return (1);
+		return (data_clear(&data), 1);
 	if (!setup_game(&data))
-		return (1);
+		return (data_clear(&data), 1);
 	render(&data);
 	mlx_hook(data.win, EXIT, 0, quit_game, &data);
 	mlx_hook(data.win, 02, KeyPressMask, key_event, &data);

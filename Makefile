@@ -35,6 +35,7 @@ SRC =	main.c \
 		mlx_key_events.c \
 		mlx_mouse_events.c \
 		cleaning.c \
+		cleaning_utils.c \
 		move.c \
 		move_longitudinal.c \
 		move_sideways.c \
@@ -63,6 +64,7 @@ SRC_BONUS = bonus_doors.c \
 			checkup_map_1.c \
 			bonus_checkup_map_2.c \
 			cleaning.c \
+			cleaning_utils.c \
 			fill_map_file_1.c \
 			fill_map_file_2.c \
 			fill_map_file_3.c \
@@ -79,8 +81,6 @@ SRC_BONUS = bonus_doors.c \
 			setup_game.c \
 			setup_mlx.c \
 			bonus_setup.c \
-
-
 
 # Object files
 OBJ			= $(addprefix $(BIN_PATH), $(SRC:.c=.o))

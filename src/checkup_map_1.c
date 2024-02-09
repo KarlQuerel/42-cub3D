@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 10:52:18 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/09 16:42:25 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/02/09 18:05:24 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,16 +85,16 @@ bool	is_many_map(char **map)
 bool	checkup_map(char **map)
 {
 	if (nb_player(map) != 1)
-		return (err(ERROR), false);
+		return (false);
 	if (!check_left_wall(map))
-		return (err(ERROR), false);
+		return (false);
 	if (!check_right_wall(map))
-		return (err(ERROR), false);
+		return (false);
 	if (!is_many_map(map))
-		return (err(ERROR), false);
+		return (false);
 	if (!is_char_in_map_are_normal(map))
-		return (err(ERROR), false);
+		return (false);
 	if (!is_a_zero_next_to_wrong(map))
-		return (err(ERROR), false);
+		return (false);
 	return (true);
 }

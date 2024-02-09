@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   cleaning.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 09:47:32 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/08 09:44:24 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/09 21:12:42 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
-
-void	err(char *s)
-{
-	ft_print_fd(2, "Error\n%s\n", s);
-}
 
 void	free_strs(char ***strs)
 {
@@ -34,29 +29,62 @@ void	free_strs(char ***strs)
 	}
 }
 
-int	data_clear(t_data *data)
+void	clear_walls_col_text(t_data *data)
 {
-	mlx_destroy_image(data->mlx, data->img.img);
+	if (data->img.img)
+		mlx_destroy_image(data->mlx, data->img.img);
 	if (data->north.img)
 		mlx_destroy_image(data->mlx, data->north.img);
 	if (data->south.img)
 		mlx_destroy_image(data->mlx, data->south.img);
-	if (data->east.img)
-		mlx_destroy_image(data->mlx, data->east.img);
 	if (data->west.img)
 		mlx_destroy_image(data->mlx, data->west.img);
-	// clear_characters(data);
-	// clear_text(data);
+	if (data->east.img)
+		mlx_destroy_image(data->mlx, data->east.img);
+	if (data->floor.img)
+		mlx_destroy_image(data->mlx, data->floor.img);
+	if (data->ceiling.img)
+		mlx_destroy_image(data->mlx, data->ceiling.img);
+	if (data->door.img)
+		mlx_destroy_image(data->mlx, data->door.img);
+	if (data->mushroom.img)
+		mlx_destroy_image(data->mlx, data->mushroom.img);
+	if (data->dialog_box.img)
+		mlx_destroy_image(data->mlx, data->dialog_box.img);
+}
+
+void	clear_characters(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (i < 18)
+	{
+		if (i < 18 && data->alice[i].img)
+			mlx_destroy_image(data->mlx, data->alice[i].img);
+		if (i < 10 && data->white_rabbit[i].img)
+			mlx_destroy_image(data->mlx, data->white_rabbit[i].img);
+		if (i < 2 && data->white_rabbit_door[i].img)
+			mlx_destroy_image(data->mlx, data->white_rabbit_door[i].img);
+		if (i < 17 && data->catterpilar[i].img)
+			mlx_destroy_image(data->mlx, data->catterpilar[i].img);
+		if (i < 6 && data->wall_cat[i].img)
+			mlx_destroy_image(data->mlx, data->wall_cat[i].img);
+		if (i < 6 && data->dialog_cat[i].img)
+			mlx_destroy_image(data->mlx, data->dialog_cat[i].img);
+		if (i < 15 && data->dialog[i].img)
+			mlx_destroy_image(data->mlx, data->dialog[i].img);
+		i++;
+	}
+}
+
+int	data_clear(t_data *data)
+{
+	clear_walls_col_text(data);
+	clear_characters(data);
 	mlx_destroy_window(data->mlx, data->win);
 	mlx_destroy_display(data->mlx);
 	free_strs(&data->map);
 	free(data->mlx);
-	return (0);
-}
-
-int quit_game(t_data *data)
-{
-	data_clear(data);
-	exit(0);
 	return (0);
 }

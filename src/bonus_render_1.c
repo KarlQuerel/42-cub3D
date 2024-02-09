@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_render_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 10:17:22 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/09 13:39:06 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/09 20:28:17 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static t_v2f	get_ray(t_data *data, int x)
 	ray[1] = data->camera_dir[1] + data->plane[1] * cam;
 	return (ray);
 }
-
 
 void	side_calc(t_data *data, t_v2f ray, t_v2f delta_dist)
 {

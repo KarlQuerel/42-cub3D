@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_data_null.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 08:47:41 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/09 11:34:24 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/09 21:06:02 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	make_bonus_null(t_data *data)
 {
-	data->drogue = false;
-	data->drogue_timer = 0;
+	data->drug = false;
+	data->drug_timer = 0;
 	data->display_catterpilar = false;
 }
 
@@ -26,28 +26,41 @@ static void	setup_img_null(t_data *data)
 	i = 0;
 	while (i < 18)
 	{
-		if (i < 8)
-			data->dialog[i].img = NULL;
+		if (i < 18)
+			data->alice[i].img = NULL;
 		if (i < 10)
 			data->white_rabbit[i].img = NULL;
-		if (i < 17) // 18 ?
+		if (i < 2)
+			data->white_rabbit_door[i].img = NULL;
+		if (i < 17)
 			data->catterpilar[i].img = NULL;
-		data->alice[i].img = NULL;
+		if (i < 6)
+			data->wall_cat[i].img = NULL;
+		if (i < 6)
+			data->dialog_cat[i].img = NULL;
+		if (i < 15)
+			data->dialog[i].img = NULL;
 		i++;
 	}
+}
+
+static void	setup_wall_null(t_data *data)
+{
 	data->north.img = NULL;
-	data->east.img = NULL;
 	data->south.img = NULL;
 	data->west.img = NULL;
+	data->east.img = NULL;
+	data->floor.img = NULL;
+	data->ceiling.img = NULL;
+	data->mushroom.img = NULL;
 	data->door.img = NULL;
-	data->white_rabbit_door[0].img = NULL;
-	data->white_rabbit_door[1].img = NULL;
 	data->dialog_box.img = NULL;
 }
 
 void	make_data_null(t_data *data)
 {
 	setup_img_null(data);
+	setup_wall_null(data);
 	data->map = NULL;
 	data->nb_side_parsed = 0;
 	data->controls.w = false;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:26:01 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/09 15:10:34 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/09 20:29:29 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,5 @@ t_v2f	delta_dist_calc(t_data *data, t_v2f *ray)
 		delta_dist[1] = 1e30;
 	else
 		delta_dist[1] = abs_value(1 / (*ray)[1]);
-	// printf("delta_dist<%f/%f>\n",delta_dist[0], delta_dist[1]);
-	// printf("delta_dist<%f/%f>\n",delta_dist[0], delta_dist[1]);
 	return (delta_dist);
 }

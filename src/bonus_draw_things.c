@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_draw_things.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 17:04:19 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/09 11:14:06 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/09 20:13:45 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ void	draw_alice(t_data *data, int x, int y)
 {
 	static int	anim = 0;
 
-	if ((ALICE_1 <= data->dialog_stage && data->dialog_stage <= ALICE_4) || (ALICE_5 <= data->dialog_stage && data->dialog_stage <= ALICE_7))
+	if ((ALICE_1 <= data->dialog_stage && \
+		data->dialog_stage <= ALICE_4) || \
+		(ALICE_5 <= data->dialog_stage && \
+		data->dialog_stage <= ALICE_7))
 	{
 		my_put_img_to_img_reverse(data, &data->alice[anim / 75], x, y);
 		anim++;

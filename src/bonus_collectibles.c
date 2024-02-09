@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_collectibles.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 09:21:57 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/08 15:25:25 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/09 21:08:18 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static bool	can_i_take_this(t_data *data, int x, int y)
 	return (false);
 }
 
-static void paint_it_black(t_data *data)
+static	void	paint_it_black(t_data *data)
 {
 	int	i;
 	int	j;
@@ -64,17 +64,17 @@ void	take_collectibles(t_data *data)
 			can_i_take_this(data, i, j))
 			{
 				paint_it_black(data);
-				data->drogue = true;
-				data->drogue_timer = 0;
+				data->drug = true;
+				data->drug_timer = 0;
 				data->map[i][j] = '0';
 			}
 			j++;
 		}
 		i++;
 	}
-	if (data->drogue_timer++ > 4000)
+	if (data->drug_timer++ > 4000)
 	{
-		data->drogue = false;
-		data->drogue_timer = 0;
+		data->drug = false;
+		data->drug_timer = 0;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_fill_img_1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 09:26:47 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/09 11:49:00 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/09 20:56:59 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,29 @@
 
 bool	get_dialog_box(t_data *data)
 {
-	if (!upload_img(data, &data->dialog_box, "./img/XPM/Dialog_box.xpm\0"))
+	if (!upload_img(data, &data->dialog_box, DIALOG_BOX))
 		return (err(strerror(errno)), false);
 	return (true);
 }
 
 bool	get_door(t_data *data)
 {
-	if (!upload_img(data, &data->white_rabbit_door[1], "./img/XPM/WHITE_RABBIT_DOOR_2.xpm\0"))
+	if (!upload_img(data, &data->white_rabbit_door[0], DOOR_RABBIT_1))
 		return (err(strerror(errno)), false);
-	if (!upload_img(data, &data->white_rabbit_door[0], "./img/XPM/WHITE_RABBIT_DOOR.xpm\0"))
+	if (!upload_img(data, &data->white_rabbit_door[1], DOOR_RABBIT_2))
 		return (err(strerror(errno)), false);
-	if (!upload_img(data, &data->door, "./img/XPM/Walls/DOOR.xpm\0"))
+	if (!upload_img(data, &data->door, DOOR_1))
 		return (err(strerror(errno)), false);
 	return (true);
 }
 
 bool	get_catterpilar(t_data *data)
 {
-	static char	file[] = "img/Catterpillar/xx.xpm\0";
+	static char	file[] = "img/Catterpillar/xx.xpm";
 	int			i;
 
 	i = 1;
-	while (i - 1 < 18)
+	while (i - 1 < 17)
 	{
 		file[17] = i / 10 + '0';
 		file[18] = i % 10 + '0';
@@ -49,7 +49,7 @@ bool	get_catterpilar(t_data *data)
 
 bool	get_white_rabbit(t_data *data)
 {
-	static char	file[] = "img/White_rabbit/xx.xpm\0";
+	static char	file[] = "img/White_rabbit/xx.xpm";
 	int			i;
 
 	i = 1;
