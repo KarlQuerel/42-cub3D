@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_map_file_1.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 09:03:43 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/09 16:41:14 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/02/09 17:48:06 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ bool	fill_map_file(t_data *data, char *map)
 	}
 	close(data->fd);
 	if (data->nb_side_parsed != 7)
-		return (err("Map file: incomplete file"), false);
+		return (err(ERROR), false);
 	fill_better_colors(data);
 	return (true);
 }

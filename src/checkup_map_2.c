@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkup_map_2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 10:53:06 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/05 20:23:09 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/02/09 17:35:42 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ bool	is_a_zero_next_to_wrong(char **map)
 			if (map[j][i] == '0')
 			{
 				if (!is_char_valid_in_map((map[j][i + 1])) || \
-				!is_char_valid_in_map((map[j][i - 1])) || \
-				!is_char_valid_in_map((map[j - 1][i])) || \
-				!is_char_valid_in_map((map[j + 1][i])))
+				(i - 1 < 0) ||!is_char_valid_in_map((map[j][i - 1])) || \
+				(j - 1 < 0) || !is_char_valid_in_map((map[j - 1][i])) || \
+				!map[j + 1] || !is_char_valid_in_map((map[j + 1][i])))
 					return (false);
 			}
 			i++;

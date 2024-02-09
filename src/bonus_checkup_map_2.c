@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 09:32:54 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/04 10:59:26 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/09 17:34:05 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,9 +71,9 @@ bool	is_a_zero_next_to_wrong(char **map)
 			if (map[j][i] == '0' || map[j][i] == 'D')
 			{
 				if (!is_char_valid_in_map((map[j][i + 1])) || \
-				!is_char_valid_in_map((map[j][i - 1])) || \
-				!is_char_valid_in_map((map[j - 1][i])) || \
-				!is_char_valid_in_map((map[j + 1][i])))
+				(i - 1 < 0) || !is_char_valid_in_map((map[j][i - 1])) || \
+				(j - 1 < 0) || !is_char_valid_in_map((map[j - 1][i])) || \
+				!map[j + 1] || !is_char_valid_in_map((map[j + 1][i])))
 					return (false);
 			}
 			i++;

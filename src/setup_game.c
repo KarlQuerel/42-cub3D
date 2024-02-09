@@ -6,11 +6,21 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 10:49:05 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/03 10:03:42 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/09 17:42:55 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d.h"
+
+bool	is_player_next_to_good(char **map, int j, int i)
+{
+	if (!is_char_valid_in_map((map[j][i + 1])) || \
+	(i - 1 < 0) || !is_char_valid_in_map((map[j][i - 1])) || \
+	(j - 1 < 0) || !is_char_valid_in_map((map[j - 1][i])) || \
+	!map[j + 1] || !is_char_valid_in_map((map[j + 1][i])))
+		return (false);
+	return (true);
+}
 
 bool	find_player(t_data *data)
 {
@@ -31,7 +41,7 @@ bool	find_player(t_data *data)
 				data->plane[0] = 0.0f;
 				data->plane[1] = 0.57f;
 				setup_dir(data, x, y);
-				return (true);
+				return (is_player_next_to_good(data->map, x,y));
 			}
 			y++;
 		}
@@ -68,6 +78,7 @@ bool	setup_game(t_data *data)	// + msg
 {
 	if (!checkup_map(data->map))
 		return (data_clear(data), false);
+	//err()
 	if (!find_player(data))
 		return (data_clear(data), false);
 	restore_floor_player(data);
