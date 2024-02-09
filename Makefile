@@ -52,6 +52,7 @@ SRC_BONUS = bonus_doors.c \
 			bonus_fill_img_1.c \
 			bonus_fill_img_2.c \
 			bonus_fill_img_3.c \
+			bonus_fill_img_4.c \
 			bonus_main.c \
 			bonus_render_1.c \
 			bonus_render_back.c \

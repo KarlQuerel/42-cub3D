@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_render_back.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 10:15:29 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/05 16:31:57 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/02/09 12:34:23 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,13 @@ static void	go_back_to_last_cube(t_data *data, t_v2f ray, t_v2f delta_dist)
 void	last_cube(t_data *data, t_v2f ray, int i, t_v2f delta_dist)
 {
 	(void)i;
+	side_calc(data, ray, delta_dist);
 	while (data->map_y != (int)data->player_pos[1] && data->map_x != (int)data->player_pos[0])
 	{
 		go_back_to_last_cube(data, ray, delta_dist);
 		back_side_calc(data, ray, delta_dist);
 		data->side_dist[data->side / 3] -= delta_dist[data->side / 3];
 		collectible_calc(data, ray);
-	// 	data->side_dist[data->side / 3] \
-	// - delta_dist[data->side / 3]
 		draw_someone(data, i);
 	}
 }

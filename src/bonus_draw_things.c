@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 17:04:19 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/08 14:29:13 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/09 11:14:06 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,14 @@ void	draw_cheshire_cat(t_data *data, int x, int y)
 	if (CHESHIRE_CAT_1 <= data->dialog_stage && \
 		data->dialog_stage <= CHESHIRE_CAT_3)
 	{
-		my_put_img_to_img(data, &data->white_rabbit[anim / 120], \
+		my_put_img_to_img(data, &data->dialog_cat[anim / 120], \
 			x, y);
 		anim++;
 		if (anim / 120 > 5)
 			anim = 0;
 	}
-	else if (ALICE_2 <= data->dialog_stage && data->dialog_stage <= ALICE_3)
-		my_put_img_to_img(data, &data->white_rabbit[0], x, y);
+	else if (ALICE_5 <= data->dialog_stage && data->dialog_stage <= ALICE_7)
+		my_put_img_to_img(data, &data->dialog_cat[0], x, y);
 }
 
 void	draw_white_rabbit(t_data *data, int x, int y)

@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 08:41:52 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/08 15:26:53 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/09 12:07:13 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,13 +192,15 @@ typedef struct s_data
 	int			draw_end;
 
 	t_img_info	door;
+	t_img_info	white_rabbit_door[2];
 	t_img_info	alice[18];
 	t_img_info	catterpilar[17];
 	t_img_info	cheshire_cat[6]; // wall
 	t_img_info	dialog_cat[6];
 	t_img_info	white_rabbit[10];
+	t_img_info	mushroom;
 	t_img_info	dialog_box;
-	t_img_info	dialog[14];
+	t_img_info	dialog[15];
 	int			dialog_stage;
 	bool		display_catterpilar;
 	bool		display_door;
@@ -272,6 +274,7 @@ bool	is_char_valid_in_map(char c);
 bool	is_a_zero_next_to_wrong(char **map);
 void	setup_dir(t_data *data, int x, int y);
 bool	checkup_map(char **map);
+// void	side_calc(t_data *data, t_v2f ray, t_v2f delta_dist);
 
 //
 bool	setup_game(t_data *data);

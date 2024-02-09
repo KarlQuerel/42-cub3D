@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_fill_img_3.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 14:42:11 by kquerel           #+#    #+#             */
-/*   Updated: 2024/02/08 15:23:01 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/02/09 11:16:02 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,18 @@ bool	get_alice_dialog(t_data *data)
 	int			i;
 
 	i = 1;
-	while (i < 8)
+	while (i < 5)
 	{
 		file[21] = '0' + i;
-		if (!upload_img(data, &((data->dialog)[i - 1 + (i > 4) * 3]), file))
+		if (!upload_img(data, &((data->dialog)[i]), file))
+			return (err(strerror(errno)), false);
+		i++;
+	}
+	i = 0;
+	while (i < 3)
+	{
+		file[21] = '0' + i + 5;
+		if (!upload_img(data, &((data->dialog)[i + 9]), file))
 			return (err(strerror(errno)), false);
 		i++;
 	}
@@ -37,7 +45,7 @@ bool	get_rabbit_dialog(t_data *data)
 	while (i < 4)
 	{
 		file[22] = '0' + i;
-		if (!upload_img(data, &((data->dialog)[i - 1]), file))
+		if (!upload_img(data, &((data->dialog)[i + 4]), file))
 			return (err(strerror(errno)), false);
 		i++;
 	}
@@ -53,7 +61,7 @@ bool	get_cat_dialog(t_data *data)
 	while (i < 4)
 	{
 		file[19] = '0' + i;
-		if (!upload_img(data, &((data->dialog)[i + 10]), file))
+		if (!upload_img(data, &((data->dialog)[i + 11]), file))
 			return (err(strerror(errno)), false);
 		i++;
 	}

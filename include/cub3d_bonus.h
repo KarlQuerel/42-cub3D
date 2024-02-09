@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 17:01:40 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/08 15:11:33 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/02/09 12:27:58 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ bool	get_white_rabbit(t_data *data);
 bool	get_wall_cat(t_data *data);
 bool	get_dialog_cat(t_data *data);
 bool	get_characters(t_data *data);
+bool	get_mushroom(t_data *data);
 
 void	last_cube(t_data *data, t_v2f ray, int i, t_v2f delta_dist);
 void	draw_someone(t_data *data, int col);
@@ -51,5 +52,8 @@ void	update_time(t_data *data);
 bool	setup_bonus(t_data *data);
 
 float	abs_value(float x);
+void	side_calc(t_data *data, t_v2f ray, t_v2f delta_dist);
+
+void	draw_collectible(t_data *data, int x, int end, int i);
 
 #endif

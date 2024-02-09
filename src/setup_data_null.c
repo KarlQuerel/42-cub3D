@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 08:47:41 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/03 10:08:52 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/09 11:34:24 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ static void	setup_img_null(t_data *data)
 	data->south.img = NULL;
 	data->west.img = NULL;
 	data->door.img = NULL;
+	data->white_rabbit_door[0].img = NULL;
+	data->white_rabbit_door[1].img = NULL;
 	data->dialog_box.img = NULL;
 }
 
