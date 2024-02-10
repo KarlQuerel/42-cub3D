@@ -6,13 +6,13 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 12:48:12 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/03 09:24:15 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/10 16:10:07 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d_bonus.h"
 
-static void	cheshire_cat_disapear(t_data *data)
+void	cheshire_cat_disapear(t_data *data)
 {
 	int	x;
 	int	y;
@@ -24,7 +24,11 @@ static void	cheshire_cat_disapear(t_data *data)
 		while (data->map[x][y])
 		{
 			if (data->map[x][y] == 'P')
+			{
 				data->map[x][y] = '0';
+				coll_delete(&data->coll, (t_v2f){x + 0.5, y + 0.5});
+			}
+
 			y++;
 		}
 		x++;
@@ -50,6 +54,7 @@ void	summon_cheshire_cat(t_data *data, int i)
 				if (data->map[x][y] == '0')
 				{
 					data->map[x][y] = 'P';
+					coll_add_back(&data->coll, coll_new((t_v2f){x + 0.5, y + 0.5}, true));
 					return ;
 				}
 				y++;

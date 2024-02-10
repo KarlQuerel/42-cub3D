@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_checkup_map_2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 09:32:54 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/09 20:14:19 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/02/10 16:31:56 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,17 @@ void	setup_dir(t_data *data, int x, int y)
 	else if (data->map[x][y] == 'E')
 		angle = 1.57;
 	old_dir = data->camera_dir;
-	rotate(data, (-angle), old_dir);
-	rotate(data, (-angle), old_dir);
+	// rotate(data, (-angle), old_dir);
+	// rotate(data, (-angle), old_dir);
+	t_v2f	old_plane;
+
+	data->camera_dir[0] = data->camera_dir[0] * cos(-angle) \
+	- data->camera_dir[1] * sin(-angle);
+	data->camera_dir[1] = old_dir[0] * sin(-angle) \
+	+ data->camera_dir[1] * cos(-angle);
+	old_plane[0] = data->plane[0];
+	data->plane[0] = data->plane[0] * cos(-angle) \
+	- data->plane[1] * sin(-angle);
+	data->plane[1] = old_plane[0] * sin(-angle) \
+	+ data->plane[1] * cos(-angle);
 }

@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 11:33:01 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/10 12:21:08 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/10 15:51:28 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ void	coll_delete(t_coll **coll, t_v2f pos)
 	t_coll	*tmp;
 	t_coll	*tmp_2;
 
-	tmp = *coll;
-	tmp = NULL;
+	tmp_2 = NULL;
 	if (coll)
 	{
+		tmp = *coll;
 		while (tmp)
 		{
 			if (pos[0] == tmp->pos[0] && pos[1] == tmp->pos[1])

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_time.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 09:14:27 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/09 21:10:30 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/02/10 16:11:03 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,22 +73,39 @@ void	update_time(t_data *data)
 	if (data->dialog_stage < DIALOG_FINISH_2)
 		data->time_2_le_retour++;
 	if (data->time_2_le_retour > 36000)
+	{
+		if (data->dialog_stage != DIALOG_FINISH_2)
+			cheshire_cat_disapear(data);
 		data->dialog_stage = DIALOG_FINISH_2;
+	}
 	else if (data->time_2_le_retour > 33500)
 		data->dialog_stage = ALICE_7;
 	else if (data->time_2_le_retour > 31000)
+	{
+		if (data->dialog_stage != CHESHIRE_CAT_3)
+			summon_cheshire_cat(data, 1);
 		data->dialog_stage = CHESHIRE_CAT_3;
+	}
 	else if (data->time_2_le_retour > 28500)
 		data->dialog_stage = ALICE_6;
 	else if (data->time_2_le_retour > 26000)
+	{
+		if (data->dialog_stage != CHESHIRE_CAT_2)
+			summon_cheshire_cat(data, 3);
 		data->dialog_stage = CHESHIRE_CAT_2;
+	}
 	else if (data->time_2_le_retour > 23500)
 		data->dialog_stage = ALICE_5;
 	else if (data->time_2_le_retour > 21000)
+	{
+		if (data->dialog_stage != CHESHIRE_CAT_1)
+			summon_cheshire_cat(data, 5);
 		data->dialog_stage = CHESHIRE_CAT_1;
+	}
+	else 
+		update_time_continued(data);
 	// else
 	// 	return ;
 	// debug_time_state(data->dialog_stage);
-	update_time_continued(data);
 }
 

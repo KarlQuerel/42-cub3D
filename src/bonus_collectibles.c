@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_collectibles.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 09:21:57 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/09 21:08:18 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/02/10 15:44:48 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	take_collectibles(t_data *data)
 			if (data->map[i][j] == COLLECTIBLE && \
 			can_i_take_this(data, i, j))
 			{
+				coll_delete(&data->coll, (t_v2f){i + 0.5, j + 0.5});
 				paint_it_black(data);
 				data->drug = true;
 				data->drug_timer = 0;

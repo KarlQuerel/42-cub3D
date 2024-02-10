@@ -6,15 +6,16 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 09:42:18 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/10 15:08:23 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/10 16:20:01 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d_bonus.h"
 
-void	display_coll(t_data *data, int start, int end)
+void	display_coll(t_data *data, int start, int end, bool type)
 {
 	int	tex_x;
+	int color;
 	int	y;
 
 	while (start < end)
@@ -22,6 +23,8 @@ void	display_coll(t_data *data, int start, int end)
 		tex_x = (int)(256 * (start - (-1 * data->coll_utils.sprite_width / 2 + \
 			data->coll_utils.sprite_screen)) * \
 			128 / data->coll_utils.sprite_width) / 256;
+		if (tex_x < 0)
+			tex_x = 0;
 
 		if (data->coll_utils.transform[1] > 0 && start > 0 && start < IMG_WIDTH && \
 			data->coll_utils.transform[1] < data->zbuffer[start])
@@ -31,7 +34,10 @@ void	display_coll(t_data *data, int start, int end)
 			{
 				int d = y * 256 - IMG_HEIGHT * 128 + data->coll_utils.sprite_height * 128;
 				int	tex_y = ((d * 128) / data->coll_utils.sprite_height) / 256;
-				int	color = ((int *)data->mushroom.addr)[tex_y * 128 + tex_x];
+				if (!type)
+					color = ((int *)data->mushroom.addr)[tex_y * 128 + tex_x];
+				else 
+					color = ((int *)data->wall_cat[0].addr)[tex_y * 128 + tex_x];
 				if (!(color & 0xff000000))
 					ft_my_put_pixel(data, y, start, color);
 				y++;
@@ -79,7 +85,7 @@ void	is_visible(t_data *data, t_coll *coll)
 
 	if (draw_end_x >= IMG_WIDTH)
 		draw_end_x = IMG_WIDTH - 1;
-	display_coll(data, draw_start_x, draw_end_x);
+	display_coll(data, draw_start_x, draw_end_x, coll->type);
 }
 
 void	draw_collectible_and_protagonist(t_data *data)
@@ -90,7 +96,7 @@ void	draw_collectible_and_protagonist(t_data *data)
 	while (tmp)
 	{
 		is_visible(data, tmp);
-	
+		
 		tmp = tmp->next;
 	}
 }

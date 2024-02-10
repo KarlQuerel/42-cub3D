@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 08:41:52 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/10 15:32:45 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/10 16:22:01 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 # define ERROR "😭 Boo-hoo 😭\nInvalid map format"
 
 // Movement Macros
-# define MOVE_SPEED		0.041
-# define ROT_SPEED		0.016
+# define MOVE_SPEED		0.011
+# define ROT_SPEED		0.004
 # define PI				3.14
 
 // Window Macros

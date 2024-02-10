@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 10:53:06 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/10 09:46:22 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/10 16:34:15 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,17 @@ void	setup_dir(t_data *data, int x, int y)
 	else if (data->map[x][y] == 'E')
 		angle = 1.57;
 	old_dir = data->camera_dir;
-	rotate(data, (-angle), old_dir);
-	rotate(data, (-angle), old_dir);
+	// rotate(data, (-angle), old_dir);
+	// rotate(data, (-angle), old_dir);
+	t_v2f	old_plane;
+
+	data->camera_dir[0] = data->camera_dir[0] * cos(-angle) \
+	- data->camera_dir[1] * sin(-angle);
+	data->camera_dir[1] = old_dir[0] * sin(-angle) \
+	+ data->camera_dir[1] * cos(-angle);
+	old_plane[0] = data->plane[0];
+	data->plane[0] = data->plane[0] * cos(-angle) \
+	- data->plane[1] * sin(-angle);
+	data->plane[1] = old_plane[0] * sin(-angle) \
+	+ data->plane[1] * cos(-angle);
 }

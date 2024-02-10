@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 17:01:40 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/10 14:55:55 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/10 16:10:12 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ t_coll	*coll_new(t_v2f pos, bool type);
 t_coll	*coll_last(t_coll *coll);
 
 void	draw_collectible_and_protagonist(t_data *data);
+void	summon_cheshire_cat(t_data *data, int i);
+void	cheshire_cat_disapear(t_data *data);
 
 
 #endif
