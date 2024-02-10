@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 08:41:52 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/09 16:40:24 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/02/10 12:14:47 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,13 @@ enum e_parse
 typedef float	t_color	__attribute__((vector_size (16)));
 typedef float	t_v2f	__attribute__((vector_size (8)));
 
+typedef struct s_coll
+{
+	struct s_coll	*next;
+	t_v2f	pos;
+	bool	type;
+}	t_coll;
+
 typedef struct s_img_info
 {
 	void	*img;
@@ -209,6 +216,7 @@ typedef struct s_data
 	bool		display_door;
 	bool		drogue;
 	int			drogue_timer;
+	t_coll		*coll;
 
 }	t_data;
 

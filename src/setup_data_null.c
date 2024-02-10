@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 08:47:41 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/09 11:34:24 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/10 12:22:12 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void	make_bonus_null(t_data *data)
 	data->drogue = false;
 	data->drogue_timer = 0;
 	data->display_catterpilar = false;
+	data->coll = NULL;
 }
 
 static void	setup_img_null(t_data *data)

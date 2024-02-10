@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 17:01:40 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/09 12:27:58 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/10 12:16:28 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,12 @@ float	abs_value(float x);
 void	side_calc(t_data *data, t_v2f ray, t_v2f delta_dist);
 
 void	draw_collectible(t_data *data, int x, int end, int i);
+
+//		coll utils
+void	coll_clear(t_coll **coll);
+void	coll_add_back(t_coll **coll, t_coll *new);
+void	coll_delete(t_coll **coll, t_v2f pos);
+t_coll	*coll_new(t_v2f pos, bool type);
+t_coll	*coll_last(t_coll *coll);
 
 #endif

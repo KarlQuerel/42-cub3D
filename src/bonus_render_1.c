@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 10:17:22 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/09 13:39:06 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/10 11:57:06 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,6 @@ void	render(t_data *data)
 		ray = get_ray(data, i);
 		dist = delta_dist_calc(data, &ray);
 		next_cube(data, ray, i, dist);
-		last_cube(data, ray, i, dist);
 		i++;
 	}
 	draw_all(data);

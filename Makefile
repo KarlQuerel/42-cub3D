@@ -55,7 +55,6 @@ SRC_BONUS = bonus_doors.c \
 			bonus_fill_img_4.c \
 			bonus_main.c \
 			bonus_render_1.c \
-			bonus_render_back.c \
 			bonus_mlx_utils.c \
 			bonus_collectibles.c \
 			bonus_summon_cheshire_cat.c \
@@ -79,6 +78,8 @@ SRC_BONUS = bonus_doors.c \
 			setup_game.c \
 			setup_mlx.c \
 			bonus_setup.c \
+			bonus_coll_utils.c \
+			# bonus_render_back.c \
 
 
 
