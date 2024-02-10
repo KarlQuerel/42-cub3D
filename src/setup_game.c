@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 10:49:05 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/09 17:42:55 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/09 19:55:14 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ bool	find_player(t_data *data)
 				data->plane[0] = 0.0f;
 				data->plane[1] = 0.57f;
 				setup_dir(data, x, y);
-				return (is_player_next_to_good(data->map, x,y));
+				return (is_player_next_to_good(data->map, x, y));
 			}
 			y++;
 		}
@@ -74,13 +74,12 @@ static void	restore_floor_player(t_data *data)
 	}
 }
 
-bool	setup_game(t_data *data)	// + msg
+bool	setup_game(t_data *data)
 {
 	if (!checkup_map(data->map))
-		return (data_clear(data), false);
-	//err()
+		return (err(ERROR), data_clear(data), false);
 	if (!find_player(data))
-		return (data_clear(data), false);
+		return (err(ERROR), data_clear(data), false);
 	restore_floor_player(data);
 	return (true);
 }

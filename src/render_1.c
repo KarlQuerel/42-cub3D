@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:23:17 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/10 09:50:13 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/10 13:35:07 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static t_v2f	get_ray(t_data *data, int x)
 
 	cam = 2.0f * (float)x / (float)IMG_WIDTH - 1;
 	ray[0] = data->camera_dir[0] + data->plane[0] * cam;
-	// printf("ray 1:<%f/%f>\n", data->camera_dir[1], data->plane[1]);
 	ray[1] = data->camera_dir[1] + data->plane[1] * cam;
 	return (ray);
 }

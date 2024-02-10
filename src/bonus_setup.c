@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 09:42:26 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/10 12:17:16 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/10 13:34:53 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ bool	build_lst_coll(t_data *data)
 bool	setup_bonus(t_data *data)
 {
 	data->dialog_stage = 0;
-	if (!get_characters(data))	// bonus
+	if (!get_characters(data)) // bonus
 		return (data_clear(data), false);
 	if (!build_lst_coll(data))
 		return (data_clear(data), false);

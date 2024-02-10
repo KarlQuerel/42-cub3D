@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 17:09:36 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/09 09:56:40 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/10 14:57:57 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,14 +87,15 @@ void	draw_dialog_box(t_data *data, int x, int y)
 	}
 }
 
-void draw_all(t_data *data)
+void	draw_all(t_data *data)
 {
 	int	x;
 	int	y;
 
 	x = (int)data->player_pos[0] / MINIMAP_HEIGHT * MINIMAP_HEIGHT;
 	y = (int)data->player_pos[1] / MINIMAP_WIDTH * MINIMAP_WIDTH;
-	if (!data->drogue)
+	draw_collectible_and_protagonist(data);
+	if (!data->drug)
 		draw_minimap(data, x, y);
 	draw_alice(data, IMG_HEIGHT - IMG_HEIGHT / 20 - 128, IMG_WIDTH / 20);
 	if (data->dialog_stage && \

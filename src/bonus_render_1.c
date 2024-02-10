@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 10:17:22 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/10 11:57:06 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/10 14:27:39 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static t_v2f	get_ray(t_data *data, int x)
 	ray[1] = data->camera_dir[1] + data->plane[1] * cam;
 	return (ray);
 }
-
 
 void	side_calc(t_data *data, t_v2f ray, t_v2f delta_dist)
 {
@@ -95,8 +94,9 @@ static void	next_cube(t_data *data, t_v2f ray, int x, t_v2f delta_dist)
 	side_calc(data, ray, delta_dist);
 	while (!side_assignment(data, delta_dist))
 		;
-	wall_calc(data, ray, data->side_dist[data->side / 3] \
-	- delta_dist[data->side / 3]);
+	data->zbuffer[x] = data->side_dist[data->side / 3] \
+	- delta_dist[data->side / 3];
+	wall_calc(data, ray, data->zbuffer[x]);
 	draw_slice(data, x);
 	// debug(data, delta_dist);
 }

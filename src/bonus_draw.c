@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_draw.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:29:55 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/09 11:50:04 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/09 20:30:18 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,9 @@ void	draw_white_rabbit_door(t_data *data, int x, int end, int i)
 	{
 		tex_y = (int)data->tex_pos_tmp & (128 - 1);
 		data->tex_pos_tmp += data->step_all;
-		color = ((int *)data->white_rabbit_door[0 < (data->time_2_le_retour & 128)].addr) \
-			[tex_y * 128 + data->tex_x];
+		color = ((int *)data->white_rabbit_door \
+		[0 < (data->time_2_le_retour & 128)].addr) \
+		[tex_y * 128 + data->tex_x];
 		if (color > 0)
 			ft_my_put_pixel(data, i, x, color);
 		(i)++;
@@ -122,27 +123,12 @@ void	draw_slice(t_data *data, int x)
 	draw_floor(data, x, data->draw_start, &i);
 	tmp = i;
 	draw_wall(data, x, data->draw_end, &i);
-	if (data->display_catterpilar || data->drogue)
+	if (data->display_catterpilar || data->drug)
 		draw_catterpilar(data, x, data->draw_end, tmp);
-	if (ALICE_2 <= data->dialog_stage && data->dialog_stage <= WHITE_RABBIT_3 && data->dialog_stage != ALICE_4 \
+	if (ALICE_2 <= data->dialog_stage && \
+		data->dialog_stage <= WHITE_RABBIT_3 && \
+		data->dialog_stage != ALICE_4 \
 		&& (!data->side || data->side == 5))
 		draw_white_rabbit_door(data, x, data->draw_end, tmp);
 	draw_ceiling(data, x, &i);
 }
-
-// void	draw_catterpilar(t_data *data, int x, int end, int i) // bonus
-// {
-// 	int	color;
-// 	int	tex_y;
-
-// 	while (i <= end && i < IMG_HEIGHT)
-// 	{
-// 		tex_y = (int)data->tex_pos_tmp & (128 - 1);
-// 		data->tex_pos_tmp += data->step_all;
-// 		color = ((int *)data->catterpilar[data->time / 100].addr) \
-// 			[tex_y * 128 + data->tex_x];
-// 		if (color > 0)
-// 			ft_my_put_pixel(data, i, x, color);
-// 		(i)++;
-// 	}
-// }

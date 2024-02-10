@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_checkup_map_2.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 09:32:54 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/09 17:34:05 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/09 20:14:19 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,10 @@ int	count_char_in_map(char c, char **map)
 	{
 		while (*map)
 		{
-			// printf("<%s>\n", *map);
 			count += count_char_in_str(c, *map);
 			map++;
 		}
 	}
-	// printf("\n");
 	return (count);
 }
 

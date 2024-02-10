@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 10:07:50 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/28 10:01:38 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/09 20:01:14 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,9 @@ static void	rotate_camera(t_data *data)
 
 	old_dir = data->camera_dir;
 	if (data->controls.right_mouse || data->controls.right_arrow)
-	{
 		rotate(data, (-ROT_SPEED), old_dir);
-		// rotate(&data->plane, (-ROT_SPEED));
-	}
 	if (data->controls.left_mouse || data->controls.left_arrow)
-	{
 		rotate(data, (ROT_SPEED), old_dir);
-		// rotate(&data->camera_dir, (ROT_SPEED));
-		// rotate(&data->plane, (ROT_SPEED));
-	}
 }
 
 int	update_display(t_data *data)

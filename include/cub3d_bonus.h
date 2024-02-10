@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 17:01:40 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/10 12:16:28 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/10 14:55:55 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,8 @@ void	coll_add_back(t_coll **coll, t_coll *new);
 void	coll_delete(t_coll **coll, t_v2f pos);
 t_coll	*coll_new(t_v2f pos, bool type);
 t_coll	*coll_last(t_coll *coll);
+
+void	draw_collectible_and_protagonist(t_data *data);
+
 
 #endif

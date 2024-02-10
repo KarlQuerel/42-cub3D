@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 08:41:52 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/10 12:14:47 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/10 15:32:45 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 # define ERROR "😭 Boo-hoo 😭\nInvalid map format"
 
 // Movement Macros
-# define MOVE_SPEED		0.011
-# define ROT_SPEED		0.004
+# define MOVE_SPEED		0.041
+# define ROT_SPEED		0.016
 # define PI				3.14
 
 // Window Macros
@@ -70,6 +70,12 @@
 # define CAT_D_1	"img/XPM/Dialog/CAT_1.xpm"
 # define CAT_D_2	"img/XPM/Dialog/CAT_2.xpm"
 # define CAT_D_3	"img/XPM/Dialog/CAT_3.xpm"
+# define DIALOG_BOX	"./img/XPM/Dialog_box.xpm"
+
+// Door Images
+# define DOOR_RABBIT_1	"./img/XPM/WHITE_RABBIT_DOOR.xpm"
+# define DOOR_RABBIT_2	"./img/XPM/WHITE_RABBIT_DOOR_2.xpm"
+# define DOOR_1			"./img/XPM/Walls/DOOR.xpm"
 
 // Game Macros
 # define DOOR_OPENED	'O'
@@ -77,7 +83,7 @@
 # define COLLECTIBLE	'C'
 # define CHESHIRE_CAT	'P'
 
-// dialog state
+// Dialog state
 enum e_dialog
 {
 	DIALOG_NOT_STARTED = 0,
@@ -96,7 +102,6 @@ enum e_dialog
 	CHESHIRE_CAT_2,
 	CHESHIRE_CAT_3,
 	DIALOG_FINISH_2,
-
 };
 
 enum e_parse
@@ -127,6 +132,17 @@ typedef struct s_coll
 	t_v2f	pos;
 	bool	type;
 }	t_coll;
+
+typedef struct s_coll_utils
+{
+	int		sprite_screen;
+	int		sprite_width;
+	int		sprite_height;
+	int		draw_start_y;
+	int		draw_end_y;
+	t_v2f	transform;
+
+}	t_coll_utils;
 
 typedef struct s_img_info
 {
@@ -202,21 +218,23 @@ typedef struct s_data
 	int			draw_end;
 
 	t_img_info	door;
-	t_img_info	white_rabbit_door[2];
-	t_img_info	alice[18];
-	t_img_info	catterpilar[17];
-	t_img_info	cheshire_cat[6]; // wall
-	t_img_info	dialog_cat[6];
-	t_img_info	white_rabbit[10];
 	t_img_info	mushroom;
 	t_img_info	dialog_box;
+	t_img_info	alice[18];
+	t_img_info	white_rabbit[10];
+	t_img_info	white_rabbit_door[2];
+	t_img_info	catterpilar[17];
+	t_img_info	wall_cat[6];
+	t_img_info	dialog_cat[6];
 	t_img_info	dialog[15];
-	int			dialog_stage;
-	bool		display_catterpilar;
-	bool		display_door;
-	bool		drogue;
-	int			drogue_timer;
-	t_coll		*coll;
+	int				dialog_stage;
+	bool			display_catterpilar;
+	bool			display_door;
+	t_coll			*coll;
+	t_coll_utils	coll_utils;
+	bool			drug;
+	int				drug_timer;
+	float			zbuffer[IMG_WIDTH];
 
 }	t_data;
 
@@ -273,10 +291,12 @@ int		leave_win(t_data *data);
 int		mouse_handler(int x, int y, t_data *data);
 
 //		cleaning
-void	err(char *s);
 int		data_clear(t_data *data);
 void	free_strs(char ***strs);
-int 	quit_game(t_data *data);
+
+//		cleaning_utils
+void	err(char *s);
+int		quit_game(t_data *data);
 
 //		checkup map
 int		count_char_in_map(char c, char **map);
