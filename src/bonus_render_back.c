@@ -3,28 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_render_back.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 15:15:42 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/10 10:23:40 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/10 20:49:01 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/cub3d_bonus.h"
 
-// une fonction qui calcule le rayon	-> pas besoin, valeur qui ne bouge pas
-// une fonction qui calcule le sidecalc -> pas besoin, valeur qui ne bouge pas
+void	hi_norminette(t_data *data, t_v2f delta_dist)
+{
+	data->step[0] = -1;
+	data->side_dist[0] = (data->player_pos[0] - data->map_x) \
+	* delta_dist[0];
+}
 
 t_v2f	reverse_ray(t_data *data, t_v2f ray, t_v2f delta_dist)
 {
 	ray[0] *= -1;
 	ray[1] *= -1;
 	if (ray[0] < 0)
-	{
-		data->step[0] = -1;
-		data->side_dist[0] = (data->player_pos[0] - data->map_x) \
-		* delta_dist[0];
-	}
+		hi_norminette(data, delta_dist);
 	else
 	{
 		data->step[0] = 1;
@@ -46,25 +46,11 @@ t_v2f	reverse_ray(t_data *data, t_v2f ray, t_v2f delta_dist)
 	return (ray);
 }
 
-// une fonction qui calcule la distance
-// float	collectible_dist(t_data *data, t_v2f ray)
-// {
-// 	t_v2f	dist;
-
-// 	dist[0] = data->map_x + (ray[0] > 0) * 0.5 - (ray[0] < 0) * 0.5;
-// }
-
-// une fonction qui calcule l'endroit dans l'image ou on va chercher le pixel
-// void	find_right_pixel(t_data *data)
-// {	
-
-// }
-
-// une fonction qui affiche une tranche de collectible
 void	draw_slice_coll(t_data *data, int x)
 {
-	int	i = 0;
+	int	i;
 
+	i = 0;
 	while (i < IMG_HEIGHT - 1)
 	{
 		ft_my_put_pixel(data, i, x, 0x00404040);
@@ -72,7 +58,6 @@ void	draw_slice_coll(t_data *data, int x)
 	}
 }
 
-// une fonction qui reviens en arriere -> dans une boucle
 bool	back_to_player(t_data *data, int i, t_v2f delta_dist)
 {
 	if (data->side_dist[0] < data->side_dist[1])
@@ -87,22 +72,15 @@ bool	back_to_player(t_data *data, int i, t_v2f delta_dist)
 		data->map_y += data->step[1];
 		data->side = EAST - (data->map_y > data->player_pos[1]);
 	}
-	if (data->map[data->map_x][data->map_y] == 'C' || data->map[data->map_x][data->map_y] == 'P')
-	{
+	if (data->map[data->map_x][data->map_y] == 'C' || \
+		data->map[data->map_x][data->map_y] == 'P')
 		draw_slice_coll(data, i);
-		// draw slice of a collectible (use i)
-	}
-	if (data->map_x == (int)data->player_pos[0] && data->map_y == (int)data->player_pos[1])
+	if (data->map_x == (int)data->player_pos[0] && \
+		data->map_y == (int)data->player_pos[1])
 		return (true);
 	return (false);
 }
 
-
-
-// une fonction qui determine que
-
-
-// ca va chier !
 void	last_cube(t_data *data, t_v2f ray, int i, t_v2f dist)
 {
 	t_v2f	ray_reversed;

@@ -43,6 +43,9 @@ SRC =	main.c \
 		setup_game.c \
 		checkup_map_1.c \
 		checkup_map_2.c \
+		checkup_map_3.c \
+		coll_utils.c \
+
 
 SRC_BONUS = bonus_doors.c \
 			bonus_draw_dialog_box.c \
@@ -62,6 +65,7 @@ SRC_BONUS = bonus_doors.c \
 			bonus_time.c \
 			checkup_map_1.c \
 			bonus_checkup_map_2.c \
+			bonus_checkup_map_3.c \
 			cleaning.c \
 			cleaning_utils.c \
 			fill_map_file_1.c \
@@ -80,7 +84,7 @@ SRC_BONUS = bonus_doors.c \
 			setup_game.c \
 			setup_mlx.c \
 			bonus_setup.c \
-			bonus_coll_utils.c \
+			coll_utils.c \
 			# bonus_render_back.c \
 
 # Object files

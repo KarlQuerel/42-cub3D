@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 08:41:23 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/09 20:33:42 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/02/10 21:18:37 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 	if (!fill_map_file(&data, argv[1]))
 		return (data_clear(&data), 1);
 	if (!setup_game(&data))
-		return (data_clear(&data), 1);
+		return (1);
 	render(&data);
 	mlx_hook(data.win, EXIT, 0, quit_game, &data);
 	mlx_hook(data.win, 02, KeyPressMask, key_event, &data);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_data_null.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 08:47:41 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/10 13:35:38 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/10 21:01:38 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static void	setup_wall_null(t_data *data)
 	data->mushroom.img = NULL;
 	data->door.img = NULL;
 	data->dialog_box.img = NULL;
+	data->img.img = NULL;
 }
 
 void	make_data_null(t_data *data)

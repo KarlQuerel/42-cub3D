@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 08:41:52 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/10 16:22:01 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/10 20:56:17 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,20 +129,20 @@ typedef float	t_v2f	__attribute__((vector_size (8)));
 typedef struct s_coll
 {
 	struct s_coll	*next;
-	t_v2f	pos;
-	bool	type;
+	t_v2f			pos;
+	bool			type;
 }	t_coll;
 
-typedef struct s_coll_utils
+typedef struct s_col_u
 {
 	int		sprite_screen;
-	int		sprite_width;
-	int		sprite_height;
+	int		s_wdth;
+	int		s_hgt;
 	int		draw_start_y;
 	int		draw_end_y;
-	t_v2f	transform;
+	t_v2f	trans;
 
-}	t_coll_utils;
+}	t_col_u;
 
 typedef struct s_img_info
 {
@@ -170,68 +170,67 @@ typedef struct s_control
 
 typedef struct s_data
 {
-	void		*win;
-	void		*mlx;
-	t_img_info	img;
+	void			*win;
+	void			*mlx;
+	t_img_info		img;
 
-	int			fd;
-	int			nb_side_parsed;
+	int				fd;
+	int				nb_side_parsed;
 
-	t_img_info	north;
-	t_img_info	south;
-	t_img_info	west;
-	t_img_info	east;
-	t_img_info	floor;
-	t_img_info	ceiling;
+	t_img_info		north;
+	t_img_info		south;
+	t_img_info		west;
+	t_img_info		east;
+	t_img_info		floor;
+	t_img_info		ceiling;
 
-	t_color		floor_color;
-	int			floor_color_2;
-	t_color		ceiling_color;
-	int			ceiling_color_2;
-	int			img_width;
-	int			img_height;
-	char		**map;
-	int			width;
-	int			height;
-	t_control	controls;
-	t_v2f		plane;
-	t_v2f		player_pos;
-	t_v2f		camera_dir;
-	float		tex_pos;
-	float		tex_pos_tmp;
-	float		step_all;
-	int			tex_x;
-	int			side;
-	int			map_x;
-	int			map_y;
-	int			it_x;
-	int			it_y;
-	t_v2f		step;
-	t_v2f		side_dist;
-	void		*minimap;
-	int			dir;
-	bool		in_win;
-	int			time;
-	long		time_2_le_retour;
+	t_color			floor_color;
+	int				floor_color_2;
+	t_color			ceiling_color;
+	int				ceiling_color_2;
+	int				img_width;
+	int				img_height;
+	char			**map;
+	int				width;
+	int				height;
+	t_control		controls;
+	t_v2f			plane;
+	t_v2f			player_pos;
+	t_v2f			camera_dir;
+	float			tex_pos;
+	float			tex_pos_tmp;
+	float			step_all;
+	int				tex_x;
+	int				side;
+	int				map_x;
+	int				map_y;
+	int				it_x;
+	int				it_y;
+	t_v2f			step;
+	t_v2f			side_dist;
+	void			*minimap;
+	int				dir;
+	bool			in_win;
+	int				time;
+	long			time_2_le_retour;
+	int				draw_start;
+	int				draw_end;
 
-	int			draw_start;
-	int			draw_end;
-
-	t_img_info	door;
-	t_img_info	mushroom;
-	t_img_info	dialog_box;
-	t_img_info	alice[18];
-	t_img_info	white_rabbit[10];
-	t_img_info	white_rabbit_door[2];
-	t_img_info	catterpilar[17];
-	t_img_info	wall_cat[6];
-	t_img_info	dialog_cat[6];
-	t_img_info	dialog[15];
+	t_img_info		door;
+	t_img_info		mushroom;
+	t_img_info		dialog_box;
+	t_img_info		alice[18];
+	t_img_info		white_rabbit[10];
+	t_img_info		white_rabbit_door[2];
+	t_img_info		catterpilar[17];
+	t_img_info		wall_cat[6];
+	t_img_info		dialog_cat[6];
+	t_img_info		dialog[15];
 	int				dialog_stage;
 	bool			display_catterpilar;
 	bool			display_door;
 	t_coll			*coll;
-	t_coll_utils	coll_utils;
+	t_col_u			col_u;
 	bool			drug;
 	int				drug_timer;
 	float			zbuffer[IMG_WIDTH];
@@ -309,5 +308,12 @@ bool	checkup_map(char **map);
 
 //
 bool	setup_game(t_data *data);
+
+//		coll utils
+void	coll_clear(t_coll **coll);
+void	coll_add_back(t_coll **coll, t_coll *new);
+void	coll_delete(t_coll **coll, t_v2f pos);
+t_coll	*coll_new(t_v2f pos, bool type);
+t_coll	*coll_last(t_coll *coll);
 
 #endif

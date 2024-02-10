@@ -6,7 +6,7 @@
 /*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 10:29:55 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/09 21:06:27 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/02/10 18:54:15 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,5 @@ void	draw_slice(t_data *data, int x)
 	draw_floor(data, x, data->draw_start, &i);
 	tmp = i;
 	draw_wall(data, x, data->draw_end, &i);
-	// if (data->display_catterpilar || data->drug)
-	// 	draw_catterpilar(data, x, data->draw_end, tmp);
 	draw_ceiling(data, x, &i);
 }

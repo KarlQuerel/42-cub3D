@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_collectibles.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 09:21:57 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/10 15:44:48 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/10 20:50:45 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,13 @@ static	void	paint_it_black(t_data *data)
 	}
 }
 
+void	ft_null(t_data *data, int i, int j)
+{
+	data->drug = true;
+	data->drug_timer = 0;
+	data->map[i][j] = '0';
+}
+
 void	take_collectibles(t_data *data)
 {
 	int	i;
@@ -65,9 +72,7 @@ void	take_collectibles(t_data *data)
 			{
 				coll_delete(&data->coll, (t_v2f){i + 0.5, j + 0.5});
 				paint_it_black(data);
-				data->drug = true;
-				data->drug_timer = 0;
-				data->map[i][j] = '0';
+				ft_null(data, i, j);
 			}
 			j++;
 		}

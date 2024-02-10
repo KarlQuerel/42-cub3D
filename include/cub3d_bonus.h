@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 17:01:40 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/10 16:10:12 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/10 20:56:08 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,8 @@ void	side_calc(t_data *data, t_v2f ray, t_v2f delta_dist);
 
 void	draw_collectible(t_data *data, int x, int end, int i);
 
-//		coll utils
-void	coll_clear(t_coll **coll);
-void	coll_add_back(t_coll **coll, t_coll *new);
-void	coll_delete(t_coll **coll, t_v2f pos);
-t_coll	*coll_new(t_v2f pos, bool type);
-t_coll	*coll_last(t_coll *coll);
-
 void	draw_collectible_and_protagonist(t_data *data);
 void	summon_cheshire_cat(t_data *data, int i);
 void	cheshire_cat_disapear(t_data *data);
-
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_summon_cheshire_cat.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 12:48:12 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/10 16:10:07 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/10 20:53:20 by kquerel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	cheshire_cat_disapear(t_data *data)
 				data->map[x][y] = '0';
 				coll_delete(&data->coll, (t_v2f){x + 0.5, y + 0.5});
 			}
-
 			y++;
 		}
 		x++;
@@ -43,24 +42,23 @@ void	summon_cheshire_cat(t_data *data, int i)
 
 	cheshire_cat_disapear(data);
 	j = i;
-	while (j)
+	while (--j)
 	{
 		x = (int)data->player_pos[0] - j;
 		y = (int)data->player_pos[1] - j;
-		while (x && x < (int)data->player_pos[0] + j && data->map[x])
+		while (++x && x < (int)data->player_pos[0] + j && data->map[x])
 		{
 			while (y && y < (int)data->player_pos[1] + j && data->map[x][y])
 			{
 				if (data->map[x][y] == '0')
 				{
 					data->map[x][y] = 'P';
-					coll_add_back(&data->coll, coll_new((t_v2f){x + 0.5, y + 0.5}, true));
+					coll_add_back(&data->coll, \
+					coll_new((t_v2f){x + 0.5, y + 0.5}, true));
 					return ;
 				}
 				y++;
 			}
-			x++;
 		}
-		j--;
 	}
 }
