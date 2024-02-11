@@ -50,6 +50,7 @@ SRC =	main.c \
 SRC_BONUS = bonus_doors.c \
 			bonus_draw_dialog_box.c \
 			bonus_draw_protagonists.c \
+			bonus_draw_cheshire_cat.c \
 			bonus_minimap.c \
 			bonus_draw.c \
 			bonus_draw_things.c \

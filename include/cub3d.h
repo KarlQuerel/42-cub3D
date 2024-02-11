@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 08:41:52 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/10 20:56:17 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/02/11 10:21:00 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,6 +234,7 @@ typedef struct s_data
 	bool			drug;
 	int				drug_timer;
 	float			zbuffer[IMG_WIDTH];
+	int				cat_timer;
 
 }	t_data;
 

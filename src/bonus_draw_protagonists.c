@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_draw_protagonists.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 09:42:18 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/10 19:59:04 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/02/11 12:06:49 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	display_coll(t_data *data, int start, int end, bool type)
 				if (!type)
 					col = ((int *)data->mushroom.addr)[calc(data, start, d)];
 				else
-					col = ((int *)data->wall_cat[0].addr)[calc(data, start, d)];
+					col = get_cat_color(data, y, start, calc(data, start, d));
 				if (!(col & 0xff000000))
 					ft_my_put_pixel(data, y, start, col);
 				y++;
@@ -92,6 +92,7 @@ void	is_visible(t_data *data, t_coll *coll)
 	draw_end_x = data->col_u.s_wdth / 2 + data->col_u.sprite_screen;
 	if (draw_end_x >= IMG_WIDTH)
 		draw_end_x = IMG_WIDTH - 1;
+	data->cat_timer++;
 	display_coll(data, draw_start_x, draw_end_x, coll->type);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 17:01:40 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/10 20:56:08 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/02/11 10:27:58 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,6 @@ void	draw_collectible(t_data *data, int x, int end, int i);
 void	draw_collectible_and_protagonist(t_data *data);
 void	summon_cheshire_cat(t_data *data, int i);
 void	cheshire_cat_disapear(t_data *data);
+int		get_cat_color(t_data *data, int x, int y, int pixel);
 
 #endif

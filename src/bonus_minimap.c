@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_minimap.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 14:27:33 by kquerel           #+#    #+#             */
-/*   Updated: 2024/02/05 14:27:44 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/02/11 11:36:59 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,19 @@ void	draw_map_components(t_data *data, int x, int y, int color)
 	}
 }
 
+void	draw_minimap_2(t_data *data, int x, int y)
+{
+	if (data->map[x + data->it_x][y + data->it_y] == 'D' || \
+		data->map[x + data->it_x][y + data->it_y] == 'O')
+		draw_map_components(data, data->it_x, data->it_y, 0x00F6BE00);
+	else if (data->map[x + data->it_x][y + data->it_y] == '0')
+		draw_map_components(data, data->it_x, data->it_y, 0x003722);
+	else if (data->map[x + data->it_x][y + data->it_y] == 'C')
+		draw_map_components(data, data->it_x, data->it_y, 0x00703070);
+	else if (data->map[x + data->it_x][y + data->it_y] == 'P')
+		draw_map_components(data, data->it_x, data->it_y, 0x00301030);
+}
+
 void	draw_minimap(t_data *data, int x, int y)
 {
 	data->it_x = 0;
@@ -46,11 +59,8 @@ void	draw_minimap(t_data *data, int x, int y)
 				is_a_white_space(data->map[x + data->it_x][y + data->it_y]) || \
 				y + data->it_y > ft_strlen(data->map[x + data->it_x]))
 				draw_map_components(data, data->it_x, data->it_y, 0x000000);
-			else if (data->map[x + data->it_x][y + data->it_y] == 'D' || \
-				data->map[x + data->it_x][y + data->it_y] == 'O')
-				draw_map_components(data, data->it_x, data->it_y, 0x00F6BE00);
-			else if (data->map[x + data->it_x][y + data->it_y] == '0')
-				draw_map_components(data, data->it_x, data->it_y, 0x003722);
+			else
+				draw_minimap_2(data, x, y);
 			if ((x + data->it_x) == (int)data->player_pos[0] && \
 				(y + data->it_y) == (int)data->player_pos[1])
 				draw_map_components(data, data->it_x, data->it_y, 0x00ffffff);

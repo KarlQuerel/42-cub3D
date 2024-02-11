@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_time.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 09:14:27 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/10 18:40:09 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/02/11 12:04:08 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,21 +71,21 @@ void	update_time_rabbit(t_data *data)
 void	cat_1(t_data *data)
 {
 	if (data->dialog_stage != CHESHIRE_CAT_3)
-		summon_cheshire_cat(data, 1);
+		summon_cheshire_cat(data, 3);
 	data->dialog_stage = CHESHIRE_CAT_3;
 }
 
 void	cat_2(t_data *data)
 {
 	if (data->dialog_stage != CHESHIRE_CAT_2)
-		summon_cheshire_cat(data, 3);
+		summon_cheshire_cat(data, 5);
 	data->dialog_stage = CHESHIRE_CAT_2;
 }
 
 void	cat_3(t_data *data)
 {
 	if (data->dialog_stage != CHESHIRE_CAT_1)
-		summon_cheshire_cat(data, 5);
+		summon_cheshire_cat(data, 7);
 	data->dialog_stage = CHESHIRE_CAT_1;
 }
 

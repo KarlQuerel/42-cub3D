@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_data_null.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kquerel <kquerel@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 08:47:41 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/10 21:01:38 by kquerel          ###   ########.fr       */
+/*   Updated: 2024/02/11 10:21:26 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	make_bonus_null(t_data *data)
 {
 	data->drug = false;
 	data->drug_timer = 0;
+	data->cat_timer = 0;
 	data->display_catterpilar = false;
 	data->coll = NULL;
 }
