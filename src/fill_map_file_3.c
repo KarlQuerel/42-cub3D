@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 09:56:04 by pcheron           #+#    #+#             */
-/*   Updated: 2024/01/26 09:44:23 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/12 09:52:33 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,11 @@ bool	fill_map(t_data *data, char **line)
 	if (!map)
 		return (unleek_gnl(data->fd), false);
 	map[0] = 0;
+	while (*line && !count_char_in_str('1', *line))
+	{
+		free(*line);
+		*line = ft_get_next_line(data->fd);
+	}
 	while (*line && count_char_in_str('1', *line))
 	{
 		data->width++;

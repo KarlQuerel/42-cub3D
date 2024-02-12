@@ -6,7 +6,7 @@
 /*   By: pcheron <pcheron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 09:03:43 by pcheron           #+#    #+#             */
-/*   Updated: 2024/02/09 17:48:06 by pcheron          ###   ########.fr       */
+/*   Updated: 2024/02/12 09:50:32 by pcheron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ bool	fill_map_file(t_data *data, char *map)
 		line = ft_get_next_line(data->fd);
 		if (!line)
 			break ;
-		if (line[0] != '#' && line[0] && !is_a_white_space(line[0]))
+		if (line[0] != '#' && line[0] && line[0] != '\n')
 		{
 			if (!fill_new_line(data, &line))
 				return (fill_map_file_cont(data, line), false);
